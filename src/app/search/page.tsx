@@ -83,17 +83,17 @@ export default function HomePage() {
               </div>
 
               <h1 className="mb-8 tracking-tight">
-                <span className="block text-6xl sm:text-7xl lg:text-8xl font-bold leading-none mb-4">
-                  おどるーむ
+                <span className="block text-5xl sm:text-6xl lg:text-7xl font-bold leading-none mb-4">
+                  教室検索
                 </span>
                 <span className="block text-sm sm:text-base text-violet-300 tracking-[0.2em] font-light">
-                  ～社交ダンス総合情報サイト～
+                  全国の社交ダンス教室を探す
                 </span>
               </h1>
 
               <p className="text-violet-200 text-base sm:text-lg max-w-lg mx-auto md:mx-0 leading-relaxed mb-10">
-                日本全国の社交ダンス教室・スタジオを都道府県から検索できます。
-                あなたの街のダンス教室を見つけましょう。
+                都道府県から社交ダンス教室・スタジオを検索できます。
+                住所、料金、レッスン形態など詳しい情報を掲載しています。
               </p>
 
               {/* Stats */}
@@ -104,7 +104,7 @@ export default function HomePage() {
                 </div>
                 <div className="w-px h-10 bg-violet-700" />
                 <div className="text-center md:text-left">
-                  <div className="text-3xl font-bold text-amber-400">42</div>
+                  <div className="text-3xl font-bold text-amber-400">{studios.length}</div>
                   <div className="text-xs text-violet-400 mt-0.5">掲載教室数</div>
                 </div>
               </div>
@@ -216,6 +216,10 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+    </>
+  );
+}
+  </section>
     </>
   );
 }
