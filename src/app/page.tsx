@@ -8,11 +8,6 @@ export const metadata: Metadata = {
     "日本全国の社交ダンス教室・スタジオを都道府県から探せます。ワルツ、タンゴ、ルンバなど様々な種目に対応した教室情報を掲載。",
 };
 
-const DANCE_STYLES = [
-  "ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ",
-  "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ",
-];
-
 const FEATURES = [
   {
     title: "かんたん検索",
@@ -171,21 +166,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Dance Styles Banner ── */}
-      <section className="py-6 px-4 border-b border-gray-100">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
-            {DANCE_STYLES.map((style) => (
-              <span
-                key={style}
-                className="bg-white border border-violet-200 text-violet-700 text-xs sm:text-sm font-medium px-3 sm:px-4 py-1.5 rounded-full shadow-sm hover:border-violet-400 hover:bg-violet-50 transition-colors duration-150 cursor-default"
-              >
-                {style}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Dance Styles Banner removed */}
 
       {/* ── Prefecture Grid ── */}
       <section className="py-16 px-4">
