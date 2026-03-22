@@ -14,6 +14,11 @@ export const studios: Studio[] = [
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "月 16:00〜21:00、火〜金 13:00〜21:00、土 13:00〜19:00",
     description: "高田馬場駅から徒歩1分の社交ダンス教室。初心者から競技者まで幅広く対応。",
+    staff: [
+      { name: "中沢 康行", role: "代表講師", photo: "https://i2.wp.com/nakazawadance.com/wp-content/uploads/2018/11/staff01.png?resize=650%2C418&ssl=1" },
+      { name: "武田 満紀", role: "講師", photo: "https://i0.wp.com/nakazawadance.com/wp-content/uploads/2018/11/staff02.png?resize=650%2C426&ssl=1" },
+      { name: "田原 美穂", role: "特別講師", photo: "https://i1.wp.com/nakazawadance.com/wp-content/uploads/2018/11/staff05.png?resize=650%2C418&ssl=1" },
+    ],
   },
   {
     id: "tokyo-002",
@@ -27,6 +32,10 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     description: "銀座7丁目の社交ダンスアカデミー。若い世代にも人気が高く、初心者クラスが充実。",
+    staff: [
+      { name: "高木邦洋", role: "校長" },
+      { name: "高木栄子", role: "校長" },
+    ],
   },
   {
     id: "tokyo-003",
@@ -68,6 +77,19 @@ export const studios: Studio[] = [
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "月〜土 12:00〜22:00（水曜は18:30まで）、日曜定休",
     description: "四ツ谷駅2番出口から徒歩約1分。四谷エリアの老舗社交ダンス教室。",
+    staff: [
+      { name: "安藤利寛", role: "インストラクター", photo: "https://www.andoh-dance.com/img/staff/img2302_01.jpg" },
+      { name: "山口真治", role: "インストラクター", photo: "https://www.andoh-dance.com/img/staff/img2302_02.jpg" },
+      { name: "矢口学", role: "インストラクター", photo: "https://www.andoh-dance.com/img/staff/img2302_03.jpg" },
+      { name: "田中正人", role: "インストラクター", photo: "https://www.andoh-dance.com/img/staff/img2302_04.jpg" },
+      { name: "川原田良", role: "インストラクター", photo: "https://www.andoh-dance.com/img/staff/img2302_06.jpg" },
+      { name: "田澤琢人", role: "インストラクター", photo: "https://www.andoh-dance.com/img/staff/img2302_07.jpg" },
+      { name: "中塚裕子", role: "インストラクター", photo: "https://www.andoh-dance.com/img/staff/img2302_08.jpg" },
+      { name: "西田梨恵", role: "インストラクター", photo: "https://www.andoh-dance.com/img/staff/img2302_09.jpg" },
+      { name: "田中クルミ", role: "インストラクター", photo: "https://www.andoh-dance.com/img/staff/img2302_10.jpg" },
+      { name: "森彩香", role: "インストラクター", photo: "https://www.andoh-dance.com/img/staff/img2302_11.jpg" },
+      { name: "杉下園実", role: "インストラクター", photo: "https://www.andoh-dance.com/img/staff/img2302_12.jpg" },
+    ],
   },
   {
     id: "tokyo-006",
@@ -82,6 +104,15 @@ export const studios: Studio[] = [
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "月〜金 13:00〜22:00、日・祝 13:00〜19:00",
     description: "統一全日本チャンピオンが経営指導する都内最大級250㎡超のダンススタジオ。",
+    staff: [
+      { name: "織田 慶治", role: "代表インストラクター", photo: "https://odakeiji-dance.com/wp/wp-content/themes/dance_wp/images/staff/pic_001.jpg" },
+      { name: "織田 理子", role: "インストラクター", photo: "https://odakeiji-dance.com/wp/wp-content/themes/dance_wp/images/staff/pic_002.jpg" },
+      { name: "関 勇人", role: "インストラクター", photo: "https://odakeiji-dance.com/wp/wp-content/uploads/2024/09/Hayato_400x500.png" },
+      { name: "長谷川 真希", role: "インストラクター", photo: "https://odakeiji-dance.com/wp/wp-content/uploads/2024/09/Maki_400x500.png" },
+      { name: "牧野 果礼", role: "インストラクター", photo: "https://odakeiji-dance.com/wp/wp-content/uploads/2024/09/Karen_400x500.png" },
+      { name: "橋本 聡太", role: "インストラクター", photo: "https://odakeiji-dance.com/wp/wp-content/uploads/2024/09/Sota_400x500.png" },
+      { name: "大山 真莉乃", role: "インストラクター", photo: "https://odakeiji-dance.com/wp/wp-content/uploads/2024/09/Marino_400x500.png" },
+    ],
   },
   {
     id: "tokyo-007",
@@ -96,6 +127,11 @@ export const studios: Studio[] = [
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "平日 12:00〜22:00、土・祝 12:00〜17:00",
     description: "早稲田駅から徒歩30秒。統一全日本チャンピオンの庄司浩太・名美組が経営指導するスタジオ。",
+    staff: [
+      { name: "庄司 浩太", role: "代表インストラクター", photo: "https://sdance-academy.com/common/img/staff/main_staff01.webp" },
+      { name: "庄司 名美", role: "代表インストラクター", photo: "https://sdance-academy.com/common/img/staff/main_staff02.webp" },
+      { name: "渡邉 雄介", role: "インストラクター", photo: "https://sdance-academy.com/common/img/staff/main_staff04.webp" },
+    ],
   },
   {
     id: "tokyo-008",
@@ -109,6 +145,12 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     description: "渋谷駅ハチ公口から徒歩5分。社交ダンスのほかアルゼンチンタンゴ・サルサも開講。初心者大歓迎。",
+    staff: [
+      { name: "須藤将史", role: "インストラクター", photo: "https://sudodance.com/wp-content/uploads/2023/10/150_1501.jpg" },
+      { name: "伊藤 沙希", role: "インストラクター", photo: "https://sudodance.com/wp-content/uploads/2023/10/headshootsaki-e1523508869461.jpg" },
+      { name: "中村 誠", role: "インストラクター", photo: "https://sudodance.com/wp-content/uploads/2023/10/0082_originalE381AEE382B3E38392E3829AEE383BC-1-scaled-e1610521992888.jpg" },
+      { name: "山口玲央奈", role: "インストラクター", photo: "https://sudodance.com/wp-content/uploads/2023/10/DDG6-1411-e1588857268302.jpg" },
+    ],
   },
   {
     id: "tokyo-009",
@@ -123,6 +165,31 @@ export const studios: Studio[] = [
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "月〜金 12:00〜22:00、土 12:00〜19:00、日曜定休",
     description: "渋谷駅から徒歩5分。ショーダンス世界チャンピオンと世界ラテンファイナリストが在籍する日本最高峰の社交ダンス教室。",
+    staff: [
+      { name: "桑原明男", role: "代表・インストラクター", photo: "https://kuwabaradance.com/images/kuwabara/kuwabaraface.png" },
+      { name: "桑原佐代子", role: "代表・インストラクター", photo: "https://kuwabaradance.com/images/sayoko/sayokoface.png" },
+      { name: "尚和由里子", role: "インストラクター", photo: "https://kuwabaradance.com/images/yuriko/yurikoface.png" },
+      { name: "三木真", role: "インストラクター", photo: "https://kuwabaradance.com/images/miki/mikiface.png" },
+      { name: "庄子洋平", role: "インストラクター", photo: "https://kuwabaradance.com/images/shoji/shojiface.png" },
+      { name: "猿田雄二", role: "インストラクター", photo: "https://kuwabaradance.com/images/saruta/sarutaface.png" },
+      { name: "竹内大夢", role: "インストラクター", photo: "https://kuwabaradance.com/images/takeuchi/takeuchiface.png" },
+      { name: "久保田豊", role: "インストラクター", photo: "https://kuwabaradance.com/images/kubota/kubotaface.png" },
+      { name: "野村直人", role: "インストラクター", photo: "https://kuwabaradance.com/images/nomura/nomuraface.png" },
+      { name: "野地雅人", role: "インストラクター", photo: "https://kuwabaradance.com/images/noji/nojiface.png" },
+      { name: "高橋将貴", role: "インストラクター", photo: "https://kuwabaradance.com/images/takahashi/takahashiface.png" },
+      { name: "大矢健太", role: "インストラクター", photo: "https://kuwabaradance.com/images/ooya/ooyaface.png" },
+      { name: "山本哲聖", role: "インストラクター", photo: "https://kuwabaradance.com/images/yamamoto/yamamoto.png" },
+      { name: "小野田のぞみ", role: "インストラクター", photo: "https://kuwabaradance.com/images/nozomi/nozomiface.png" },
+      { name: "久保田幸", role: "インストラクター", photo: "https://kuwabaradance.com/images/miyuki/miyukiface.png" },
+      { name: "山﨑かりん", role: "インストラクター", photo: "https://kuwabaradance.com/images/karin/karinface.png" },
+      { name: "中島由貴", role: "インストラクター", photo: "https://kuwabaradance.com/images/yuuki/yuukiface.png" },
+      { name: "髙島琴乃", role: "インストラクター", photo: "https://kuwabaradance.com/images/kotono/kotonoface.png" },
+      { name: "森大維", role: "インストラクター", photo: "https://kuwabaradance.com/images/daisuke/daisukeface.png" },
+      { name: "友井田将来", role: "インストラクター", photo: "https://kuwabaradance.com/images/tomoida/tomoidaface.png" },
+      { name: "大森あさみ", role: "インストラクター", photo: "https://kuwabaradance.com/images/asami/asamiface.png" },
+      { name: "鈴木善子", role: "インストラクター", photo: "https://kuwabaradance.com/images/yoshiko/yoshikoface.png" },
+      { name: "寿涼雅", role: "インストラクター", photo: "https://kuwabaradance.com/images/ryoka/ryokaface.png" },
+    ],
   },
   {
     id: "tokyo-010",
@@ -148,6 +215,14 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     description: "五反田エリアで開講するタキガワダンススクール渋谷校。グループ・個人レッスン両対応。",
+    staff: [
+      { name: "滝川 洋信", role: "代表", photo: "https://takigawa-ds.com/wp/wp-content/themes/takigawadance/img/staff/img01.jpg" },
+      { name: "北畑 香織", role: "インストラクター", photo: "https://takigawa-ds.com/wp/wp-content/themes/takigawadance/img/staff/img03.jpg" },
+      { name: "吹野 明日香", role: "インストラクター", photo: "https://takigawa-ds.com/wp/wp-content/themes/takigawadance/img/staff/img05.jpg" },
+      { name: "比嘉 那美", role: "インストラクター", photo: "https://takigawa-ds.com/wp/wp-content/uploads/2024/03/nami-h01-238x288-1.jpg" },
+      { name: "神成 飛花", role: "インストラクター", photo: "https://takigawa-ds.com/wp/wp-content/uploads/2026/01/kannari_asuka288x238-1.jpg" },
+      { name: "安田 充希", role: "インストラクター", photo: "https://takigawa-ds.com/wp/wp-content/uploads/2025/12/s-yasuda_mitsuki288x238.jpg" },
+    ],
   },
   {
     id: "tokyo-012",
@@ -160,6 +235,12 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     description: "池袋駅から徒歩6分。120㎡の大型フロアを備えた社交ダンス教室。",
+    staff: [
+      { name: "滝川 洋信", role: "代表", photo: "https://takigawa-ds.com/wp/wp-content/themes/takigawadance/img/staff/img01.jpg" },
+      { name: "北畑 香織", role: "インストラクター", photo: "https://takigawa-ds.com/wp/wp-content/themes/takigawadance/img/staff/img03.jpg" },
+      { name: "吹野 明日香", role: "インストラクター", photo: "https://takigawa-ds.com/wp/wp-content/themes/takigawadance/img/staff/img05.jpg" },
+      { name: "比嘉 那美", role: "インストラクター", photo: "https://takigawa-ds.com/wp/wp-content/uploads/2024/03/nami-h01-238x288-1.jpg" },
+    ],
   },
   {
     id: "tokyo-013",
@@ -201,6 +282,9 @@ export const studios: Studio[] = [
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "平日 13:00〜21:00、土・祝 13:00〜18:00",
     description: "西日暮里エリアの社交ダンス教室。日本ボールルームダンス連盟認定登録教室。",
+    staff: [
+      { name: "長谷川 政義", role: "代表・インストラクター", photo: "https://www.hmdw.jp/wp-content/uploads/2024/12/ballroom-dance-teacher.webp" },
+    ],
   },
   {
     id: "tokyo-016",
@@ -213,6 +297,11 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     description: "日暮里駅より徒歩5分。初心者指導に万全の体制を整えた社交ダンス教室。",
+    staff: [
+      { name: "西田 欣主", role: "代表・インストラクター", photo: "https://www.nishidadance.jp/_p/2948/images/pc/6e76fa0e.jpg" },
+      { name: "西田 美穂", role: "インストラクター", photo: "https://www.nishidadance.jp/_p/2948/images/pc/210f24cd.JPG" },
+      { name: "箱田 翔次郎", role: "インストラクター", photo: "https://www.nishidadance.jp/_p/2948/images/pc/96f03d19.jpg" },
+    ],
   },
   {
     id: "tokyo-017",
@@ -227,6 +316,18 @@ export const studios: Studio[] = [
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "月〜金 12:00〜21:30、土・祝 12:00〜18:00",
     description: "六本木駅徒歩10分。都内最大規模115坪のフロアを誇る社交ダンススクール。優秀なコーチャーが集結。",
+    staff: [
+      { name: "結城 智史", role: "インストラクター", photo: "https://www.zest-ballroomdance-tokyo.com/wp-content/uploads/2022/03/s-yuki.jpeg" },
+      { name: "増田 千晴", role: "インストラクター", photo: "https://www.zest-ballroomdance-tokyo.com/wp-content/uploads/2022/03/chiharu-masuda.jpeg" },
+      { name: "廣島 悠仁", role: "インストラクター", photo: "https://www.zest-ballroomdance-tokyo.com/wp-content/uploads/2022/03/s-hiroshima.jpeg" },
+      { name: "末安 祐一郎", role: "インストラクター", photo: "https://www.zest-ballroomdance-tokyo.com/wp-content/uploads/2022/03/s-sueyasu.jpeg" },
+      { name: "木村 友華", role: "インストラクター", photo: "https://www.zest-ballroomdance-tokyo.com/wp-content/uploads/2022/03/s-kimura.jpeg" },
+      { name: "瀬底 正太", role: "インストラクター", photo: "https://www.zest-ballroomdance-tokyo.com/wp-content/uploads/2022/03/s-sesoko-1.jpeg" },
+      { name: "堀川 真琴", role: "インストラクター", photo: "https://www.zest-ballroomdance-tokyo.com/wp-content/uploads/2022/04/s-horikawa.jpeg" },
+      { name: "中田 賢", role: "インストラクター", photo: "https://www.zest-ballroomdance-tokyo.com/wp-content/uploads/2023/08/IMG_0737.jpg" },
+      { name: "杉原 瑠衣", role: "インストラクター", photo: "https://www.zest-ballroomdance-tokyo.com/wp-content/uploads/2023/08/IMG_0734.jpg" },
+      { name: "濱田 琉衣", role: "インストラクター", photo: "https://www.zest-ballroomdance-tokyo.com/wp-content/uploads/2024/01/IMG_0760.jpg" },
+    ],
   },
   {
     id: "tokyo-018",
@@ -254,6 +355,10 @@ export const studios: Studio[] = [
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "12:00〜21:00",
     description: "吉祥寺の社交ダンス教室。西荻窪・三鷹・練馬・杉並からもアクセス便利。初心者クラスが充実。",
+    staff: [
+      { name: "山岡 隆人", role: "代表・インストラクター", photo: "https://yamaoka-dance.com/image/photo/T-Yamaoka00.jpg" },
+      { name: "山岡 真由美", role: "インストラクター", photo: "https://www.yamaoka-dance.com/image/photo/M-yamaoka00.jpg" },
+    ],
   },
   {
     id: "tokyo-020",
@@ -266,6 +371,11 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     description: "西日暮里駅近くのカルチャースタジオで開講するタキガワダンススクール日暮里校。",
+    staff: [
+      { name: "滝川 洋信", role: "代表", photo: "https://takigawa-ds.com/wp/wp-content/themes/takigawadance/img/staff/img01.jpg" },
+      { name: "北畑 香織", role: "インストラクター", photo: "https://takigawa-ds.com/wp/wp-content/themes/takigawadance/img/staff/img03.jpg" },
+      { name: "吹野 明日香", role: "インストラクター", photo: "https://takigawa-ds.com/wp/wp-content/themes/takigawadance/img/staff/img05.jpg" },
+    ],
   },
   // 世田谷区
   {
@@ -281,6 +391,14 @@ export const studios: Studio[] = [
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "月〜金 13:00〜21:00、土・祝 13:00〜17:00、日曜定休",
     description: "成城学園前駅南口から徒歩約1分。統一全日本ショーダンスチャンピオン在籍の実力派社交ダンス教室。",
+    staff: [
+      { name: "成田雅延", role: "代表・インストラクター", photo: "https://da2d2y78v2iva.cloudfront.net/1744/158511320768601.jpg" },
+      { name: "元山朝香", role: "代表・インストラクター", photo: "https://da2d2y78v2iva.cloudfront.net/1744/158511350409901.jpg" },
+      { name: "田中ゆう子", role: "インストラクター", photo: "https://da2d2y78v2iva.cloudfront.net/1744/158511351601901.jpg" },
+      { name: "大内孝則", role: "インストラクター", photo: "https://da2d2y78v2iva.cloudfront.net/1744/158511376468201.jpg" },
+      { name: "秋元奈美", role: "インストラクター", photo: "https://da2d2y78v2iva.cloudfront.net/1744/158511409948001.jpg" },
+      { name: "高田光輝", role: "インストラクター", photo: "https://da2d2y78v2iva.cloudfront.net/1744/158511429847001.jpg" },
+    ],
   },
   {
     id: "tokyo-022",
@@ -294,6 +412,14 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     description: "用賀駅から徒歩5分。現役競技選手が親切・丁寧にレッスン。初心者からコンペ志向まで幅広く対応。",
+    staff: [
+      { name: "上ノ町 修", role: "インストラクター", photo: "https://www.sams-ds.com/manasys/wp-content/uploads/profile-1.jpg" },
+      { name: "玉木 大介", role: "インストラクター", photo: "https://www.sams-ds.com/manasys/wp-content/uploads/tamaki.png" },
+      { name: "長島 ケント", role: "インストラクター", photo: "https://www.sams-ds.com/manasys/wp-content/uploads/nagashima.png" },
+      { name: "宇野 順子", role: "インストラクター", photo: "https://www.sams-ds.com/manasys/wp-content/uploads/uno.png" },
+      { name: "斉藤 光明", role: "インストラクター", photo: "https://www.sams-ds.com/manasys/wp-content/uploads/saitou.png" },
+      { name: "礒道 佑菜", role: "インストラクター", photo: "https://www.sams-ds.com/manasys/wp-content/uploads/isomichi.png" },
+    ],
   },
   {
     id: "tokyo-023",
