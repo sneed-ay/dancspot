@@ -71,20 +71,37 @@ export default function StudioPage({ params }: Props) {
                 </div>
               )}
 
-              {/* Dance Styles */}
-              <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
-                <h2 className="text-base font-bold text-gray-900 mb-4">対応ダンス種目</h2>
-                <div className="flex flex-wrap gap-2">
-                  {studio.danceStyles.map((style) => (
-                    <span
-                      key={style}
-                      className="inline-block bg-violet-50 text-violet-700 border border-violet-200 px-3 py-1 rounded-full text-sm font-medium"
-                    >
-                      {style}
-                    </span>
-                  ))}
+              {/* Staff */}
+              {studio.staff && studio.staff.length > 0 && (
+                <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+                  <h2 className="text-base font-bold text-gray-900 mb-4">
+                    スタッフ（{studio.staff.length}名）
+                  </h2>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    {studio.staff.map((member, i) => (
+                      <div key={i} className="text-center">
+                        {member.photo ? (
+                          <img
+                            src={member.photo}
+                            alt={member.name}
+                            className="w-20 h-20 rounded-full object-cover mx-auto mb-2 border-2 border-violet-100"
+                          />
+                        ) : (
+                          <div className="w-20 h-20 rounded-full bg-violet-50 flex items-center justify-center mx-auto mb-2 border-2 border-violet-100">
+                            <svg className="w-8 h-8 text-violet-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                          </div>
+                        )}
+                        <p className="text-sm font-medium text-gray-900">{member.name}</p>
+                        {member.role && (
+                          <p className="text-xs text-violet-500">{member.role}</p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Lesson Types */}
               <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">

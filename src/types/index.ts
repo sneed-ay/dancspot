@@ -1,3 +1,9 @@
+export interface StaffMember {
+  name: string;
+  role?: string; // "代表", "インストラクター" etc.
+  photo?: string; // URL to photo
+}
+
 export interface Studio {
   id: string;
   name: string;
@@ -15,6 +21,7 @@ export interface Studio {
   priceRange?: string;
   hours?: string;
   description?: string;
+  staff?: StaffMember[];
 }
 
 export interface Prefecture {
