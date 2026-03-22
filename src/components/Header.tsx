@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const services = [
-  { name: "教室検索", href: "/", active: true },
+  { name: "教室検索", href: "/search", active: true },
   { name: "お相手募集", href: "#", soon: true },
   { name: "ドレスレンタル", href: "#", soon: true },
   { name: "イベント", href: "#", soon: true },
