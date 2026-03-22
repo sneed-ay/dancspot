@@ -12,6 +12,11 @@ body {
   background: var(--background);
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -21,5 +26,8 @@ body {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
   }
 }

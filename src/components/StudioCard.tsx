@@ -8,7 +8,7 @@ interface StudioCardProps {
 export default function StudioCard({ studio }: StudioCardProps) {
   return (
     <Link href={`/studio/${studio.id}`} className="group block">
-      <div className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm hover:shadow-md hover:border-violet-300 transition-all duration-200 h-full flex flex-col">
+      <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm hover:shadow-xl hover:border-violet-200 hover:-translate-y-1 transition-all duration-300 h-full flex flex-col">
         <div className="flex items-start justify-between mb-3">
           <h3 className="text-base font-bold text-gray-900 group-hover:text-violet-700 transition-colors leading-tight">
             {studio.name}
