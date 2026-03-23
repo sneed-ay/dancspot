@@ -5,7 +5,7 @@ import { studios } from "@/data/studios";
 export const metadata: Metadata = {
   title: "おどるーむ ～社交ダンス総合情報サイト～",
   description:
-    "社交ダンスに関するすべてが見つかる総合プラットフォーム。教室検索、お相手募集、ドレスレンタル、イベント情報、バイト募集、練習場探しまで。",
+    "社交ダンスに関するすべてが見つかる総合プラットフォーム。教室検索、掲示板、イベント情報、練習場探しまで。",
 };
 
 const services = [
@@ -22,23 +22,12 @@ const services = [
     stat: `${studios.length}件掲載中`,
   },
   {
-    name: "お相手募集",
-    desc: "練習相手やパートナーを探せる掲示板",
+    name: "掲示板",
+    desc: "お相手募集・ドレスレンタル・バイト募集をまとめた掲示板",
     href: "#",
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-      </svg>
-    ),
-    soon: true,
-  },
-  {
-    name: "ドレスレンタル",
-    desc: "ドレスの貸し借り・売買ができるマーケット",
-    href: "#",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
       </svg>
     ),
     soon: true,
@@ -55,18 +44,7 @@ const services = [
     soon: true,
   },
   {
-    name: "バイト募集",
-    desc: "ダンス関連のアルバイト・仕事情報",
-    href: "#",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      </svg>
-    ),
-    soon: true,
-  },
-  {
-    name: "練習場探し",
+    name: "練習場",
     desc: "空き時間のあるスタジオ・練習場を検索",
     href: "#",
     icon: (
@@ -104,7 +82,7 @@ export default function TopPage() {
             ～社交ダンス総合情報サイト～
           </p>
           <p className="text-violet-200 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            教室検索、お相手探し、ドレスレンタル、イベント情報まで。
+            教室検索、掲示板、イベント情報、練習場探しまで。
             社交ダンスに関するすべてが見つかるプラットフォーム。
           </p>
         </div>
