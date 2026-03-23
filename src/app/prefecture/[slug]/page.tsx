@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Not Found" };
   }
   return {
-    title: `${prefecture.name}の社交ダンス教室一覧 | おどるーむ`,
+    title: `${prefecture.name}の社交ダンス教室一覧 | ダンスポット`,
     description: `${prefecture.name}の社交ダンス教室・スタジオを探せます。ワルツ、タンゴ、ルンバなど様々な種目に対応した教室情報を掲載。`,
   };
 }

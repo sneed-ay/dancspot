@@ -5,7 +5,7 @@ import { studios } from "@/data/studios";
 
 
 export const metadata: Metadata = {
-  title: "おどるーむ - 日本全国の社交ダンス教室・スタジオ検索",
+  title: "ダンスポット - 日本全国の社交ダンス教室・スタジオ検索",
   description:
     "日本全国の社交ダンス教室・スタジオを都道府県から探せます。ワルツ、タンゴ、ルンバなど様々な種目に対応した教室情報を掲載。",
 };
@@ -192,7 +192,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
-              おどるーむの特徴
+              ダンスポットの特徴
             </h2>
             <div className="flex items-center justify-center gap-3">
               <div className="h-px w-16 bg-amber-400 opacity-70" />

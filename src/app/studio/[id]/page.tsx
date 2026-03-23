@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Not Found" };
   }
   return {
-    title: `${studio.name} | おどるーむ`,
+    title: `${studio.name} | ダンスポット`,
     description:
       studio.description ||
       `${studio.prefectureName}${studio.city}の社交ダンス教室「${studio.name}」の詳細情報。`,

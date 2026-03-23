@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="mb-8">
           <Link href="/" className="text-xl font-bold text-white hover:text-violet-400 transition-colors">
-            おどるーむ
+            ダンスポット
           </Link>
           <p className="mt-3 text-sm text-gray-400 max-w-lg leading-relaxed">
             社交ダンスに関するすべてが見つかる総合プラットフォーム。
@@ -17,7 +17,7 @@ export default function Footer() {
           </p>
         </div>
         <div className="border-t border-gray-700 pt-6 text-center text-xs text-gray-500">
-          <p>&copy; {currentYear} おどるーむ. All rights reserved.</p>
+          <p>&copy; {currentYear} ダンスポット. All rights reserved.</p>
         </div>
       </div>
     </footer>

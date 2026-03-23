@@ -18,7 +18,7 @@ export default function Header() {
               <span className="w-0.5 h-6 bg-amber-400 rounded-full opacity-80" />
               <span className="flex flex-col leading-tight">
                 <span className="text-2xl font-bold text-violet-700 tracking-tight group-hover:text-violet-800 transition-colors">
-                  おどるーむ
+                  ダンスポット
                 </span>
                 <span className="text-[10px] text-violet-400 tracking-wider">
                   ～社交ダンス総合情報サイト～

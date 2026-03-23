@@ -3,7 +3,7 @@ import Link from "next/link";
 import { studios } from "@/data/studios";
 
 export const metadata: Metadata = {
-  title: "おどるーむ ～社交ダンス総合情報サイト～",
+  title: "ダンスポット ～社交ダンス総合情報サイト～",
   description:
     "社交ダンスに関するすべてが見つかる総合プラットフォーム。教室検索、掲示板、イベント情報、練習場探しまで。",
 };
@@ -76,7 +76,7 @@ export default function TopPage() {
           </div>
 
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 tracking-tight">
-            おどるーむ
+            ダンスポット
           </h1>
           <p className="text-violet-300 text-sm tracking-[0.2em] font-light mb-8">
             ～社交ダンス総合情報サイト～
@@ -152,7 +152,7 @@ export default function TopPage() {
             <div className="h-px w-16 bg-amber-400 opacity-70" />
           </div>
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-            おどるーむは社交ダンス愛好家が集まるプラットフォームです。
+            ダンスポットは社交ダンス愛好家が集まるプラットフォームです。
             ダンスシューズ・衣装メーカー、教室運営者、イベント主催者の皆様、
             広告掲載やスポンサーシップについてお気軽にお問い合わせください。
           </p>
