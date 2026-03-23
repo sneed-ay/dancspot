@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const services = [
   { name: "教室検索", href: "/search", active: true },
-  { name: "掲示板", href: "#", soon: true },
+  { name: "掲示板", href: "/board", active: true },
   { name: "イベント", href: "#", soon: true },
   { name: "練習場", href: "#", soon: true },
 ];
