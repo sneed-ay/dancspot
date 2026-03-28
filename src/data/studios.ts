@@ -1454,7 +1454,7 @@ export const studios: Studio[] = [
     hours: "月・火・木: 12:00〜21:00 / 水・金・土: 10:00〜21:00（祝日は18:00まで）/ 日曜定休",
     description: "1996年創業の森下ダンススクールを前身とする社交ダンス教室。子供からシニアまで幅広い年齢層に対応。地下鉄南北線麻生駅徒歩5分、JR学園都市線新琴似駅徒歩3分。",
     staff: [
-      { name: "森下 博", role: "インストラクター", photo: "" },
+      { name: "森下 博", role: "インストラクター", photo: "https://universal-dancestudio.com/media/staff01.jpg" },
       { name: "森下 環", role: "インストラクター", photo: "" },
       { name: "平田 篤", role: "代表・インストラクター", photo: "" },
       { name: "平田 祐史子", role: "インストラクター", photo: "" },
@@ -1476,7 +1476,7 @@ export const studios: Studio[] = [
     hours: "月〜金: 12:00〜21:00 / 土: 12:00〜17:00 / 日・祝定休",
     description: "元プロ全東北チャンピオン（8回優勝）の神成昭丸・利香組が経営・指導するJBDF認定教室。子供から大人まで、趣味・健康・パーティーダンスから競技ダンスまで幅広く対応。アスパム斜め向かい、駐車場完備。ワンコイン体験レッスンあり。",
     staff: [
-      { name: "神成 昭丸", role: "代表・インストラクター", photo: "" },
+      { name: "神成 昭丸", role: "代表・インストラクター", photo: "https://static.wixstatic.com/media/b3d7ce_9e4cffc0ce154b2c92a4d041f61bcdc4~mv2.jpg/v1/fill/w_835,h_470,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/%E3%82%A2%E3%82%AA%E3%83%A2%E3%83%AA%E3%83%BB%E3%83%80%E3%83%B3%E3%82%B9%E3%83%BB%E3%82%A2%E3%82%AB%E3%83%87%E3%83%9F%E3%83%BC%E8%B1%B9j.jpg" },
       { name: "神成 利香", role: "インストラクター", photo: "" }
     ]
   },
@@ -1511,7 +1511,7 @@ export const studios: Studio[] = [
     hours: "お問い合わせください",
     description: "佐藤傑・智佳子が経営・指導するJBDF認定の社交ダンススクール。青森市古川の好立地で初心者から上級者まで対応。",
     staff: [
-      { name: "佐藤 傑", role: "代表・インストラクター", photo: "" },
+      { name: "佐藤 傑", role: "代表・インストラクター", photo: "https://crayonimg.e-shops.jp/cms-dimg/1117702/2406421/1000_750.jpg" },
       { name: "佐藤 智佳子", role: "インストラクター", photo: "" }
     ]
   },
@@ -1546,7 +1546,7 @@ export const studios: Studio[] = [
     hours: "お問い合わせください",
     description: "八戸市城下にあるJBDF認定の社交ダンススタジオ。初心者から競技選手まで幅広く対応。",
     staff: [
-      { name: "坂本 茂美", role: "代表・インストラクター", photo: "" }
+      { name: "坂本 茂美", role: "代表・インストラクター", photo: "https://cdn.goope.jp/186940/220223165313-6215e7e99f601_t.jpg" }
     ]
   },
   {
@@ -1648,7 +1648,7 @@ export const studios: Studio[] = [
     hours: "お問い合わせください",
     description: "八戸市類家にあるJBDF認定の社交ダンス教室。初心者から上級者まで対応。",
     staff: [
-      { name: "齋藤 琢磨", role: "代表・インストラクター", photo: "" }
+      { name: "齋藤 琢磨", role: "代表・インストラクター", photo: "http://dancestage-saito.com/wp-content/uploads/cropped-58027dfdf1a9fffd7aa3b9b79f60330f.jpg" }
     ]
   },
   {
@@ -1699,7 +1699,7 @@ export const studios: Studio[] = [
     hours: "お問い合わせください",
     description: "青森市柳川にあるJBDF認定の社交ダンス教室。",
     staff: [
-      { name: "山本 薫", role: "代表・インストラクター", photo: "" }
+      { name: "山本 薫", role: "代表・インストラクター", photo: "https://yamamoto-kaoru-dance.com/top1.jpg" }
     ]
   },
   {
@@ -1784,7 +1784,7 @@ export const studios: Studio[] = [
     hours: "お問い合わせください",
     description: "弘前駅前にある社交ダンス学院。駅からのアクセス良好。",
     staff: [
-      { name: "講師", role: "インストラクター", photo: "" }
+      { name: "講師", role: "インストラクター", photo: "https://static.wixstatic.com/media/fd7115_6ce8ca869abe4536983f2d56b28b0e0f~mv2.jpg/v1/fill/w_536,h_454,al_c,q_80,enc_avif,quality_auto/fd7115_6ce8ca869abe4536983f2d56b28b0e0f~mv2.jpg" }
     ]
   },
   {
@@ -1836,7 +1836,7 @@ export const studios: Studio[] = [
     hours: "お問い合わせください",
     description: "盛岡市材木町にあるJBDF認定の社交ダンススクール。",
     staff: [
-      { name: "榎本 喨一", role: "代表・インストラクター", photo: "" }
+      { name: "榎本 喨一", role: "代表・インストラクター", photo: "http://www.enomoto-dance.com/media/index/mainimage.jpg" }
     ]
   },
   {
@@ -1887,7 +1887,7 @@ export const studios: Studio[] = [
     hours: "お問い合わせください",
     description: "盛岡市開運橋通にあるJBDF認定の社交ダンス教室。",
     staff: [
-      { name: "川井 昮吾", role: "代表・インストラクター", photo: "" }
+      { name: "川井 昮吾", role: "代表・インストラクター", photo: "https://kawai-dance.jp/images/top_photo_05.png" }
     ]
   },
   {
@@ -1972,7 +1972,7 @@ export const studios: Studio[] = [
     hours: "お問い合わせください",
     description: "盛岡市菜園にあるJBDF認定の社交ダンススクール。",
     staff: [
-      { name: "高橋 昮治", role: "代表・インストラクター", photo: "" }
+      { name: "高橋 昮治", role: "代表・インストラクター", photo: "https://www.takahashidance.jp/manasys/wp-content/uploads/info_img_1.png" }
     ]
   },
   {
@@ -1989,7 +1989,7 @@ export const studios: Studio[] = [
     hours: "お問い合わせください",
     description: "北上市にあるJBDF認定の社交ダンススタジオ。",
     staff: [
-      { name: "高橋 幸司", role: "代表・インストラクター", photo: "" }
+      { name: "高橋 幸司", role: "代表・インストラクター", photo: "https://www.takahashi-dst.com/wp/wp-content/uploads/2024/05/owner04a.jpg" }
     ]
   },
   {
@@ -2074,7 +2074,7 @@ export const studios: Studio[] = [
     hours: "お問い合わせください",
     description: "盛岡市大通にあるJBDF認定の社交ダンススタジオ。親子世代で指導にあたる。",
     staff: [
-      { name: "箱石 博之", role: "代表・インストラクター", photo: "" }
+      { name: "箱石 博之", role: "代表・インストラクター", photo: "https://static.wixstatic.com/media/3478fb_275fe02f9a8444e4888fe6ec71dd771f~mv2.jpg/v1/fill/w_147,h_204,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/3478fb_275fe02f9a8444e4888fe6ec71dd771f~mv2.jpg" }
     ]
   },
   {
@@ -2195,7 +2195,7 @@ export const studios: Studio[] = [
     hours: "お問い合わせください",
     description: "仙台市国分町にあるJBDF認定の社交ダンススクール。",
     staff: [
-      { name: "小野寺 博", role: "代表・インストラクター", photo: "" }
+      { name: "小野寺 博", role: "代表・インストラクター", photo: "https://crayonimg.e-shops.jp/cms-dimg/1116243/1592067/425_425.jpg" }
     ]
   },
   {
@@ -2418,7 +2418,7 @@ export const studios: Studio[] = [
     hours: "お問い合わせください",
     description: "仙台市泉中央にあるJBDF認定の社交ダンスアカデミー。",
     staff: [
-      { name: "西塚 寿子", role: "代表・インストラクター", photo: "" }
+      { name: "西塚 寿子", role: "代表・インストラクター", photo: "https://ndaasendai.com/wp/wp-content/uploads/2020/09/hisako.png" }
     ]
   },
   {
@@ -2435,7 +2435,7 @@ export const studios: Studio[] = [
     hours: "お問い合わせください",
     description: "名取市にあるJBDF認定の社交ダンススクール。",
     staff: [
-      { name: "吉田 剛", role: "代表・インストラクター", photo: "" }
+      { name: "吉田 剛", role: "代表・インストラクター", photo: "https://yoshida-dance.com/img/body/staff-01.jpg" }
     ]
   },
   {
@@ -2452,7 +2452,7 @@ export const studios: Studio[] = [
     hours: "お問い合わせください",
     description: "仙台市青葉区にあるJBDF認定の社交ダンスアカデミー。東日本連盟ラテンA級の鈴木竜太郎が指導。",
     staff: [
-      { name: "鈴木 櫜太郎", role: "代表・インストラクター", photo: "" }
+      { name: "鈴木 櫜太郎", role: "代表・インストラクター", photo: "https://ryudanceacademy.com/img/image729.jpg" }
     ]
   },
   {
@@ -2538,7 +2538,7 @@ export const studios: Studio[] = [
     hours: "お問い合わせください",
     description: "秋田市茨島にあるJBDF認定の社交ダンス教室。",
     staff: [
-      { name: "櫻庭 崇", role: "代表・インストラクター", photo: "" }
+      { name: "櫻庭 崇", role: "代表・インストラクター", photo: "http://csj-ds.net/satou11.jpg" }
     ]
   },
   {
@@ -2572,7 +2572,7 @@ export const studios: Studio[] = [
     hours: "お問い合わせください",
     description: "秋田市にあるJBDF認定の社交ダンス教室。社交ダンスに加えサルサやベリーダンスも提供。JBDFプロフェッショナルダンス教師が指導。",
     staff: [
-      { name: "今里 かおる", role: "代表・インストラクター", photo: "" }
+      { name: "今里 かおる", role: "代表・インストラクター", photo: "https://image.jimcdn.com/app/cms/image/transf/dimension=286x1024:format=jpg/path/saeaa099c85c16fa1/image/ic0d8fe0da4e3fcaf/version/1457329865/image.jpg" }
     ]
   },
   {
@@ -2742,7 +2742,7 @@ export const studios: Studio[] = [
     hours: "お問い合わせください",
     description: "秋田市南通にあるJBDF認定の社交ダンススタジオ。初心者から競技選手まで幅広く対応。",
     staff: [
-      { name: "皆川 司", role: "代表・インストラクター", photo: "" }
+      { name: "皆川 司", role: "代表・インストラクター", photo: "http://minagawadancestudio.com/images/profile/tsukasa.jpg" }
     ]
   },
   {
@@ -2964,7 +2964,7 @@ export const studios: Studio[] = [
     hours: "お問い合わせください",
     description: "山形市元木にあるJBDF認定の社交ダンス教室。",
     staff: [
-      { name: "鎌田 喜久男", role: "代表・インストラクター", photo: "" }
+      { name: "鎌田 喜久男", role: "代表・インストラクター", photo: "https://www.kamata-dance.jp/img/staff_02.jpg" }
     ]
   },
   {
@@ -2998,7 +2998,7 @@ export const studios: Studio[] = [
     hours: "お問い合わせください",
     description: "酒田市中町にあるJBDF優良認定の社交ダンススタジオ。",
     staff: [
-      { name: "池田 さえ子", role: "代表・インストラクター", photo: "" }
+      { name: "池田 さえ子", role: "代表・インストラクター", photo: "https://www.sakata-nakadori.jp/wp-content/uploads/2025/05/saeko_01-1024x683.jpg" }
     ]
   },
   {
@@ -3015,7 +3015,7 @@ export const studios: Studio[] = [
     hours: "お問い合わせください",
     description: "酒田市にあるJBDF認定の社交ダンススクール。",
     staff: [
-      { name: "奥山 利昭", role: "代表・インストラクター", photo: "" }
+      { name: "奥山 利昭", role: "代表・インストラクター", photo: "https://static.wixstatic.com/media/4eaf16_256b3ce4a2584f8184e16cec0b488b6a~mv2.jpg" }
     ]
   },
   {
@@ -3134,7 +3134,7 @@ export const studios: Studio[] = [
     hours: "お問い合わせください",
     description: "寒河江市にあるJBDF認定の社交ダンススタジオ。",
     staff: [
-      { name: "小林 繁美", role: "代表・インストラクター", photo: "" }
+      { name: "小林 繁美", role: "代表・インストラクター", photo: "https://kobayashidance.tonosama.jp/21093001.jpg" }
     ]
   },
   {
@@ -3151,7 +3151,7 @@ export const studios: Studio[] = [
     hours: "お問い合わせください",
     description: "米沢市にあるJBDF優良認定の社交ダンススタジオ。",
     staff: [
-      { name: "栔川 潤", role: "代表・インストラクター", photo: "" }
+      { name: "栔川 潤", role: "代表・インストラクター", photo: "https://juneri.net/wp-content/uploads/2021/03/%E3%82%B9%E3%82%BF%E3%82%B8%E3%82%AA-scaled.jpg" }
     ]
   },
   {
@@ -3271,7 +3271,7 @@ export const studios: Studio[] = [
     hours: "お問い合わせください",
     description: "いわき市小名浜にあるJBDF認定の社交ダンススクール。スタッフ紹介ページあり。",
     staff: [
-      { name: "菊池 甛哲", role: "代表・インストラクター", photo: "" }
+      { name: "菊池 甛哲", role: "代表・インストラクター", photo: "https://kikuchidanceschool.com/images/1.jpg" }
     ]
   },
   {
