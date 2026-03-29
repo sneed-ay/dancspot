@@ -106,7 +106,7 @@ export default function StudioPage({ params }: Props) {
               <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
                 <h2 className="text-base font-bold text-gray-900 mb-4">レッスン形式</h2>
                 <div className="flex flex-wrap gap-2">
-                  {studio.lessonTypes.map((type) => (
+                  {studio.lessonTypes.map((type: string) => (
                     <span
                       key={type}
                       className="inline-block bg-gray-100 text-gray-700 border border-gray-200 px-3 py-1 rounded-full text-sm font-medium"
