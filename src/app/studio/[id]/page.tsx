@@ -58,7 +58,6 @@ export default function StudioPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Content */}
       <section className="py-10 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -78,7 +77,7 @@ export default function StudioPage({ params }: Props) {
                     スタッフ（{studio.staff.length}名）
                   </h2>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                    {studio.staff.map((member, i) => (
+                    {studio.staff.map((member: { name: string; role: string; photo: string }, i: number) => (
                       <div key={i} className="text-center">
                         {member.photo ? (
                           <img
