@@ -27,7 +27,8 @@ export interface Studio {
 export interface Prefecture {
   slug: string;
   name: string;
-  studioCount: number;
+  region?: string;
+  studioCount?: number;
 }
 
 export interface Region {
