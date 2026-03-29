@@ -15,10 +15,10 @@ const orgColors: Record<string, { bg: string; text: string; border: string }> = 
 };
 
 const orgEmoji: Record<string, string> = {
-  JBDF: "\u{1F3C6}",
-  JDC: "\u{2B50}",
-  JCF: "\u{1F48E}",
-  JDSF: "\u{1F3AF}",
+  JBDF: "🏆",
+  JDC: "⭐",
+  JCF: "💎",
+  JDSF: "🎯",
 };
 
 export default function EventsPage() {
@@ -46,17 +46,15 @@ export default function EventsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-violet-50 via-pink-50 to-amber-50">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Title */}
         <div className="text-center mb-8">
           <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-violet-600 via-pink-500 to-amber-500 bg-clip-text text-transparent">
-            \u{1F483} \u30A4\u30D9\u30F3\u30C8\u60C5\u5831 \u{1F57A}
+            💃 イベント情報 🕺
           </h1>
           <p className="mt-2 text-gray-500 text-sm">
-            JBDF\u30FBJDC\u30FBJCF\u30FBJDSF\u306E\u5927\u4F1A\u60C5\u5831\u3092\u307E\u3068\u3081\u3066\u30C1\u30A7\u30C3\u30AF
+            JBDF・JDC・JCF・JDSFの大会情報をまとめてチェック
           </p>
         </div>
 
-        {/* Year Tabs */}
         <div className="flex justify-center gap-3 mb-6">
           {YEARS.map((year) => (
             <button
@@ -68,12 +66,11 @@ export default function EventsPage() {
                   : "bg-white text-violet-600 border-2 border-violet-200 hover:border-violet-400 hover:shadow-md"
               }`}
             >
-              {year}\u5E74
+              {year}年
             </button>
           ))}
         </div>
 
-        {/* Month Buttons */}
         <div className="flex flex-wrap justify-center gap-2 mb-8">
           <button
             onClick={() => setSelectedMonth(null)}
@@ -83,7 +80,7 @@ export default function EventsPage() {
                 : "bg-white text-pink-500 border border-pink-200 hover:bg-pink-50"
             }`}
           >
-            \u5168\u3066
+            全て
           </button>
           {MONTHS.map((m) => (
             <button
@@ -98,18 +95,17 @@ export default function EventsPage() {
               }`}
               disabled={!monthCounts[m]}
             >
-              {m}\u6708
+              {m}月
               {monthCounts[m] ? ` (${monthCounts[m]})` : ""}
             </button>
           ))}
         </div>
 
-        {/* Event Cards */}
         <div className="space-y-4">
           {filtered.length === 0 ? (
             <div className="text-center py-16">
-              <p className="text-6xl mb-4">\u{1F4AD}</p>
-              <p className="text-gray-400 text-lg">\u307E\u3060\u30A4\u30D9\u30F3\u30C8\u304C\u767B\u9332\u3055\u308C\u3066\u3044\u307E\u305B\u3093</p>
+              <p className="text-6xl mb-4">💭</p>
+              <p className="text-gray-400 text-lg">まだイベントが登録されていません</p>
             </div>
           ) : (
             filtered.map((event: DanceEvent) => {
@@ -117,7 +113,7 @@ export default function EventsPage() {
               const emoji = orgEmoji[event.organizer];
               const dateObj = new Date(event.date + "T00:00:00");
               const monthDay = `${dateObj.getMonth() + 1}/${dateObj.getDate()}`;
-              const dayNames = ["\u65E5", "\u6708", "\u706B", "\u6C34", "\u6728", "\u91D1", "\u571F"];
+              const dayNames = ["日", "月", "火", "水", "木", "金", "土"];
               const dayOfWeek = dayNames[dateObj.getDay()];
 
               return (
@@ -126,18 +122,15 @@ export default function EventsPage() {
                   className={`bg-white rounded-2xl border-2 ${colors.border} shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5 overflow-hidden`}
                 >
                   <div className="flex">
-                    {/* Date Column */}
                     <div className={`flex-shrink-0 w-20 sm:w-24 ${colors.bg} flex flex-col items-center justify-center p-3 border-r ${colors.border}`}>
                       <span className={`text-2xl sm:text-3xl font-black ${colors.text}`}>{monthDay}</span>
                       <span className={`text-xs font-bold ${colors.text} opacity-70`}>({dayOfWeek})</span>
                       {event.dateEnd && (
                         <span className={`text-[10px] mt-1 ${colors.text} opacity-60`}>
-                          ~{new Date(event.dateEnd + "T00:00:00").getDate()}\u65E5
+                          ~{new Date(event.dateEnd + "T00:00:00").getDate()}日
                         </span>
                       )}
                     </div>
-
-                    {/* Content */}
                     <div className="flex-1 p-4">
                       <div className="flex items-start gap-2 mb-2">
                         <span className="text-lg">{emoji}</span>
@@ -162,7 +155,6 @@ export default function EventsPage() {
                           </div>
                         </div>
                       </div>
-
                       <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-gray-500 mt-2">
                         <span className="flex items-center gap-1">
                           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -176,7 +168,7 @@ export default function EventsPage() {
                             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            \u7DE0\u5207: {event.entryDeadline}
+                            締切: {event.entryDeadline}
                           </span>
                         )}
                       </div>
@@ -188,9 +180,8 @@ export default function EventsPage() {
           )}
         </div>
 
-        {/* Legend */}
         <div className="mt-10 p-4 bg-white/70 backdrop-blur rounded-2xl border border-gray-200">
-          <p className="text-xs text-gray-400 font-medium mb-2">\u4E3B\u50AC\u56E3\u4F53</p>
+          <p className="text-xs text-gray-400 font-medium mb-2">主催団体</p>
           <div className="flex flex-wrap gap-3">
             {Object.entries(orgColors).map(([org, colors]) => (
               <span key={org} className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold ${colors.bg} ${colors.text}`}>
@@ -203,4 +194,3 @@ export default function EventsPage() {
     </div>
   );
 }
-
