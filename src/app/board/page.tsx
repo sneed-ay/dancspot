@@ -34,11 +34,12 @@ const categories = [
 export default function BoardPage() {
   return (
     <main className="max-w-4xl mx-auto px-4 py-8">
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900 mb-3">掲示板</h1>
-        <p className="text-gray-600">
-          お相手募集・ドレスレンタル・バイト募集・雑談など、自由に投稿できる掲示板です。
-          カテゴリーを選んでください。
+      <div className="text-center mb-8">
+        <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-violet-600 via-pink-500 to-amber-500 bg-clip-text text-transparent">
+          📝 掲示板 📝
+        </h1>
+        <p className="text-gray-600 mt-2">
+          お相手募集・ドレスレンタル・バイト募集・雑談など、自由に投稿できる掲示板です
         </p>
       </div>
 
@@ -47,7 +48,7 @@ export default function BoardPage() {
           <Link
             key={cat.id}
             href={cat.href}
-            className="block bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md hover:border-blue-300 transition-all duration-200"
+            className="block bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md hover:border-violet-300 transition-all duration-200"
           >
             <div className="flex items-start gap-4">
               <span className="text-3xl">{cat.icon}</span>
