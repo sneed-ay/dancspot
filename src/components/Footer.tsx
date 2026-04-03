@@ -12,7 +12,7 @@ export default function Footer() {
           </Link>
           <p className="mt-3 text-sm text-gray-400 max-w-lg leading-relaxed">
             社交ダンスに関するすべてが見つかる総合プラットフォーム。
-            教室検索、お相手募集、ドレスレンタル、イベント情報、バイト募集、練習場探しまで。
+            教室検索、お相手募集、ドレスレンタル、大会情報、バイト募集、練習場探しまで。
             ダンサーの「困った」を解決します。
           </p>
         </div>
