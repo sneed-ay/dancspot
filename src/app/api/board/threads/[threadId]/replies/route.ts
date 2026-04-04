@@ -1,44 +1,33 @@
 import { NextRequest, NextResponse } from "next/server";
-import * as fs from "fs";
-import * as path from "path";
+import { getServiceSupabase } from "@/lib/supabase";
 
-const DATA_DIR = path.join(process.cwd(), "data");
-const THREADS_FILE = path.join(DATA_DIR, "threads.json");
+// GET /api/board/threads/[threadId]/replies - Fetch replies for a thread
+export async function GET(
+  _request: Request,
+  { params }: { params: { threadId: string } }
+) {
+  try {
+    const supabase = getServiceSupabase();
 
-interface Reply {
-  id: string;
-  author: string;
-  content: string;
-  createdAt: string;
-  lineUserId?: string;
-  lineDisplayName?: string;
-  linePictureUrl?: string;
+    const { data: replies, error } = await supabase
+      .from("board_replies")
+      .select("*")
+      .eq("thread_id", params.threadId)
+      .order("created_at", { ascending: true });
+
+    if (error) {
+      console.error("Error fetching replies:", error);
+      return NextResponse.json({ error: "Failed to fetch replies" }, { status: 500 });
+    }
+
+    return NextResponse.json({ replies: replies || [] });
+  } catch (error) {
+    console.error("Replies fetch error:", error);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+  }
 }
 
-interface Thread {
-  id: string;
-  category: string;
-  title: string;
-  author: string;
-  content: string;
-  createdAt: string;
-  replies: number;
-  replyList?: Reply[];
-  lineUserId?: string;
-  lineDisplayName?: string;
-  linePictureUrl?: string;
-}
-
-function readThreads(): Thread[] {
-  if (!fs.existsSync(THREADS_FILE)) return [];
-  const data = fs.readFileSync(THREADS_FILE, "utf-8");
-  return JSON.parse(data);
-}
-
-function writeThreads(threads: Thread[]) {
-  fs.writeFileSync(THREADS_FILE, JSON.stringify(threads, null, 2));
-}
-
+// POST /api/board/threads/[threadId]/replies - Create a reply
 export async function POST(
   request: NextRequest,
   { params }: { params: { threadId: string } }
@@ -47,28 +36,43 @@ export async function POST(
     const { threadId } = params;
     const body = await request.json();
     const { author, content, lineUserId, lineDisplayName, linePictureUrl } = body;
+
     if (!content) {
       return NextResponse.json({ error: "Content is required" }, { status: 400 });
     }
-    const threads = readThreads();
-    const thread = threads.find((t) => t.id === threadId);
-    if (!thread) {
+
+    const supabase = getServiceSupabase();
+
+    // Verify thread exists
+    const { data: thread, error: threadError } = await supabase
+      .from("board_threads")
+      .select("id")
+      .eq("id", threadId)
+      .single();
+
+    if (threadError || !thread) {
       return NextResponse.json({ error: "Thread not found" }, { status: 404 });
     }
-    const newReply: Reply = {
-      id: Date.now().toString(36) + Math.random().toString(36).substring(2, 8),
-      author: lineDisplayName || author || "名無しさん",
-      content: content.trim(),
-      createdAt: new Date().toISOString(),
-      lineUserId: lineUserId || undefined,
-      lineDisplayName: lineDisplayName || undefined,
-      linePictureUrl: linePictureUrl || undefined,
-    };
-    if (!thread.replyList) thread.replyList = [];
-    thread.replyList.push(newReply);
-    thread.replies = thread.replyList.length;
-    writeThreads(threads);
-    return NextResponse.json({ reply: newReply }, { status: 201 });
+
+    const { data: reply, error } = await supabase
+      .from("board_replies")
+      .insert({
+        thread_id: threadId,
+        author: lineDisplayName || author || "名無しさん",
+        content: content.trim(),
+        line_user_id: lineUserId || null,
+        line_display_name: lineDisplayName || null,
+        line_picture_url: linePictureUrl || null,
+      })
+      .select()
+      .single();
+
+    if (error) {
+      console.error("Error creating reply:", error);
+      return NextResponse.json({ error: "Failed to create reply" }, { status: 500 });
+    }
+
+    return NextResponse.json({ reply }, { status: 201 });
   } catch (error) {
     console.error("Error creating reply:", error);
     return NextResponse.json({ error: "Failed to create reply" }, { status: 500 });
