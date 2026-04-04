@@ -171,26 +171,6 @@ export default function PartnerBoardPage() {
           maritalStatus,
         }),
       });
-      if (res.o': 'application/json' },
-        body: JSON.stringify({
-          lineUserId: user.userId,
-          lineDisplayName: user.displayName,
-          linePictureUrl: user.pictureUrl || null,
-          content,
-          danceType,
-          area,
-          role,
-          ageRange,
-          height,
-          proAm,
-          danceExperience,
-          direction,
-          practiceFrequency,
-          practiceLocation,
-          smoking,
-          maritalStatus,
-        }),
-      });
       if (res.ok) {
         setContent('');
         setDanceType('');
