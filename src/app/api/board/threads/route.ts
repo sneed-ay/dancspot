@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import * as fs from "fs";
+import * as path from "path";
 
 const DATA_DIR = path.join(process.cwd(), "data");
 const THREADS_FILE = path.join(DATA_DIR, "threads.json");
@@ -13,6 +13,7 @@ interface Thread {
   content: string;
   createdAt: string;
   replies: number;
+  replyList?: unknown[];
   lineUserId?: string;
   lineDisplayName?: string;
   linePictureUrl?: string;
@@ -56,7 +57,8 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const { category, title, author, content, lineUserId, lineDisplayName, linePictureUrl } = await request.json();
+    const body = await request.json();
+    const { category, title, author, content, lineUserId, lineDisplayName, linePictureUrl } = body;
     if (!category || !title || !content) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
