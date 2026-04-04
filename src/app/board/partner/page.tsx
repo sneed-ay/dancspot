@@ -25,6 +25,10 @@ interface Post {
   practice_location: string | null;
   smoking: string | null;
   marital_status: string | null;
+  std_org: string | null;
+  std_level: string | null;
+  latin_org: string | null;
+  latin_level: string | null;
 }
 
 interface UserProfile {
@@ -36,12 +40,9 @@ interface UserProfile {
 const DANCE_TYPES = [
   'スタンダード',
   'ラテン',
-  'スタンダード＆ラテン',
-  'サルサ',
-  'バチャータ',
-  'キゾンバ',
-  'アルゼンチンタンゴ',
-  'その他',
+  '10ダンス(スタンダード寄り)',
+  '10ダンス(ラテン寄り)',
+  '10ダンス',
 ];
 
 const AREAS = [
@@ -71,6 +72,10 @@ const SMOKING_OPTIONS = ['吸わない', '吸う', 'やめた'];
 
 const MARITAL_OPTIONS = ['独身', '既婚', '非公開'];
 
+const ORGS = ['JBDF', 'JDC', 'JCF', 'JDSF'];
+
+const LEVELS = ['A', 'B', 'C', 'D', 'E', 'F'];
+
 export default function PartnerBoardPage() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
@@ -81,6 +86,7 @@ export default function PartnerBoardPage() {
   const [submitting, setSubmitting] = useState(false);
 
   // Form fields
+  const [nickname, setNickname] = useState('');
   const [content, setContent] = useState('');
   const [danceType, setDanceType] = useState('');
   const [area, setArea] = useState('');
@@ -94,6 +100,10 @@ export default function PartnerBoardPage() {
   const [practiceLocation, setPracticeLocation] = useState('');
   const [smoking, setSmoking] = useState('');
   const [maritalStatus, setMaritalStatus] = useState('');
+  const [stdOrg, setStdOrg] = useState('');
+  const [stdLevel, setStdLevel] = useState('');
+  const [latinOrg, setLatinOrg] = useState('');
+  const [latinLevel, setLatinLevel] = useState('');
 
   const fetchPosts = useCallback(async () => {
     try {
@@ -119,7 +129,7 @@ export default function PartnerBoardPage() {
             displayName: profile.displayName,
             pictureUrl: profile.pictureUrl,
           });
-          // Log login to Supabase
+          setNickname(profile.displayName);
           fetch('/api/auth/log', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -144,6 +154,11 @@ export default function PartnerBoardPage() {
     login();
   };
 
+  const handleHeightChange = (value: string) => {
+    const filtered = value.replace(/[^0-9]/g, '');
+    setHeight(filtered);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user) return;
@@ -156,12 +171,13 @@ export default function PartnerBoardPage() {
           lineUserId: user.userId,
           lineDisplayName: user.displayName,
           linePictureUrl: user.pictureUrl || null,
+          nickname,
           content,
           danceType,
           area,
           role,
           ageRange,
-          height,
+          height: height ? height + 'cm' : '',
           proAm,
           danceExperience,
           direction,
@@ -169,6 +185,10 @@ export default function PartnerBoardPage() {
           practiceLocation,
           smoking,
           maritalStatus,
+          stdOrg,
+          stdLevel,
+          latinOrg,
+          latinLevel,
         }),
       });
       if (res.ok) {
@@ -185,6 +205,10 @@ export default function PartnerBoardPage() {
         setPracticeLocation('');
         setSmoking('');
         setMaritalStatus('');
+        setStdOrg('');
+        setStdLevel('');
+        setLatinOrg('');
+        setLatinLevel('');
         setShowForm(false);
         fetchPosts();
       }
@@ -215,6 +239,13 @@ export default function PartnerBoardPage() {
       year: 'numeric', month: 'short', day: 'numeric',
       hour: '2-digit', minute: '2-digit'
     });
+  };
+
+  const formatLevel = (org: string | null, level: string | null) => {
+    if (!org && !level) return null;
+    if (org && level) return `${org} ${level}級`;
+    if (org) return org;
+    return `${level}級`;
   };
 
   if (liffError) {
@@ -275,6 +306,16 @@ export default function PartnerBoardPage() {
           <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-sm border p-6 mb-8">
             <h2 className="text-lg font-bold mb-4">お相手募集 登録フォーム</h2>
             <div className="space-y-4">
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  ニックネーム <span className="text-red-500">*</span>
+                </label>
+                <input type="text" value={nickname} onChange={(e) => setNickname(e.target.value)} required
+                  className="w-full border rounded-lg px-3 py-2 text-sm"
+                  placeholder="表示名を入力してください" />
+              </div>
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   募集対象 <span className="text-red-500">*</span>
@@ -330,10 +371,11 @@ export default function PartnerBoardPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">身長</label>
-                  <input type="text" value={height} onChange={(e) => setHeight(e.target.value)}
+                  <label className="block text-sm font-medium text-gray-700 mb-1">身長 (cm)</label>
+                  <input type="text" inputMode="numeric" value={height}
+                    onChange={(e) => handleHeightChange(e.target.value)}
                     className="w-full border rounded-lg px-3 py-2 text-sm"
-                    placeholder="例: 170cm" />
+                    placeholder="例: 170" />
                 </div>
               </div>
 
@@ -353,6 +395,42 @@ export default function PartnerBoardPage() {
                     <option value="">選択してください</option>
                     {DIRECTIONS.map((d) => <option key={d} value={d}>{d}</option>)}
                   </select>
+                </div>
+              </div>
+
+              <div className="border rounded-lg p-4 bg-gray-50">
+                <label className="block text-sm font-bold text-gray-700 mb-3">持ち級</label>
+                <div className="space-y-3">
+                  <div>
+                    <label className="block text-xs text-gray-500 mb-1">スタンダード</label>
+                    <div className="grid grid-cols-2 gap-2">
+                      <select value={stdOrg} onChange={(e) => setStdOrg(e.target.value)}
+                        className="border rounded-lg px-3 py-2 text-sm">
+                        <option value="">団体を選択</option>
+                        {ORGS.map((o) => <option key={o} value={o}>{o}</option>)}
+                      </select>
+                      <select value={stdLevel} onChange={(e) => setStdLevel(e.target.value)}
+                        className="border rounded-lg px-3 py-2 text-sm">
+                        <option value="">級を選択</option>
+                        {LEVELS.map((l) => <option key={l} value={l}>{l}級</option>)}
+                      </select>
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-xs text-gray-500 mb-1">ラテン</label>
+                    <div className="grid grid-cols-2 gap-2">
+                      <select value={latinOrg} onChange={(e) => setLatinOrg(e.target.value)}
+                        className="border rounded-lg px-3 py-2 text-sm">
+                        <option value="">団体を選択</option>
+                        {ORGS.map((o) => <option key={o} value={o}>{o}</option>)}
+                      </select>
+                      <select value={latinLevel} onChange={(e) => setLatinLevel(e.target.value)}
+                        className="border rounded-lg px-3 py-2 text-sm">
+                        <option value="">級を選択</option>
+                        {LEVELS.map((l) => <option key={l} value={l}>{l}級</option>)}
+                      </select>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -424,7 +502,7 @@ export default function PartnerBoardPage() {
                     )}
                     <div>
                       <h3 className="font-bold text-gray-900">
-                        {post.line_display_name || post.nickname}
+                        {post.nickname || post.line_display_name}
                       </h3>
                       <p className="text-xs text-gray-500">{formatDate(post.created_at)}</p>
                     </div>
@@ -454,10 +532,16 @@ export default function PartnerBoardPage() {
                     <div><span className="text-gray-500">年代:</span> <span className="text-gray-800">{post.age_range}</span></div>
                   )}
                   {post.height && (
-                    <div><span className="text-gray-500">身長:</span> <span className="text-gray-800">{post.height}</span></div>
+                       <div><span className="text-gray-500">身長:</span> <span className="text-gray-800">{post.height}</span></div>
                   )}
                   {post.dance_experience && (
                     <div><span className="text-gray-500">ダンス歴:</span> <span className="text-gray-800">{post.dance_experience}</span></div>
+                  )}
+                  {formatLevel(post.std_org, post.std_level) && (
+                    <div><span className="text-gray-500">スタンダード級:</span> <span className="text-gray-800">{formatLevel(post.std_org, post.std_level)}</span></div>
+                  )}
+                  {formatLevel(post.latin_org, post.latin_level) && (
+                    <div><span className="text-gray-500">ラテン級:</span> <span className="text-gray-800">{formatLevel(post.latin_org, post.latin_level)}</span></div>
                   )}
                   {post.practice_frequency && (
                     <div><span className="text-gray-500">練習頻度:</span> <span className="text-gray-800">{post.practice_frequency}</span></div>
