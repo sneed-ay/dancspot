@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import * as fs from "fs";
+import * as path from "path";
 
 const DATA_DIR = path.join(process.cwd(), "data");
 const THREADS_FILE = path.join(DATA_DIR, "threads.json");
@@ -17,9 +17,16 @@ interface Reply {
 
 interface Thread {
   id: string;
+  category: string;
+  title: string;
+  author: string;
+  content: string;
+  createdAt: string;
   replies: number;
   replyList?: Reply[];
-  [key: string]: unknown;
+  lineUserId?: string;
+  lineDisplayName?: string;
+  linePictureUrl?: string;
 }
 
 function readThreads(): Thread[] {
@@ -38,7 +45,8 @@ export async function POST(
 ) {
   try {
     const { threadId } = params;
-    const { author, content, lineUserId, lineDisplayName, linePictureUrl } = await request.json();
+    const body = await request.json();
+    const { author, content, lineUserId, lineDisplayName, linePictureUrl } = body;
     if (!content) {
       return NextResponse.json({ error: "Content is required" }, { status: 400 });
     }
