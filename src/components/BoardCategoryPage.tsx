@@ -234,7 +234,7 @@ export default function BoardCategoryPage({ category, categoryLabel }: BoardCate
                       <img src={thread.linePictureUrl} alt="" className="w-5 h-5 rounded-full" />
                     )}
                     <span className="text-xs text-gray-500">
-                      {thread.lineDisplayName || thread.author} ・ {formatDate(thread.createdAt)}
+                      {"名無しさん"} ・ {formatDate(thread.createdAt)}
                     </span>
                     {thread.replies !== undefined && thread.replies > 0 && (
                       <span className="text-xs text-blue-500">返信 {thread.replies}</span>
