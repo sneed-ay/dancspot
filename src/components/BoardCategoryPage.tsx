@@ -230,9 +230,7 @@ export default function BoardCategoryPage({ category, categoryLabel }: BoardCate
                 <div className="flex-1 min-w-0">
                   <h3 className="font-bold text-gray-900 truncate">{thread.title}</h3>
                   <div className="flex items-center gap-2 mt-1">
-                    {thread.linePictureUrl && (
-                      <img src={thread.linePictureUrl} alt="" className="w-5 h-5 rounded-full" />
-                    )}
+                    
                     <span className="text-xs text-gray-500">
                       {"名無しさん"} ・ {formatDate(thread.createdAt)}
                     </span>
