@@ -171,11 +171,9 @@ export default function ThreadDetailPage() {
         </div>
         <h1 className="text-xl font-bold text-gray-900 mb-3">{thread.title}</h1>
         <div className="flex items-center gap-2 mb-4">
-          {thread.linePictureUrl && (
-            <img src={thread.linePictureUrl} alt="" className="w-6 h-6 rounded-full" />
-          )}
+          
           <span className="text-sm text-gray-500">
-            {thread.lineDisplayName || thread.author} ・ {formatDate(thread.createdAt)}
+            {"名無しさん"} ・ {formatDate(thread.createdAt)}
           </span>
         </div>
         <p className="text-gray-700 whitespace-pre-wrap">{thread.content}</p>
@@ -188,11 +186,9 @@ export default function ThreadDetailPage() {
           {thread.replyList.map((reply) => (
             <div key={reply.id} className="bg-white rounded-xl shadow-sm border p-4">
               <div className="flex items-center gap-2 mb-2">
-                {reply.linePictureUrl && (
-                  <img src={reply.linePictureUrl} alt="" className="w-6 h-6 rounded-full" />
-                )}
+                
                 <span className="text-sm text-gray-500">
-                  {reply.lineDisplayName || reply.author} ・ {formatDate(reply.createdAt)}
+                  {"名無しさん"} ・ {formatDate(reply.createdAt)}
                 </span>
               </div>
               <p className="text-gray-700 text-sm whitespace-pre-wrap">{reply.content}</p>
