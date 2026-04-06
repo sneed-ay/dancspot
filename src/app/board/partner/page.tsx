@@ -21,7 +21,7 @@ interface Post {
     display_name: string;
     picture_url: string | null;
     line_user_id: string;
-  };
+  } | null;
 }
 
 const DANCE_TYPES = [
@@ -81,7 +81,8 @@ export default function PartnerBoardPage() {
   // Initialize LIFF
   useEffect(() => {
     const init = async () => {
-      try {        const liffModule = await import('@line/liff');
+      try {
+        const liffModule = await import('@line/liff');
         const liff = liffModule.default;
 
         await liff.init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID! });
@@ -178,7 +179,8 @@ export default function PartnerBoardPage() {
       }
     } catch (err) {
       console.error('Submit error:', err);
-      setError('投稿に失敗しました');    } finally {
+      setError('投稿に失敗しました');
+    } finally {
       setSubmitting(false);
     }
   };
@@ -272,7 +274,8 @@ export default function PartnerBoardPage() {
     return LEVELS.find(l => l.value === value)?.label || value;
   };
 
-  const formatDate = (dateStr: string) => {    const d = new Date(dateStr);
+  const formatDate = (dateStr: string) => {
+    const d = new Date(dateStr);
     return d.toLocaleDateString('ja-JP', {
       year: 'numeric',
       month: 'short',
@@ -314,7 +317,8 @@ export default function PartnerBoardPage() {
                 onClick={handleLogin}
                 className="bg-[#06C755] hover:bg-[#05b34c] text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition"
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">                  <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.105.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" />
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.105.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" />
                 </svg>
                 LINEでログイン
               </button>
@@ -351,7 +355,8 @@ export default function PartnerBoardPage() {
           <button
             onClick={() => setShowForm(true)}
             className="mb-6 w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 rounded-lg font-medium hover:from-pink-600 hover:to-purple-700 transition shadow-lg"
-          >            + 新しい募集を投稿する
+          >
+            + 新しい募集を投稿する
           </button>
         )}
 
@@ -405,7 +410,8 @@ export default function PartnerBoardPage() {
                     <option value="">選択してください</option>
                     {AREAS.map(a => (
                       <option key={a} value={a}>{a}</option>
-                    ))}                  </select>
+                    ))}
+                  </select>
                 </div>
               </div>
 
@@ -458,7 +464,8 @@ export default function PartnerBoardPage() {
               <div className="flex gap-3">
                 <button
                   type="submit"
-                  disabled={submitting}                  className="flex-1 bg-gradient-to-r from-pink-500 to-purple-600 text-white py-2 rounded-lg font-medium hover:from-pink-600 hover:to-purple-700 transition disabled:opacity-50"
+                  disabled={submitting}
+                  className="flex-1 bg-gradient-to-r from-pink-500 to-purple-600 text-white py-2 rounded-lg font-medium hover:from-pink-600 hover:to-purple-700 transition disabled:opacity-50"
                 >
                   {submitting ? '投稿中...' : '投稿する'}
                 </button>
@@ -501,23 +508,24 @@ export default function PartnerBoardPage() {
               >
                 <div className="flex justify-between items-start mb-3">
                   <div className="flex items-center gap-3">
-                    {post.users.picture_url ? (
+                    {post.users?.picture_url ? (
                       <img
                         src={post.users.picture_url}
-                        alt={post.users.display_name}
+                        alt={post.users?.display_name || ''}
                         className="w-10 h-10 rounded-full"
                       />
                     ) : (
                       <div className="w-10 h-10 rounded-full bg-gradient-to-r from-pink-400 to-purple-500 flex items-center justify-center text-white font-bold">
-                        {post.users.display_name.charAt(0)}
+                        {(post.users?.display_name || '?').charAt(0)}
                       </div>
                     )}
                     <div>
-                      <p className="font-medium text-gray-800">{post.users.display_name}</p>                      <p className="text-xs text-gray-400">{formatDate(post.created_at)}</p>
+                      <p className="font-medium text-gray-800">{post.users?.display_name || '名無しさん'}</p>
+                      <p className="text-xs text-gray-400">{formatDate(post.created_at)}</p>
                     </div>
                   </div>
 
-                  {user && user.userId === post.users.line_user_id && (
+                  {user && post.users && user.userId === post.users.line_user_id && (
                     <button
                       onClick={() => handleDelete(post.id)}
                       className="text-gray-400 hover:text-red-500 text-sm transition"
@@ -548,7 +556,7 @@ export default function PartnerBoardPage() {
                 <p className="text-gray-600 text-sm whitespace-pre-wrap mb-3">{post.content}</p>
 
                 {/* Apply button - visible to everyone except the poster */}
-                {(!user || user.userId !== post.users.line_user_id) && (
+                {(!user || !post.users || user.userId !== post.users.line_user_id) && (
                   <button
                     onClick={() => openApplyForm(post)}
                     className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition text-sm font-medium"
@@ -570,6 +578,7 @@ export default function PartnerBoardPage() {
             <p className="text-sm text-gray-500 mb-4">
               「{applyingTo.title}」への応募
             </p>
+
             <form onSubmit={handleApplySubmit} className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -623,7 +632,8 @@ export default function PartnerBoardPage() {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">                    役割 <span className="text-red-500">*</span>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    役割 <span className="text-red-500">*</span>
                   </label>
                   <select
                     value={applyRole}
@@ -674,7 +684,8 @@ export default function PartnerBoardPage() {
                   value={applyMessage}
                   onChange={e => setApplyMessage(e.target.value)}
                   placeholder="自己紹介やアピールポイントなど"
-                  rows={4}                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none"
+                  rows={4}
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none"
                   required
                 />
               </div>
@@ -702,3 +713,87 @@ export default function PartnerBoardPage() {
     </div>
   );
 }
+'use client';
+
+import { useState, useEffect, useCallback } from 'react';
+
+interface UserProfile {
+  userId: string;
+  displayName: string;
+  pictureUrl: string | null;
+}
+
+interface Post {
+  id: string;
+  title: string;
+  content: string;
+  dance_type: string;
+  area: string;
+  role: string;
+  level: string;
+  created_at: string;
+  users: {
+    display_name: string;
+    picture_url: string | null;
+    line_user_id: string;
+  } | null;
+}
+
+const DANCE_TYPES = [
+  'ワルツ', 'タンゴ', 'スローフォックストロット', 'クイックステップ', 'ヴェニーズワルツ',
+  'チャチャチャ', 'サンバ', 'ルンバ', 'パソドブレ', 'ジャイブ',
+  'スタンダード全般', 'ラテン全般', '10ダンス',
+];
+
+const AREAS = [
+  '北海道', '東北', '関東', '東京', '中部', '近畿', '中国', '四国', '九州・沖縄', 'その他',
+];
+
+const ROLES = [
+  { value: 'leader', label: 'リーダー' },
+  { value: 'follower', label: 'パートナー' },
+  { value: 'both', label: 'どちらでも' },
+];
+
+const LEVELS = [
+  { value: 'beginner', label: '初心者' },
+  { value: 'intermediate', label: '中級者' },
+  { value: 'advanced', label: '上級者' },
+  { value: 'professional', label: 'プロ' },
+];
+
+const AGE_RANGES = ['20代', '30代', '40代', '50代', '60代以上'];
+
+export default function PartnerBoardPage() {
+  const [user, setUser] = useState<UserProfile | null>(null);
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [liffReady, setLiffReady] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [successMsg, setSuccessMsg] = useState<string | null>(null);
+
+  // Form state
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [danceType, setDanceType] = useState('');
+  const [area, setArea] = useState('');
+  const [role, setRole] = useState('');
+  const [level, setLevel] = useState('beginner');
+
+  // Apply modal state
+  const [applyingTo, setApplyingTo] = useState<Post | null>(null);
+  const [applySubmitting, setApplySubmitting] = useState(false);
+  const [applyNickname, setApplyNickname] = useState('');
+  const [applyDanceType, setApplyDanceType] = useState('');
+  const [applyArea, setApplyArea] = useState('');
+  const [applyRole, setApplyRole] = useState('');
+  const [applyLevel, setApplyLevel] = useState('beginner');
+  const [applyAge, setApplyAge] = useState('');
+  const [applyMessage, setApplyMessage] = useState('');
+
+  // Initialize LIFF
+  useEffect(() => {
+    const init = async () => {
+      try {
