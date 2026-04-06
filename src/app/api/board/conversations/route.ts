@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
           status,
           created_at
         ),
-        board_threads (
+        partner_posts (
           nickname,
           dance_type,
           line_user_id
@@ -67,8 +67,8 @@ export async function GET(request: NextRequest) {
           threadId: conv.thread_id,
           isPoster,
           partnerLabel: isPoster ? 'お相手' : '募集者',
-          threadTitle: conv.board_threads?.nickname || '',
-          threadDanceType: conv.board_threads?.dance_type || '',
+          threadTitle: conv.partner_posts?.nickname || '',
+          threadDanceType: conv.partner_posts?.dance_type || '',
           applicationNickname: conv.applications?.nickname || '',
           applicationStatus: conv.applications?.status || 'pending',
           lastMessage: lastMsg?.content || '',
