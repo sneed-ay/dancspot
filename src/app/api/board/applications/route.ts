@@ -1,37 +1,48 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getServiceSupabase } from '@/lib/supabase';
 
-// POST: Submit an application to a partner thread
+// POST /api/board/applications - Submit an application to a partner post
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
     const {
-      threadId, applicantLineUserId, applicantLineDisplayName, applicantLinePictureUrl,
-      nickname, content, danceType, area, role, ageRange, height, proAm,
-      danceExperience, direction, practiceFrequency, practiceLocation,
-      smoking, maritalStatus, stdOrg, stdLevel, latinOrg, latinLevel, message,
-    } = body;
+      threadId,
+      applicantLineUserId,
+      applicantDisplayName,
+      applicantPictureUrl,
+      nickname,
+      danceType,
+      area,
+      role,
+      level,
+      ageRange,
+      message,
+    } = await request.json();
 
-    if (!threadId || !applicantLineUserId) {
-      return NextResponse.json({ error: 'threadId and applicantLineUserId are required' }, { status: 400 });
+    if (!threadId || !applicantLineUserId || !nickname || !message) {
+      return NextResponse.json(
+        { error: 'Missing required fields' },
+        { status: 400 }
+      );
     }
 
     const supabase = getServiceSupabase();
 
-    // Get the thread to find the poster
-    const { data: thread, error: threadError } = await supabase
-      .from('board_threads')
-      .select('id, line_user_id')
+    // Get the post to find the poster's LINE user ID
+    const { data: post, error: postError } = await supabase
+      .from('partner_posts')
+      .select('id, user_id, users!inner(line_user_id, display_name)')
       .eq('id', threadId)
       .single();
 
-    if (threadError || !thread) {
-      return NextResponse.json({ error: 'Thread not found' }, { status: 404 });
+    if (postError || !post) {
+      return NextResponse.json({ error: 'Post not found' }, { status: 404 });
     }
 
-    // Don't allow self-application
-    if (thread.line_user_id === applicantLineUserId) {
-      return NextResponse.json({ error: 'Cannot apply to your own post' }, { status: 400 });
+    const posterLineUserId = (post.users as unknown as { line_user_id: string }).line_user_id;
+
+    // Prevent self-application
+    if (posterLineUserId === applicantLineUserId) {
+      return NextResponse.json({ error: '自分の投稿には応募できません' }, { status: 400 });
     }
 
     // Check for duplicate application
@@ -40,55 +51,43 @@ export async function POST(request: NextRequest) {
       .select('id')
       .eq('thread_id', threadId)
       .eq('applicant_line_user_id', applicantLineUserId)
-      .single();
+      .maybeSingle();
 
     if (existing) {
-      return NextResponse.json({ error: 'Already applied' }, { status: 409 });
+      return NextResponse.json({ error: 'すでにこの投稿に応募済みです' }, { status: 409 });
     }
 
-    // Create application
-    const { data: application, error } = await supabase
+    // Create the application
+    const { data: application, error: appError } = await supabase
       .from('applications')
       .insert({
         thread_id: threadId,
         applicant_line_user_id: applicantLineUserId,
-        applicant_line_display_name: applicantLineDisplayName || '',
-        applicant_line_picture_url: applicantLinePictureUrl || null,
-        nickname: nickname || '',
-        content: content || '',
-        dance_type: danceType || '',
-        area: area || '',
-        role: role || '',
-        age_range: ageRange || null,
-        height: height || null,
-        pro_am: proAm || null,
-        dance_experience: danceExperience || null,
-        direction: direction || null,
-        practice_frequency: practiceFrequency || null,
-        practice_location: practiceLocation || null,
-        smoking: smoking || null,
-        marital_status: maritalStatus || null,
-        std_org: stdOrg || null,
-        std_level: stdLevel || null,
-        latin_org: latinOrg || null,
-        latin_level: latinLevel || null,
-        message: message || '',
+        applicant_display_name: applicantDisplayName,
+        applicant_picture_url: applicantPictureUrl,
+        nickname,
+        dance_type: danceType,
+        area,
+        role,
+        level,
+        age_range: ageRange,
+        message,
+        status: 'pending',
       })
       .select()
       .single();
 
-    if (error) {
-      console.error('Error creating application:', error);
+    if (appError) {
+      console.error('Error creating application:', appError);
       return NextResponse.json({ error: 'Failed to create application' }, { status: 500 });
     }
 
-    // Create conversation
-    const { data: conversation, error: convError } = await supabase
+    // Create a conversation between poster and applicant    const { data: conversation, error: convError } = await supabase
       .from('conversations')
       .insert({
         application_id: application.id,
         thread_id: threadId,
-        poster_line_user_id: thread.line_user_id,
+        poster_line_user_id: posterLineUserId,
         applicant_line_user_id: applicantLineUserId,
       })
       .select()
@@ -96,88 +95,90 @@ export async function POST(request: NextRequest) {
 
     if (convError) {
       console.error('Error creating conversation:', convError);
+      return NextResponse.json({ error: 'Failed to create conversation' }, { status: 500 });
     }
 
-    // Send initial message if provided
-    if (conversation && message) {
-      await supabase.from('messages').insert({
+    // Send the initial message in the conversation
+    const roleLabel = role === 'leader' ? 'リーダー' : role === 'follower' ? 'パートナー' : 'どちらでも';
+    const levelLabel = level === 'beginner' ? '初心者' : level === 'intermediate' ? '中級者' : level === 'advanced' ? '上級者' : 'プロ';
+    const introMessage = `【応募】${nickname}さんからの応募です\n\n種目: ${danceType || '未設定'}\n地域: ${area || '未設定'}\n役割: ${roleLabel}\nレベル: ${levelLabel}\n年代: ${ageRange || '未設定'}\n\nメッセージ:\n${message}`;
+
+    await supabase
+      .from('messages')
+      .insert({
         conversation_id: conversation.id,
         sender_line_user_id: applicantLineUserId,
-        content: message,
+        content: introMessage,
       });
-    }
 
-    // Send LINE push notification to poster
+    // Send LINE push notification to the poster
     try {
       const channelAccessToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
-      if (channelAccessToken && thread.line_user_id) {
+      if (channelAccessToken) {
         await fetch('https://api.line.me/v2/bot/message/push', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + channelAccessToken,
+            Authorization: `Bearer ${channelAccessToken}`,
           },
           body: JSON.stringify({
-            to: thread.line_user_id,
-            messages: [{
-              type: 'text',
-              text: 'お相手募集に応募がありました！\nダンスポットのメッセージを確認してください。\nhttps://www.dancspot.com/board/inbox',
-            }],
+            to: posterLineUserId,
+            messages: [
+              {
+                type: 'text',
+                text: `お相手募集に新しい応募がありました！\n\n${nickname}さんからの応募です。\nサイトで確認してください。\n\nhttps://www.dancspot.com/board/inbox`,
+              },
+            ],
           }),
         });
       }
-    } catch (lineError) {
-      console.error('LINE notification error:', lineError);
+    } catch (pushErr) {
+      console.error('LINE push notification error:', pushErr);
+      // Don't fail the request if push notification fails
     }
 
-    return NextResponse.json({
-      application: { id: application.id },
-      conversationId: conversation?.id || null,
-    }, { status: 201 });
+    return NextResponse.json({ application, conversation }, { status: 201 });
   } catch (error) {
-    console.error('Application error:', error);
+    console.error('Application creation error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
 
-// GET: Get applications for a thread (poster only) or my applications
+// GET /api/board/applications - Fetch applications
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
-    const threadId = searchParams.get('threadId');
-    const lineUserId = searchParams.get('lineUserId');
-
-    if (!lineUserId) {
-      return NextResponse.json({ error: 'lineUserId is required' }, { status: 400 });
-    }
+    const threadId = searchParams.get('threadId');    const lineUserId = searchParams.get('lineUserId');
 
     const supabase = getServiceSupabase();
 
     if (threadId) {
-      // Get applications for a specific thread (poster view)
       const { data, error } = await supabase
         .from('applications')
-        .select('*, conversations(id)')
+        .select('*')
         .eq('thread_id', threadId)
         .order('created_at', { ascending: false });
 
       if (error) {
-        return NextResponse.json({ error: 'Failed to fetch' }, { status: 500 });
+        return NextResponse.json({ error: 'Failed to fetch applications' }, { status: 500 });
       }
-      return NextResponse.json({ applications: data || [] });
-    } else {
-      // Get my applications
+      return NextResponse.json({ applications: data });
+    }
+
+    if (lineUserId) {
       const { data, error } = await supabase
         .from('applications')
-        .select('*, conversations(id), board_threads(nickname, dance_type)')
+        .select('*')
         .eq('applicant_line_user_id', lineUserId)
         .order('created_at', { ascending: false });
 
       if (error) {
-        return NextResponse.json({ error: 'Failed to fetch' }, { status: 500 });
+        return NextResponse.json({ error: 'Failed to fetch applications' }, { status: 500 });
       }
-      return NextResponse.json({ applications: data || [] });
+      return NextResponse.json({ applications: data });
     }
+
+    return NextResponse.json({ error: 'threadId or lineUserId required' }, { status: 400 });
   } catch {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
