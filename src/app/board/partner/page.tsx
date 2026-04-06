@@ -637,7 +637,7 @@ export default function PartnerBoardPage() {
                   </label>
                   <select
                     value={applyRole}
-                    onChange={e => setApplyRole(e.target.value)}
+                   onChange={e => setApplyRole(e.target.value)}
                     className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
                     required
                   >
@@ -713,87 +713,3 @@ export default function PartnerBoardPage() {
     </div>
   );
 }
-'use client';
-
-import { useState, useEffect, useCallback } from 'react';
-
-interface UserProfile {
-  userId: string;
-  displayName: string;
-  pictureUrl: string | null;
-}
-
-interface Post {
-  id: string;
-  title: string;
-  content: string;
-  dance_type: string;
-  area: string;
-  role: string;
-  level: string;
-  created_at: string;
-  users: {
-    display_name: string;
-    picture_url: string | null;
-    line_user_id: string;
-  } | null;
-}
-
-const DANCE_TYPES = [
-  'ワルツ', 'タンゴ', 'スローフォックストロット', 'クイックステップ', 'ヴェニーズワルツ',
-  'チャチャチャ', 'サンバ', 'ルンバ', 'パソドブレ', 'ジャイブ',
-  'スタンダード全般', 'ラテン全般', '10ダンス',
-];
-
-const AREAS = [
-  '北海道', '東北', '関東', '東京', '中部', '近畿', '中国', '四国', '九州・沖縄', 'その他',
-];
-
-const ROLES = [
-  { value: 'leader', label: 'リーダー' },
-  { value: 'follower', label: 'パートナー' },
-  { value: 'both', label: 'どちらでも' },
-];
-
-const LEVELS = [
-  { value: 'beginner', label: '初心者' },
-  { value: 'intermediate', label: '中級者' },
-  { value: 'advanced', label: '上級者' },
-  { value: 'professional', label: 'プロ' },
-];
-
-const AGE_RANGES = ['20代', '30代', '40代', '50代', '60代以上'];
-
-export default function PartnerBoardPage() {
-  const [user, setUser] = useState<UserProfile | null>(null);
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [liffReady, setLiffReady] = useState(false);
-  const [showForm, setShowForm] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [successMsg, setSuccessMsg] = useState<string | null>(null);
-
-  // Form state
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [danceType, setDanceType] = useState('');
-  const [area, setArea] = useState('');
-  const [role, setRole] = useState('');
-  const [level, setLevel] = useState('beginner');
-
-  // Apply modal state
-  const [applyingTo, setApplyingTo] = useState<Post | null>(null);
-  const [applySubmitting, setApplySubmitting] = useState(false);
-  const [applyNickname, setApplyNickname] = useState('');
-  const [applyDanceType, setApplyDanceType] = useState('');
-  const [applyArea, setApplyArea] = useState('');
-  const [applyRole, setApplyRole] = useState('');
-  const [applyLevel, setApplyLevel] = useState('beginner');
-  const [applyAge, setApplyAge] = useState('');
-  const [applyMessage, setApplyMessage] = useState('');
-
-  // Initialize LIFF
-  useEffect(() => {
-    const init = async () => {
-      try {
