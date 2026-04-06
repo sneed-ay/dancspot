@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
 
     // Prevent self-application
     if (posterLineUserId === applicantLineUserId) {
-      return NextResponse.json({ error: '自分の投稿には応募できません' }, { status: 400 });
+      return NextResponse.json({ error: '\u81EA\u5206\u306E\u6295\u7A3F\u306B\u306F\u5FDC\u52DF\u3067\u304D\u307E\u305B\u3093' }, { status: 400 });
     }
 
     // Check for duplicate application
@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
       .maybeSingle();
 
     if (existing) {
-      return NextResponse.json({ error: 'すでにこの投稿に応募済みです' }, { status: 409 });
+      return NextResponse.json({ error: '\u3059\u3067\u306B\u3053\u306E\u6295\u7A3F\u306B\u5FDC\u52DF\u6E08\u307F\u3067\u3059' }, { status: 409 });
     }
 
     // Create the application
@@ -82,7 +82,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Failed to create application' }, { status: 500 });
     }
 
-    // Create a conversation between poster and applicant    const { data: conversation, error: convError } = await supabase
+    // Create a conversation between poster and applicant
+    const { data: conversation, error: convError } = await supabase
       .from('conversations')
       .insert({
         application_id: application.id,
@@ -99,9 +100,9 @@ export async function POST(request: NextRequest) {
     }
 
     // Send the initial message in the conversation
-    const roleLabel = role === 'leader' ? 'リーダー' : role === 'follower' ? 'パートナー' : 'どちらでも';
-    const levelLabel = level === 'beginner' ? '初心者' : level === 'intermediate' ? '中級者' : level === 'advanced' ? '上級者' : 'プロ';
-    const introMessage = `【応募】${nickname}さんからの応募です\n\n種目: ${danceType || '未設定'}\n地域: ${area || '未設定'}\n役割: ${roleLabel}\nレベル: ${levelLabel}\n年代: ${ageRange || '未設定'}\n\nメッセージ:\n${message}`;
+    const roleLabel = role === 'leader' ? '\u30EA\u30FC\u30C0\u30FC' : role === 'follower' ? '\u30D1\u30FC\u30C8\u30CA\u30FC' : '\u3069\u3061\u3089\u3067\u3082';
+    const levelLabel = level === 'beginner' ? '\u521D\u5FC3\u8005' : level === 'intermediate' ? '\u4E2D\u7D1A\u8005' : level === 'advanced' ? '\u4E0A\u7D1A\u8005' : '\u30D7\u30ED';
+    const introMessage = `[\u5FDC\u52DF]${nickname}\u3055\u3093\u304B\u3089\u306E\u5FDC\u52DF\u3067\u3059\n\n\u7A2E\u76EE: ${danceType || '\u672A\u8A2D\u5B9A'}\n\u5730\u57DF: ${area || '\u672A\u8A2D\u5B9A'}\n\u5F79\u5272: ${roleLabel}\n\u30EC\u30D9\u30EB: ${levelLabel}\n\u5E74\u4EE3: ${ageRange || '\u672A\u8A2D\u5B9A'}\n\n\u30E1\u30C3\u30BB\u30FC\u30B8:\n${message}`;
 
     await supabase
       .from('messages')
@@ -126,7 +127,7 @@ export async function POST(request: NextRequest) {
             messages: [
               {
                 type: 'text',
-                text: `お相手募集に新しい応募がありました！\n\n${nickname}さんからの応募です。\nサイトで確認してください。\n\nhttps://www.dancspot.com/board/inbox`,
+                text: `\u304A\u76F8\u624B\u52DF\u96C6\u306B\u65B0\u3057\u3044\u5FDC\u52DF\u304C\u3042\u308A\u307E\u3057\u305F\uFF01\n\n${nickname}\u3055\u3093\u304B\u3089\u306E\u5FDC\u52DF\u3067\u3059\u3002\n\u30B5\u30A4\u30C8\u3067\u78BA\u8A8D\u3057\u3066\u304F\u3060\u3055\u3044\u3002\n\nhttps://www.dancspot.com/board/inbox`,
               },
             ],
           }),
@@ -134,7 +135,6 @@ export async function POST(request: NextRequest) {
       }
     } catch (pushErr) {
       console.error('LINE push notification error:', pushErr);
-      // Don't fail the request if push notification fails
     }
 
     return NextResponse.json({ application, conversation }, { status: 201 });
@@ -148,7 +148,8 @@ export async function POST(request: NextRequest) {
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
-    const threadId = searchParams.get('threadId');    const lineUserId = searchParams.get('lineUserId');
+    const threadId = searchParams.get('threadId');
+    const lineUserId = searchParams.get('lineUserId');
 
     const supabase = getServiceSupabase();
 
