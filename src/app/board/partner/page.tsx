@@ -163,11 +163,6 @@ export default function PartnerBoardPage() {
 
   const handleLogin = () => { login(); };
 
-  const handleHeightChange = (value: string) => {
-    const filtered = value.replace(/[^0-9]/g, '');
-    setHeight(filtered);
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user) return;
