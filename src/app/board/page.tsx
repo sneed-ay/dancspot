@@ -41,6 +41,12 @@ export default function BoardPage() {
         <p className="text-gray-600 mt-2">
           お相手募集・ドレスレンタル・バイト募集・雑談など、自由に投稿できる掲示板です
         </p>
+        <Link
+          href="/board/inbox"
+          className="inline-block mt-4 bg-green-500 text-white px-5 py-2 rounded-lg hover:bg-green-600 transition text-sm font-medium"
+        >
+          📩 受信トレイ
+        </Link>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
