@@ -1,8 +1,12 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { initLiff, isLoggedIn, login, getProfile } from '@/lib/liff';
-import Link from 'next/link';
+
+interface UserProfile {
+  userId: string;
+  displayName: string;
+  pictureUrl: string | null;
+}
 
 interface Post {
   id: string;
@@ -12,226 +16,212 @@ interface Post {
   area: string;
   role: string;
   level: string;
-  nickname: string;
-  line_user_id: string;
-  line_display_name: string;
-  line_picture_url: string | null;
   created_at: string;
-  age_range: string | null;
-  height: string | null;
-  pro_am: string | null;
-  dance_experience: string | null;
-  direction: string | null;
-  practice_frequency: string | null;
-  practice_location: string | null;
-  smoking: string | null;
-  marital_status: string | null;
-  std_org: string | null;
-  std_level: string | null;
-  latin_org: string | null;
-  latin_level: string | null;
-}
-
-interface UserProfile {
-  userId: string;
-  displayName: string;
-  pictureUrl?: string;
+  users: {
+    display_name: string;
+    picture_url: string | null;
+    line_user_id: string;
+  };
 }
 
 const DANCE_TYPES = [
-  'スタンダード', 'ラテン', '10ダンス(スタンダード寄り)',
-  '10ダンス(ラテン寄り)', '10ダンス',
+  'ワルツ', 'タンゴ', 'スローフォックストロット', 'クイックステップ', 'ヴェニーズワルツ',
+  'チャチャチャ', 'サンバ', 'ルンバ', 'パソドブレ', 'ジャイブ',
+  'スタンダード全般', 'ラテン全般', '10ダンス',
 ];
+
 const AREAS = [
-  '北海道','青森県','岩手県','宮城県','秋田県','山形県','福島県',
-  '茨城県','栃木県','群馬県','埼玉県','千葉県','東京都','神奈川県',
-  '新潟県','富山県','石川県','福井県','山梨県','長野県','岐阜県',
-  '静岡県','愛知県','三重県','滋賀県','京都府','大阪府','兵庫県',
-  '奈良県','和歌山県','鳥取県','島根県','岡山県','広島県','山口県',
-  '徳島県','香川県','愛媛県','高知県','福岡県','佐賀県','長崎県',
-  '熊本県','大分県','宮崎県','鹿児島県','沖縄県',
+  '北海道', '東北', '関東', '東京', '中部', '近畿', '中国', '四国', '九州・沖縄', 'その他',
 ];
-const ROLES = ['リーダー募集', 'パートナー募集', 'どちらでも'];
-const PRO_AM_OPTIONS = ['アマチュア', 'プロ志望', 'プロ'];
-const AGE_RANGES = ['10代','20代前半','20代後半','30代前半','30代後半','40代前半','40代後半','50代','60代以上'];
-const DANCE_EXPERIENCES = ['未経験','半年未満','1年','2年','3年','4年','5年','6〜10年','11〜15年','15年以上'];
-const DIRECTIONS = ['競技志向','練習相手','デモ','パーティー','サークル','趣味'];
-const PRACTICE_FREQUENCIES = ['週1回','週2回','週3回','週4回以上','月2〜3回','月1回','相談して決めたい'];
-const SMOKING_OPTIONS = ['吸わない', '吸う', 'やめた'];
-const MARITAL_OPTIONS = ['独身', '既婚', '非公開'];
-const ORGS = ['JBDF', 'JDC', 'JCF', 'JDSF'];
-const LEVELS_LIST = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+const ROLES = [
+  { value: 'leader', label: 'リーダー' },
+  { value: 'follower', label: 'パートナー' },
+  { value: 'both', label: 'どちらでも' },
+];
+
+const LEVELS = [
+  { value: 'beginner', label: '初心者' },
+  { value: 'intermediate', label: '中級者' },
+  { value: 'advanced', label: '上級者' },
+  { value: 'professional', label: 'プロ' },
+];
+
+const AGE_RANGES = ['20代', '30代', '40代', '50代', '60代以上'];
 
 export default function PartnerBoardPage() {
+  const [user, setUser] = useState<UserProfile | null>(null);
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [liffReady, setLiffReady] = useState(false);
-  const [liffError, setLiffError] = useState<string | null>(null);
-  const [user, setUser] = useState<UserProfile | null>(null);
   const [showForm, setShowForm] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [successMsg, setSuccessMsg] = useState<string | null>(null);
 
-  // Post form fields
-  const [nickname, setNickname] = useState('');
+  // Form state
+  const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [danceType, setDanceType] = useState('');
   const [area, setArea] = useState('');
   const [role, setRole] = useState('');
-  const [ageRange, setAgeRange] = useState('');
-  const [height, setHeight] = useState('');
-  const [proAm, setProAm] = useState('');
-  const [danceExperience, setDanceExperience] = useState('');
-  const [direction, setDirection] = useState('');
-  const [practiceFrequency, setPracticeFrequency] = useState('');
-  const [practiceLocation, setPracticeLocation] = useState('');
-  const [smoking, setSmoking] = useState('');
-  const [maritalStatus, setMaritalStatus] = useState('');
-  const [stdOrg, setStdOrg] = useState('');
-  const [stdLevel, setStdLevel] = useState('');
-  const [latinOrg, setLatinOrg] = useState('');
-  const [latinLevel, setLatinLevel] = useState('');
+  const [level, setLevel] = useState('beginner');
 
-  // Application form state
+  // Apply modal state
   const [applyingTo, setApplyingTo] = useState<Post | null>(null);
   const [applySubmitting, setApplySubmitting] = useState(false);
   const [applyNickname, setApplyNickname] = useState('');
-  const [applyContent, setApplyContent] = useState('');
   const [applyDanceType, setApplyDanceType] = useState('');
   const [applyArea, setApplyArea] = useState('');
   const [applyRole, setApplyRole] = useState('');
-  const [applyAgeRange, setApplyAgeRange] = useState('');
-  const [applyHeight, setApplyHeight] = useState('');
-  const [applyProAm, setApplyProAm] = useState('');
-  const [applyDanceExperience, setApplyDanceExperience] = useState('');
-  const [applyDirection, setApplyDirection] = useState('');
-  const [applyPracticeFrequency, setApplyPracticeFrequency] = useState('');
-  const [applyPracticeLocation, setApplyPracticeLocation] = useState('');
-  const [applySmoking, setApplySmoking] = useState('');
-  const [applyMaritalStatus, setApplyMaritalStatus] = useState('');
-  const [applyStdOrg, setApplyStdOrg] = useState('');
-  const [applyStdLevel, setApplyStdLevel] = useState('');
-  const [applyLatinOrg, setApplyLatinOrg] = useState('');
-  const [applyLatinLevel, setApplyLatinLevel] = useState('');
+  const [applyLevel, setApplyLevel] = useState('beginner');
+  const [applyAge, setApplyAge] = useState('');
   const [applyMessage, setApplyMessage] = useState('');
-  const [applyError, setApplyError] = useState('');
-  const [applySuccess, setApplySuccess] = useState('');
 
+  // Initialize LIFF
+  useEffect(() => {
+    const init = async () => {
+      try {        const liffModule = await import('@line/liff');
+        const liff = liffModule.default;
+
+        await liff.init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID! });
+        setLiffReady(true);
+
+        if (liff.isLoggedIn()) {
+          const profile = await liff.getProfile();
+          const userProfile: UserProfile = {
+            userId: profile.userId,
+            displayName: profile.displayName,
+            pictureUrl: profile.pictureUrl || null,
+          };
+          setUser(userProfile);
+
+          // Register user in our database
+          await fetch('/api/auth/line', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(userProfile),
+          });
+        }
+      } catch (err) {
+        console.error('LIFF init error:', err);
+        setError('LIFFの初期化に失敗しました');
+      }
+    };
+
+    init();
+  }, []);
+
+  // Fetch posts
   const fetchPosts = useCallback(async () => {
     try {
+      setLoading(true);
       const res = await fetch('/api/posts');
       const data = await res.json();
-      if (data.posts) setPosts(data.posts);
-    } catch (error) {
-      console.error('Failed to fetch posts:', error);
+      if (data.posts) {
+        setPosts(data.posts);
+      }
+    } catch (err) {
+      console.error('Failed to fetch posts:', err);
     } finally {
       setLoading(false);
     }
   }, []);
 
   useEffect(() => {
-    const init = async () => {
-      try {
-        await initLiff();
-        setLiffReady(true);
-        if (isLoggedIn()) {
-          const profile = await getProfile();
-          setUser({
-            userId: profile.userId,
-            displayName: profile.displayName,
-            pictureUrl: profile.pictureUrl,
-          });
-          setNickname(profile.displayName);
-          fetch('/api/auth/log', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              lineUserId: profile.userId,
-              lineDisplayName: profile.displayName,
-              linePictureUrl: profile.pictureUrl || null,
-              page: '/board/partner',
-            }),
-          }).catch(console.error);
-        }
-      } catch (error) {
-        console.error('LIFF init error:', error);
-        setLiffError('LINEの初期化に失敗しました');
-      }
-    };
-    init();
     fetchPosts();
   }, [fetchPosts]);
 
-  const handleLogin = () => { login(); };
+  const handleLogin = async () => {
+    const liffModule = await import('@line/liff');
+    liffModule.default.login();
+  };
+
+  const handleLogout = async () => {
+    const liffModule = await import('@line/liff');
+    liffModule.default.logout();
+    window.location.reload();
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user) return;
+
     setSubmitting(true);
     try {
       const res = await fetch('/api/posts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          lineUserId: user.userId, lineDisplayName: user.displayName,
-          linePictureUrl: user.pictureUrl || null, nickname, content,
-          danceType, area, role, ageRange, height: height ? height + 'cm' : '',
-          proAm, danceExperience, direction, practiceFrequency,
-          practiceLocation, smoking, maritalStatus, stdOrg, stdLevel,
-          latinOrg, latinLevel,
+          lineUserId: user.userId,
+          title,
+          content,
+          danceType,
+          area,
+          role,
+          level,
         }),
       });
+
       if (res.ok) {
-        setContent(''); setDanceType(''); setArea(''); setRole('');
-        setAgeRange(''); setHeight(''); setProAm(''); setDanceExperience('');
-        setDirection(''); setPracticeFrequency(''); setPracticeLocation('');
-        setSmoking(''); setMaritalStatus(''); setStdOrg(''); setStdLevel('');
-        setLatinOrg(''); setLatinLevel(''); setShowForm(false); fetchPosts();
+        setTitle('');
+        setContent('');
+        setDanceType('');
+        setArea('');
+        setRole('');
+        setLevel('beginner');
+        setShowForm(false);
+        await fetchPosts();
+      } else {
+        const data = await res.json();
+        setError(data.error || '投稿に失敗しました');
       }
-    } catch (error) {
-      console.error('Failed to create post:', error);
-    } finally {
+    } catch (err) {
+      console.error('Submit error:', err);
+      setError('投稿に失敗しました');    } finally {
       setSubmitting(false);
     }
   };
 
   const handleDelete = async (postId: string) => {
     if (!user || !confirm('この投稿を削除しますか？')) return;
+
     try {
       const res = await fetch('/api/posts', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ postId, lineUserId: user.userId }),
+        body: JSON.stringify({
+          postId,
+          lineUserId: user.userId,
+        }),
       });
-      if (res.ok) fetchPosts();
-    } catch (error) {
-      console.error('Failed to delete post:', error);
+
+      if (res.ok) {
+        await fetchPosts();
+      } else {
+        const data = await res.json();
+        setError(data.error || '削除に失敗しました');
+      }
+    } catch (err) {
+      console.error('Delete error:', err);
+      setError('削除に失敗しました');
     }
   };
 
-  const openApplyForm = (post: Post) => {
-    if (!user) { login(); return; }
+  const openApplyForm = async (post: Post) => {
+    if (!user) {
+      handleLogin();
+      return;
+    }
     setApplyingTo(post);
-    setApplyNickname(user.displayName);
-    setApplyError('');
-    setApplySuccess('');
-  };
-
-  const closeApplyForm = () => {
-    setApplyingTo(null);
-    setApplyNickname(''); setApplyContent(''); setApplyDanceType('');
-    setApplyArea(''); setApplyRole(''); setApplyAgeRange(''); setApplyHeight('');
-    setApplyProAm(''); setApplyDanceExperience(''); setApplyDirection('');
-    setApplyPracticeFrequency(''); setApplyPracticeLocation('');
-    setApplySmoking(''); setApplyMaritalStatus(''); setApplyStdOrg('');
-    setApplyStdLevel(''); setApplyLatinOrg(''); setApplyLatinLevel('');
-    setApplyMessage(''); setApplyError(''); setApplySuccess('');
+    setApplyNickname(user.displayName || '');
   };
 
   const handleApplySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user || !applyingTo) return;
+
     setApplySubmitting(true);
-    setApplyError('');
     try {
       const res = await fetch('/api/board/applications', {
         method: 'POST',
@@ -239,396 +229,476 @@ export default function PartnerBoardPage() {
         body: JSON.stringify({
           threadId: applyingTo.id,
           applicantLineUserId: user.userId,
-          applicantLineDisplayName: user.displayName,
-          applicantLinePictureUrl: user.pictureUrl || null,
+          applicantDisplayName: user.displayName,
+          applicantPictureUrl: user.pictureUrl,
           nickname: applyNickname,
-          content: applyContent,
           danceType: applyDanceType,
           area: applyArea,
           role: applyRole,
-          ageRange: applyAgeRange,
-          height: applyHeight ? applyHeight + 'cm' : '',
-          proAm: applyProAm,
-          danceExperience: applyDanceExperience,
-          direction: applyDirection,
-          practiceFrequency: applyPracticeFrequency,
-          practiceLocation: applyPracticeLocation,
-          smoking: applySmoking,
-          maritalStatus: applyMaritalStatus,
-          stdOrg: applyStdOrg,
-          stdLevel: applyStdLevel,
-          latinOrg: applyLatinOrg,
-          latinLevel: applyLatinLevel,
+          level: applyLevel,
+          ageRange: applyAge,
           message: applyMessage,
         }),
       });
-      const data = await res.json();
+
       if (res.ok) {
-        setApplySuccess('応募しました！受信トレイからメッセージを確認できます。');
-        setTimeout(() => closeApplyForm(), 2000);
+        setApplyingTo(null);
+        setApplyNickname('');
+        setApplyDanceType('');
+        setApplyArea('');
+        setApplyRole('');
+        setApplyLevel('beginner');
+        setApplyAge('');
+        setApplyMessage('');
+        setSuccessMsg('応募を送信しました！相手からの返信をお待ちください。');
+        setTimeout(() => setSuccessMsg(null), 5000);
       } else {
-        setApplyError(data.error || '応募に失敗しました');
+        const data = await res.json();
+        setError(data.error || '応募に失敗しました');
       }
-    } catch {
-      setApplyError('通信エラーが発生しました');
+    } catch (err) {
+      console.error('Apply error:', err);
+      setError('応募に失敗しました');
     } finally {
       setApplySubmitting(false);
     }
   };
 
-  const formatDate = (dateStr: string) => {
-    const date = new Date(dateStr);
-    return date.toLocaleDateString('ja-JP', {
-      year: 'numeric', month: 'short', day: 'numeric',
-      hour: '2-digit', minute: '2-digit',
+  const getRoleLabel = (value: string) => {
+    return ROLES.find(r => r.value === value)?.label || value;
+  };
+
+  const getLevelLabel = (value: string) => {
+    return LEVELS.find(l => l.value === value)?.label || value;
+  };
+
+  const formatDate = (dateStr: string) => {    const d = new Date(dateStr);
+    return d.toLocaleDateString('ja-JP', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
     });
   };
 
-  const formatLevel = (org: string | null, level: string | null) => {
-    if (!org && !level) return null;
-    if (org && level) return `${org} ${level}級`;
-    if (org) return org;
-    return `${level}級`;
-  };
-
-  if (liffError) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center p-8">
-          <p className="text-red-500 text-lg">{liffError}</p>
-          <p className="text-gray-500 mt-2">LINEアプリから開いてください</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (!liffReady) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <p className="text-gray-500">読み込み中...</p>
-      </div>
-    );
-  }
-
-  const renderFormFields = (
-    prefix: string,
-    vals: {
-      nickname: string; setNickname: (v: string) => void;
-      danceType: string; setDanceType: (v: string) => void;
-      area: string; setArea: (v: string) => void;
-      role: string; setRole: (v: string) => void;
-      ageRange: string; setAgeRange: (v: string) => void;
-      height: string; setHeight: (v: string) => void;
-      proAm: string; setProAm: (v: string) => void;
-      danceExperience: string; setDanceExperience: (v: string) => void;
-      direction: string; setDirection: (v: string) => void;
-      practiceFrequency: string; setPracticeFrequency: (v: string) => void;
-      practiceLocation: string; setPracticeLocation: (v: string) => void;
-      smoking: string; setSmoking: (v: string) => void;
-      maritalStatus: string; setMaritalStatus: (v: string) => void;
-      stdOrg: string; setStdOrg: (v: string) => void;
-      stdLevel: string; setStdLevel: (v: string) => void;
-      latinOrg: string; setLatinOrg: (v: string) => void;
-      latinLevel: string; setLatinLevel: (v: string) => void;
-    }
-  ) => (
-    <div className="space-y-4">
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">ニックネーム <span className="text-red-500">*</span></label>
-        <input type="text" value={vals.nickname} onChange={(e) => vals.setNickname(e.target.value)} required className="w-full border rounded-lg px-3 py-2 text-sm" placeholder="表示名を入力してください" />
-      </div>
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">募集対象 <span className="text-red-500">*</span></label>
-        <select value={vals.role} onChange={(e) => vals.setRole(e.target.value)} required className="w-full border rounded-lg px-3 py-2 text-sm">
-          <option value="">選択してください</option>
-          {ROLES.map((r) => <option key={prefix+r} value={r}>{r}</option>)}
-        </select>
-      </div>
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">プロ/アマ</label>
-        <select value={vals.proAm} onChange={(e) => vals.setProAm(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm">
-          <option value="">選択してください</option>
-          {PRO_AM_OPTIONS.map((o) => <option key={prefix+o} value={o}>{o}</option>)}
-        </select>
-      </div>
-      <div className="grid grid-cols-2 gap-4">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">ダンスの種類 <span className="text-red-500">*</span></label>
-          <select value={vals.danceType} onChange={(e) => vals.setDanceType(e.target.value)} required className="w-full border rounded-lg px-3 py-2 text-sm">
-            <option value="">選択してください</option>
-            {DANCE_TYPES.map((t) => <option key={prefix+t} value={t}>{t}</option>)}
-          </select>
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">地域 <span className="text-red-500">*</span></label>
-          <select value={vals.area} onChange={(e) => vals.setArea(e.target.value)} required className="w-full border rounded-lg px-3 py-2 text-sm">
-            <option value="">選択してください</option>
-            {AREAS.map((a) => <option key={prefix+a} value={a}>{a}</option>)}
-          </select>
-        </div>
-      </div>
-      <div className="grid grid-cols-2 gap-4">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">年代</label>
-          <select value={vals.ageRange} onChange={(e) => vals.setAgeRange(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm">
-            <option value="">選択してください</option>
-            {AGE_RANGES.map((a) => <option key={prefix+a} value={a}>{a}</option>)}
-          </select>
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">身長 (cm)</label>
-          <input type="text" inputMode="numeric" value={vals.height} onChange={(e) => vals.setHeight(e.target.value.replace(/[^0-9]/g, ''))} className="w-full border rounded-lg px-3 py-2 text-sm" placeholder="例: 170" />
-        </div>
-      </div>
-      <div className="grid grid-cols-2 gap-4">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">ダンス歴</label>
-          <select value={vals.danceExperience} onChange={(e) => vals.setDanceExperience(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm">
-            <option value="">選択してください</option>
-            {DANCE_EXPERIENCES.map((d) => <option key={prefix+d} value={d}>{d}</option>)}
-          </select>
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">方向性</label>
-          <select value={vals.direction} onChange={(e) => vals.setDirection(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm">
-            <option value="">選択してください</option>
-            {DIRECTIONS.map((d) => <option key={prefix+d} value={d}>{d}</option>)}
-          </select>
-        </div>
-      </div>
-      <div className="border rounded-lg p-4 bg-gray-50">
-        <label className="block text-sm font-bold text-gray-700 mb-3">持ち級</label>
-        <div className="space-y-3">
-          <div>
-            <label className="block text-xs text-gray-500 mb-1">スタンダード</label>
-            <div className="grid grid-cols-2 gap-2">
-              <select value={vals.stdOrg} onChange={(e) => vals.setStdOrg(e.target.value)} className="border rounded-lg px-3 py-2 text-sm">
-                <option value="">団体を選択</option>
-                {ORGS.map((o) => <option key={prefix+'so'+o} value={o}>{o}</option>)}
-              </select>
-              <select value={vals.stdLevel} onChange={(e) => vals.setStdLevel(e.target.value)} className="border rounded-lg px-3 py-2 text-sm">
-                <option value="">級を選択</option>
-                {LEVELS_LIST.map((l) => <option key={prefix+'sl'+l} value={l}>{l}級</option>)}
-              </select>
-            </div>
-          </div>
-          <div>
-            <label className="block text-xs text-gray-500 mb-1">ラテン</label>
-            <div className="grid grid-cols-2 gap-2">
-              <select value={vals.latinOrg} onChange={(e) => vals.setLatinOrg(e.target.value)} className="border rounded-lg px-3 py-2 text-sm">
-                <option value="">団体を選択</option>
-                {ORGS.map((o) => <option key={prefix+'lo'+o} value={o}>{o}</option>)}
-              </select>
-              <select value={vals.latinLevel} onChange={(e) => vals.setLatinLevel(e.target.value)} className="border rounded-lg px-3 py-2 text-sm">
-                <option value="">級を選択</option>
-                {LEVELS_LIST.map((l) => <option key={prefix+'ll'+l} value={l}>{l}級</option>)}
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="grid grid-cols-2 gap-4">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">希望練習頻度</label>
-          <select value={vals.practiceFrequency} onChange={(e) => vals.setPracticeFrequency(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm">
-            <option value="">選択してください</option>
-            {PRACTICE_FREQUENCIES.map((p) => <option key={prefix+p} value={p}>{p}</option>)}
-          </select>
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">希望練習場所</label>
-          <input type="text" value={vals.practiceLocation} onChange={(e) => vals.setPracticeLocation(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm" placeholder="例: 都内のスタジオ" />
-        </div>
-      </div>
-      <div className="grid grid-cols-2 gap-4">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">煙草</label>
-          <select value={vals.smoking} onChange={(e) => vals.setSmoking(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm">
-            <option value="">選択してください</option>
-            {SMOKING_OPTIONS.map((s) => <option key={prefix+s} value={s}>{s}</option>)}
-          </select>
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">独身/既婚</label>
-          <select value={vals.maritalStatus} onChange={(e) => vals.setMaritalStatus(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm">
-            <option value="">選択してください</option>
-            {MARITAL_OPTIONS.map((m) => <option key={prefix+m} value={m}>{m}</option>)}
-          </select>
-        </div>
-      </div>
-    </div>
-  );
-
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-2xl font-bold text-gray-900">お相手募集</h1>
-            <p className="text-gray-500 text-sm mt-1">ダンスパートナーを探そう</p>
-          </div>
-          <div className="flex items-center gap-3">
-            {user && (
-              <Link href="/board/inbox" className="text-sm text-blue-600 hover:text-blue-800 underline">
-                受信トレイ
-              </Link>
-            )}
+      {/* Header */}
+      <div className="bg-gradient-to-r from-pink-500 to-purple-600 text-white">
+        <div className="max-w-4xl mx-auto px-4 py-8">
+          <h1 className="text-2xl font-bold mb-2">お相手募集掲示板</h1>
+          <p className="text-pink-100 text-sm">
+            社交ダンスのリーダー・パートナーを探している方のための掲示板です
+          </p>
+
+          {/* Auth section */}
+          <div className="mt-4 flex items-center gap-3">
             {user ? (
               <>
-                <span className="text-sm text-gray-700">{user.displayName}</span>
+                {user.pictureUrl && (
+                  <img
+                    src={user.pictureUrl}
+                    alt={user.displayName}
+                    className="w-8 h-8 rounded-full border-2 border-white"
+                  />
+                )}
+                <span className="text-sm">{user.displayName} でログイン中</span>
                 <button
-                  onClick={() => setShowForm(!showForm)}
-                  className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition text-sm font-medium"
+                  onClick={handleLogout}
+                  className="text-xs bg-white/20 hover:bg-white/30 px-3 py-1 rounded-full transition"
                 >
-                  {showForm ? '閉じる' : '新規投稿'}
+                  ログアウト
                 </button>
               </>
-            ) : (
+            ) : liffReady ? (
               <button
                 onClick={handleLogin}
-                className="bg-[#06C755] text-white px-6 py-2 rounded-lg hover:bg-[#05b54c] transition text-sm font-medium flex items-center gap-2"
+                className="bg-[#06C755] hover:bg-[#05b34c] text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition"
               >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">                  <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.105.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" />
+                </svg>
                 LINEでログイン
               </button>
+            ) : (
+              <span className="text-sm text-pink-200">読み込み中...</span>
             )}
           </div>
         </div>
+      </div>
 
-        {showForm && user && (
-          <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-sm border p-6 mb-8">
-            <h2 className="text-lg font-bold mb-4">お相手募集 登録フォーム</h2>
-            {renderFormFields('post', {
-              nickname, setNickname, danceType, setDanceType, area, setArea,
-              role, setRole, ageRange, setAgeRange, height, setHeight,
-              proAm, setProAm, danceExperience, setDanceExperience,
-              direction, setDirection, practiceFrequency, setPracticeFrequency,
-              practiceLocation, setPracticeLocation, smoking, setSmoking,
-              maritalStatus, setMaritalStatus, stdOrg, setStdOrg,
-              stdLevel, setStdLevel, latinOrg, setLatinOrg,
-              latinLevel, setLatinLevel,
-            })}
-            <div className="mt-4">
-              <label className="block text-sm font-medium text-gray-700 mb-1">自己PR・メッセージ <span className="text-red-500">*</span></label>
-              <textarea value={content} onChange={(e) => setContent(e.target.value)} required rows={5} className="w-full border rounded-lg px-3 py-2 text-sm" placeholder="自己紹介やお相手への希望などを書いてください" />
-            </div>
-            <button type="submit" disabled={submitting} className="w-full mt-4 bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition font-medium disabled:opacity-50">
-              {submitting ? '投稿中...' : '投稿する'}
+      <div className="max-w-4xl mx-auto px-4 py-6">
+        {/* Error message */}
+        {error && (
+          <div className="mb-4 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg flex justify-between items-center">
+            <span>{error}</span>
+            <button onClick={() => setError(null)} className="text-red-500 hover:text-red-700">
+              ✕
             </button>
-          </form>
+          </div>
         )}
 
+        {/* Success message */}
+        {successMsg && (
+          <div className="mb-4 bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg flex justify-between items-center">
+            <span>{successMsg}</span>
+            <button onClick={() => setSuccessMsg(null)} className="text-green-500 hover:text-green-700">
+              ✕
+            </button>
+          </div>
+        )}
+
+        {/* New post button */}
+        {user && !showForm && (
+          <button
+            onClick={() => setShowForm(true)}
+            className="mb-6 w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 rounded-lg font-medium hover:from-pink-600 hover:to-purple-700 transition shadow-lg"
+          >            + 新しい募集を投稿する
+          </button>
+        )}
+
+        {/* Post form */}
+        {showForm && user && (
+          <div className="mb-6 bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <h2 className="text-lg font-bold mb-4 text-gray-800">新しい募集を投稿</h2>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  タイトル <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  value={title}
+                  onChange={e => setTitle(e.target.value)}
+                  placeholder="例: 東京でスタンダードのパートナー募集"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
+                  required
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    種目 <span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    value={danceType}
+                    onChange={e => setDanceType(e.target.value)}
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
+                    required
+                  >
+                    <option value="">選択してください</option>
+                    {DANCE_TYPES.map(t => (
+                      <option key={t} value={t}>{t}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    地域 <span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    value={area}
+                    onChange={e => setArea(e.target.value)}
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
+                    required
+                  >
+                    <option value="">選択してください</option>
+                    {AREAS.map(a => (
+                      <option key={a} value={a}>{a}</option>
+                    ))}                  </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    募集役割 <span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    value={role}
+                    onChange={e => setRole(e.target.value)}
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
+                    required
+                  >
+                    <option value="">選択してください</option>
+                    {ROLES.map(r => (
+                      <option key={r.value} value={r.value}>{r.label}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">レベル</label>
+                  <select
+                    value={level}
+                    onChange={e => setLevel(e.target.value)}
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
+                  >
+                    {LEVELS.map(l => (
+                      <option key={l.value} value={l.value}>{l.label}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  詳細 <span className="text-red-500">*</span>
+                </label>
+                <textarea
+                  value={content}
+                  onChange={e => setContent(e.target.value)}
+                  placeholder="自己紹介、希望する条件、練習場所・時間帯など"
+                  rows={4}
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none resize-none"
+                  required
+                />
+              </div>
+
+              <div className="flex gap-3">
+                <button
+                  type="submit"
+                  disabled={submitting}                  className="flex-1 bg-gradient-to-r from-pink-500 to-purple-600 text-white py-2 rounded-lg font-medium hover:from-pink-600 hover:to-purple-700 transition disabled:opacity-50"
+                >
+                  {submitting ? '投稿中...' : '投稿する'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setShowForm(false)}
+                  className="px-6 bg-gray-200 text-gray-700 py-2 rounded-lg font-medium hover:bg-gray-300 transition"
+                >
+                  キャンセル
+                </button>
+              </div>
+            </form>
+          </div>
+        )}
+
+        {/* Login prompt for non-authenticated users */}
+        {!user && liffReady && (
+          <div className="mb-6 bg-yellow-50 border border-yellow-200 text-yellow-800 px-4 py-3 rounded-lg text-sm">
+            投稿するにはLINEログインが必要です。上のボタンからログインしてください。
+          </div>
+        )}
+
+        {/* Posts list */}
         {loading ? (
-          <p className="text-center text-gray-500 py-8">読み込み中...</p>
+          <div className="text-center py-12 text-gray-500">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600 mx-auto mb-3"></div>
+            読み込み中...
+          </div>
         ) : posts.length === 0 ? (
-          <p className="text-center text-gray-500 py-8">まだ投稿がありません</p>
+          <div className="text-center py-12 text-gray-500">
+            <p className="text-lg mb-2">まだ投稿がありません</p>
+            <p className="text-sm">最初の募集を投稿してみましょう！</p>
+          </div>
         ) : (
           <div className="space-y-4">
-            {posts.map((post) => (
-              <div key={post.id} className="bg-white rounded-xl shadow-sm border p-6">
-                <div className="flex items-start justify-between mb-3">
+            {posts.map(post => (
+              <div
+                key={post.id}
+                className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition"
+              >
+                <div className="flex justify-between items-start mb-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-500 text-lg">?</div>
+                    {post.users.picture_url ? (
+                      <img
+                        src={post.users.picture_url}
+                        alt={post.users.display_name}
+                        className="w-10 h-10 rounded-full"
+                      />
+                    ) : (
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-pink-400 to-purple-500 flex items-center justify-center text-white font-bold">
+                        {post.users.display_name.charAt(0)}
+                      </div>
+                    )}
                     <div>
-                      <h3 className="font-bold text-gray-900">{post.nickname || post.line_display_name || "名無しさん"}</h3>
-                      <p className="text-xs text-gray-500">{formatDate(post.created_at)}</p>
+                      <p className="font-medium text-gray-800">{post.users.display_name}</p>                      <p className="text-xs text-gray-400">{formatDate(post.created_at)}</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    {user && user.userId !== post.line_user_id && (
-                      <button
-                        onClick={() => openApplyForm(post)}
-                        className="bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600 transition text-xs font-medium"
-                      >
-                        応募する
-                      </button>
-                    )}
-                    {user && user.userId === post.line_user_id && (
-                      <button onClick={() => handleDelete(post.id)} className="text-red-400 hover:text-red-600 text-xs">削除</button>
-                    )}
-                  </div>
+
+                  {user && user.userId === post.users.line_user_id && (
+                    <button
+                      onClick={() => handleDelete(post.id)}
+                      className="text-gray-400 hover:text-red-500 text-sm transition"
+                      title="削除"
+                    >
+                      🗑️
+                    </button>
+                  )}
                 </div>
+
+                <h3 className="text-lg font-bold text-gray-800 mb-2">{post.title}</h3>
 
                 <div className="flex flex-wrap gap-2 mb-3">
-                  <span className="bg-purple-50 text-purple-700 px-2 py-1 rounded text-xs font-medium">{post.role}</span>
-                  <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded text-xs">{post.dance_type}</span>
-                  <span className="bg-green-50 text-green-700 px-2 py-1 rounded text-xs">{post.area}</span>
-                  {post.pro_am && <span className="bg-orange-50 text-orange-700 px-2 py-1 rounded text-xs">{post.pro_am}</span>}
-                  {post.direction && <span className="bg-indigo-50 text-indigo-700 px-2 py-1 rounded text-xs">{post.direction}</span>}
+                  <span className="inline-block bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded-full">
+                    {post.dance_type}
+                  </span>
+                  <span className="inline-block bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full">
+                    {post.area}
+                  </span>
+                  <span className="inline-block bg-pink-100 text-pink-700 text-xs px-2 py-1 rounded-full">
+                    {getRoleLabel(post.role)}募集
+                  </span>
+                  <span className="inline-block bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">
+                    {getLevelLabel(post.level)}
+                  </span>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-1 mb-3 text-sm">
-                  {post.age_range && <div><span className="text-gray-500">年代:</span> <span className="text-gray-800">{post.age_range}</span></div>}
-                  {post.height && <div><span className="text-gray-500">身長:</span> <span className="text-gray-800">{post.height}</span></div>}
-                  {post.dance_experience && <div><span className="text-gray-500">ダンス歴:</span> <span className="text-gray-800">{post.dance_experience}</span></div>}
-                  {formatLevel(post.std_org, post.std_level) && <div><span className="text-gray-500">スタンダード級:</span> <span className="text-gray-800">{formatLevel(post.std_org, post.std_level)}</span></div>}
-                  {formatLevel(post.latin_org, post.latin_level) && <div><span className="text-gray-500">ラテン級:</span> <span className="text-gray-800">{formatLevel(post.latin_org, post.latin_level)}</span></div>}
-                  {post.practice_frequency && <div><span className="text-gray-500">練習頻度:</span> <span className="text-gray-800">{post.practice_frequency}</span></div>}
-                  {post.practice_location && <div><span className="text-gray-500">練習場所:</span> <span className="text-gray-800">{post.practice_location}</span></div>}
-                  {post.smoking && <div><span className="text-gray-500">煙草:</span> <span className="text-gray-800">{post.smoking}</span></div>}
-                  {post.marital_status && <div><span className="text-gray-500">独身/既婚:</span> <span className="text-gray-800">{post.marital_status}</span></div>}
-                </div>
+                <p className="text-gray-600 text-sm whitespace-pre-wrap mb-3">{post.content}</p>
 
-                <p className="text-gray-700 text-sm whitespace-pre-wrap">{post.content}</p>
+                {/* Apply button - visible to everyone except the poster */}
+                {(!user || user.userId !== post.users.line_user_id) && (
+                  <button
+                    onClick={() => openApplyForm(post)}
+                    className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition text-sm font-medium"
+                  >
+                    応募する
+                  </button>
+                )}
               </div>
             ))}
           </div>
         )}
+      </div>
 
-        {/* Application Modal */}
-        {applyingTo && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center z-50 p-4 overflow-y-auto">
-            <div className="bg-white rounded-xl shadow-lg w-full max-w-lg my-8">
-              <div className="sticky top-0 bg-white rounded-t-xl border-b px-6 py-4 flex items-center justify-between">
-                <h2 className="text-lg font-bold">応募フォーム</h2>
-                <button onClick={closeApplyForm} className="text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+      {/* Apply modal */}
+      {applyingTo && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-6">
+            <h2 className="text-lg font-bold text-gray-800 mb-1">応募フォーム</h2>
+            <p className="text-sm text-gray-500 mb-4">
+              「{applyingTo.title}」への応募
+            </p>
+            <form onSubmit={handleApplySubmit} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  ニックネーム <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  value={applyNickname}
+                  onChange={e => setApplyNickname(e.target.value)}
+                  placeholder="相手に表示される名前"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                  required
+                />
               </div>
-              <form onSubmit={handleApplySubmit} className="p-6">
-                {applyError && <p className="text-red-500 text-sm mb-4">{applyError}</p>}
-                {applySuccess && <p className="text-green-600 text-sm mb-4 font-medium">{applySuccess}</p>}
 
-                {renderFormFields('apply', {
-                  nickname: applyNickname, setNickname: setApplyNickname,
-                  danceType: applyDanceType, setDanceType: setApplyDanceType,
-                  area: applyArea, setArea: setApplyArea,
-                  role: applyRole, setRole: setApplyRole,
-                  ageRange: applyAgeRange, setAgeRange: setApplyAgeRange,
-                  height: applyHeight, setHeight: setApplyHeight,
-                  proAm: applyProAm, setProAm: setApplyProAm,
-                  danceExperience: applyDanceExperience, setDanceExperience: setApplyDanceExperience,
-                  direction: applyDirection, setDirection: setApplyDirection,
-                  practiceFrequency: applyPracticeFrequency, setPracticeFrequency: setApplyPracticeFrequency,
-                  practiceLocation: applyPracticeLocation, setPracticeLocation: setApplyPracticeLocation,
-                  smoking: applySmoking, setSmoking: setApplySmoking,
-                  maritalStatus: applyMaritalStatus, setMaritalStatus: setApplyMaritalStatus,
-                  stdOrg: applyStdOrg, setStdOrg: setApplyStdOrg,
-                  stdLevel: applyStdLevel, setStdLevel: setApplyStdLevel,
-                  latinOrg: applyLatinOrg, setLatinOrg: setApplyLatinOrg,
-                  latinLevel: applyLatinLevel, setLatinLevel: setApplyLatinLevel,
-                })}
-
-                <div className="mt-4">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">メッセージ</label>
-                  <textarea
-                    value={applyMessage}
-                    onChange={(e) => setApplyMessage(e.target.value)}
-                    rows={3}
-                    className="w-full border rounded-lg px-3 py-2 text-sm"
-                    placeholder="応募時のメッセージ（任意）"
-                  />
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    種目 <span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    value={applyDanceType}
+                    onChange={e => setApplyDanceType(e.target.value)}
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                    required
+                  >
+                    <option value="">選択してください</option>
+                    {DANCE_TYPES.map(t => (
+                      <option key={t} value={t}>{t}</option>
+                    ))}
+                  </select>
                 </div>
 
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    地域 <span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    value={applyArea}
+                    onChange={e => setApplyArea(e.target.value)}
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                    required
+                  >
+                    <option value="">選択してください</option>
+                    {AREAS.map(a => (
+                      <option key={a} value={a}>{a}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">                    役割 <span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    value={applyRole}
+                    onChange={e => setApplyRole(e.target.value)}
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                    required
+                  >
+                    <option value="">選択してください</option>
+                    {ROLES.map(r => (
+                      <option key={r.value} value={r.value}>{r.label}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">レベル</label>
+                  <select
+                    value={applyLevel}
+                    onChange={e => setApplyLevel(e.target.value)}
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                  >
+                    {LEVELS.map(l => (
+                      <option key={l.value} value={l.value}>{l.label}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">年代</label>
+                <select
+                  value={applyAge}
+                  onChange={e => setApplyAge(e.target.value)}
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                >
+                  <option value="">選択してください</option>
+                  {AGE_RANGES.map(a => (
+                    <option key={a} value={a}>{a}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  メッセージ <span className="text-red-500">*</span>
+                </label>
+                <textarea
+                  value={applyMessage}
+                  onChange={e => setApplyMessage(e.target.value)}
+                  placeholder="自己紹介やアピールポイントなど"
+                  rows={4}                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none"
+                  required
+                />
+              </div>
+
+              <div className="flex gap-3">
                 <button
                   type="submit"
-                  disabled={applySubmitting || !!applySuccess}
-                  className="w-full mt-4 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition font-medium disabled:opacity-50"
+                  disabled={applySubmitting}
+                  className="flex-1 bg-blue-500 text-white py-2 rounded-lg font-medium hover:bg-blue-600 transition disabled:opacity-50"
                 >
-                  {applySubmitting ? '送信中...' : '応募する'}
+                  {applySubmitting ? '送信中...' : '応募を送信'}
                 </button>
-              </form>
-            </div>
+                <button
+                  type="button"
+                  onClick={() => setApplyingTo(null)}
+                  className="px-6 bg-gray-200 text-gray-700 py-2 rounded-lg font-medium hover:bg-gray-300 transition"
+                >
+                  キャンセル
+                </button>
+              </div>
+            </form>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
