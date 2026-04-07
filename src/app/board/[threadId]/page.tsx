@@ -120,7 +120,7 @@ export default function ThreadDetailPage() {
       }
     };
     init();
-    fetchThread();
+    fetchThread().finally(() => setLoading(false));
   }, [fetchThread, threadId]);
 
   const handleLogin = async () => {
