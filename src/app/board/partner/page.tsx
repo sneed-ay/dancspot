@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { initLiff, isLoggedIn, login, getProfile } from '@/lib/liff';
 import Link from 'next/link';
 
 interface Post {
@@ -134,10 +133,12 @@ export default function PartnerBoardPage() {
   useEffect(() => {
     const init = async () => {
       try {
-        await initLiff();
+        const liffModule = await import('@line/liff');
+        const liff = liffModule.default;
+        await liff.init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID! });
         setLiffReady(true);
-        if (isLoggedIn()) {
-          const profile = await getProfile();
+        if (liff.isLoggedIn()) {
+          const profile = await liff.getProfile();
           setUser({
             userId: profile.userId,
             displayName: profile.displayName,
@@ -164,7 +165,10 @@ export default function PartnerBoardPage() {
     fetchPosts();
   }, [fetchPosts]);
 
-  const handleLogin = () => { login(); };
+  const handleLogin = async () => {
+    const liffModule = await import('@line/liff');
+    liffModule.default.login();
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -206,7 +210,7 @@ export default function PartnerBoardPage() {
   };
 
   const openApplyForm = (post: Post) => {
-    if (!user) { login(); return; }
+    if (!user) { handleLogin(); return; }
     setApplyingTo(post); setApplyNickname(user.displayName); setApplyError(''); setApplySuccess('');
   };
 
@@ -246,7 +250,7 @@ export default function PartnerBoardPage() {
         setApplySuccess('応募しました！受信トレイからメッセージを確認できます。');
         setTimeout(() => closeApplyForm(), 2000);
       } else { setApplyError(data.error || '応募に失敗しました'); }
-    } catch { setApplyError('通信エラーが発生しました'); }
+    } catch (err) { setApplyError('通信エラーが発生しました'); }
     finally { setApplySubmitting(false); }
   };
 
