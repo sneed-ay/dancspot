@@ -23,7 +23,7 @@ const services = [
   },
   {
     name: "掲示板",
-    desc: "お相手募集・ドレスレンタル・バイト募集をまとめた掲示板",
+    desc: "お相手募集・雑談など、自由に投稿できる掲示板",
     href: "/board",
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
