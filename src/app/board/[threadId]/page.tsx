@@ -152,7 +152,7 @@ export default function ThreadDetailPage() {
         } : prev);
         setReplyContent("");
         setTimeout(() => bottomRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
-        fetchThread();
+        setTimeout(() => fetchThread(), 2000);
       } else {
         const data = await res.json();
         if (data.error) alert(data.error);
