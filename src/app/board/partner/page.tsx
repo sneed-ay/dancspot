@@ -511,7 +511,7 @@ export default function PartnerBoardPage() {
                   <span className="bg-purple-50 text-purple-700 px-2 py-1 rounded text-xs font-medium">{post.role}</span>
                   <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded text-xs">{post.dance_type}</span>
                   <span className="bg-green-50 text-green-700 px-2 py-1 rounded text-xs">{post.area}</span>
-                  {post.pro_am && <span className="bg-orange-50 text-orange-700 px-2 py-1 rounded text-xs"}>{post.pro_am}</span>}
+                  {post.pro_am && <span className="bg-orange-50 text-orange-700 px-2 py-1 rounded text-xs">{post.pro_am}</span>}
                   {post.direction && <span className="bg-indigo-50 text-indigo-700 px-2 py-1 rounded text-xs">{post.direction}</span>}
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-1 mb-3 text-sm">
