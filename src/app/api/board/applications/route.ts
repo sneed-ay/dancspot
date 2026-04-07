@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     const ageRange = body.ageRange;
     const message = body.message || body.content;
 
-    if (!threadId || !applicantLineUserId || !nickname || !message) {
+    if (!threadId || !applicantLineUserId || !nickname) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
