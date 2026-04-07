@@ -1,19 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServiceSupabase } from "@/lib/supabase";
 
-// GET /api/board/threads/[threadId]/replies - Fetch replies for a thread
+const MAX_REPLIES = 1000;
+
+// GET /api/board/threads/[threadId]/replies
 export async function GET(
   _request: Request,
   { params }: { params: { threadId: string } }
 ) {
   try {
     const supabase = getServiceSupabase();
-
     const { data: replies, error } = await supabase
       .from("board_replies")
       .select("*")
       .eq("thread_id", params.threadId)
-      .order("created_at", { ascending: true });
+      .order("created_at", { ascending: true })
+      .limit(MAX_REPLIES);
 
     if (error) {
       console.error("Error fetching replies:", error);
@@ -27,7 +29,7 @@ export async function GET(
   }
 }
 
-// POST /api/board/threads/[threadId]/replies - Create a reply
+// POST /api/board/threads/[threadId]/replies
 export async function POST(
   request: NextRequest,
   { params }: { params: { threadId: string } }
@@ -52,6 +54,24 @@ export async function POST(
 
     if (threadError || !thread) {
       return NextResponse.json({ error: "Thread not found" }, { status: 404 });
+    }
+
+    // Check reply count limit
+    const { count, error: countError } = await supabase
+      .from("board_replies")
+      .select("id", { count: "exact", head: true })
+      .eq("thread_id", threadId);
+
+    if (countError) {
+      console.error("Error counting replies:", countError);
+      return NextResponse.json({ error: "Failed to check reply count" }, { status: 500 });
+    }
+
+    if ((count || 0) >= MAX_REPLIES) {
+      return NextResponse.json(
+        { error: "このスレッドは" + MAX_REPLIES + "件に達したため、これ以上書き込めません。" },
+        { status: 403 }
+      );
     }
 
     const { data: reply, error } = await supabase
