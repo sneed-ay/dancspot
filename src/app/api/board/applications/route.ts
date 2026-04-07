@@ -1,3 +1,4 @@
+// Applications API
 import { NextRequest, NextResponse } from 'next/server';
 import { getServiceSupabase } from '@/lib/supabase';
 
