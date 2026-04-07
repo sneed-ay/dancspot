@@ -4,19 +4,18 @@ import { getServiceSupabase } from '@/lib/supabase';
 // POST /api/board/applications - Submit an application to a partner post
 export async function POST(request: NextRequest) {
   try {
-    const {
-      threadId,
-      applicantLineUserId,
-      applicantDisplayName,
-      applicantPictureUrl,
-      nickname,
-      danceType,
-      area,
-      role,
-      level,
-      ageRange,
-      message,
-    } = await request.json();
+    const body = await request.json();
+    const threadId = body.threadId;
+    const applicantLineUserId = body.applicantLineUserId;
+    const applicantDisplayName = body.applicantDisplayName || body.applicantLineDisplayName;
+    const applicantPictureUrl = body.applicantPictureUrl || body.applicantLinePictureUrl;
+    const nickname = body.nickname;
+    const danceType = body.danceType;
+    const area = body.area;
+    const role = body.role;
+    const level = body.level;
+    const ageRange = body.ageRange;
+    const message = body.message || body.content;
 
     if (!threadId || !applicantLineUserId || !nickname || !message) {
       return NextResponse.json(
