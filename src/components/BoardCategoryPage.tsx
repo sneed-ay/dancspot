@@ -42,7 +42,7 @@ export default function BoardCategoryPage({
 
   const fetchThreads = useCallback(async () => {
     try {
-      const res = await fetch(`/api/board/threads?category=${category}`);
+      const res = await fetch(`/api/board/threads?category=${category}&t=${Date.now()}`, { cache: "no-store" });
       const data = await res.json();
       if (data.threads) setThreads(data.threads);
     } catch (error) {
