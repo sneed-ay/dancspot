@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { initLiff, isLoggedIn, login, getProfile } from "@/lib/liff";
 
 interface Thread {
   id: string;
@@ -28,11 +27,13 @@ interface BoardCategoryPageProps {
   categoryLabel: string;
 }
 
-export default function BoardCategoryPage({ category, categoryLabel }: BoardCategoryPageProps) {
+export default function BoardCategoryPage({
+  category,
+  categoryLabel,
+}: BoardCategoryPageProps) {
   const [threads, setThreads] = useState<Thread[]>([]);
   const [loading, setLoading] = useState(true);
   const [liffReady, setLiffReady] = useState(false);
-  const [liffError, setLiffError] = useState<string | null>(null);
   const [user, setUser] = useState<UserProfile | null>(null);
   const [showForm, setShowForm] = useState(false);
   const [formTitle, setFormTitle] = useState("");
@@ -54,16 +55,16 @@ export default function BoardCategoryPage({ category, categoryLabel }: BoardCate
   useEffect(() => {
     const init = async () => {
       try {
-        await initLiff();
+        const liff = (await import("@line/liff")).default;
+        await liff.init({ liffId: "2009689686-RlIuQaLI" });
         setLiffReady(true);
-        if (isLoggedIn()) {
-          const profile = await getProfile();
+        if (liff.isLoggedIn()) {
+          const profile = await liff.getProfile();
           setUser({
             userId: profile.userId,
             displayName: profile.displayName,
             pictureUrl: profile.pictureUrl,
           });
-          // Log login to Supabase
           fetch("/api/auth/log", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -77,15 +78,20 @@ export default function BoardCategoryPage({ category, categoryLabel }: BoardCate
         }
       } catch (error) {
         console.error("LIFF init error:", error);
-        setLiffError("LINEの初期化に失敗しました");
+        setLiffReady(true);
       }
     };
     init();
     fetchThreads();
-  }, [fetchThreads]);
+  }, [fetchThreads, category]);
 
-  const handleLogin = () => {
-    login();
+  const handleLogin = async () => {
+    try {
+      const liff = (await import("@line/liff")).default;
+      liff.login();
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -121,55 +127,34 @@ export default function BoardCategoryPage({ category, categoryLabel }: BoardCate
 
   const formatDate = (dateStr: string) => {
     const d = new Date(dateStr);
-    return d.toLocaleDateString("ja-JP", { year: "numeric", month: "short", day: "numeric" });
+    const MM = String(d.getMonth() + 1).padStart(2, "0");
+    const dd = String(d.getDate()).padStart(2, "0");
+    const HH = String(d.getHours()).padStart(2, "0");
+    const mm = String(d.getMinutes()).padStart(2, "0");
+    return `${MM}/${dd} ${HH}:${mm}`;
   };
 
-  if (liffError) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center p-8">
-          <p className="text-red-500 text-lg">{liffError}</p>
-          <p className="text-gray-500 mt-2">LINEアプリから開いてください</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (!liffReady) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <p className="text-gray-500">読み込み中...</p>
-      </div>
-    );
-  }
-
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <div className="flex items-center justify-between mb-8">
+    <div className="max-w-4xl mx-auto px-4 py-6">
+      <div className="flex items-center justify-between mb-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">{categoryLabel}</h1>
-          <p className="text-gray-500 text-sm mt-1">スレッド一覧</p>
+          <Link href="/board" className="text-blue-600 hover:underline text-sm">
+            ← 掲示板に戻る
+          </Link>
+          <h1 className="text-2xl font-bold text-gray-900 mt-1">{categoryLabel}</h1>
         </div>
         <div className="flex items-center gap-3">
           {user ? (
-            <>
-              <div className="flex items-center gap-2">
-                {user.pictureUrl && (
-                  <img src={user.pictureUrl} alt="" className="w-8 h-8 rounded-full" />
-                )}
-                <span className="text-sm text-gray-700">{user.displayName}</span>
-              </div>
-              <button
-                onClick={() => setShowForm(!showForm)}
-                className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition text-sm font-medium"
-              >
-                {showForm ? "閉じる" : "新規スレッド"}
-              </button>
-            </>
+            <button
+              onClick={() => setShowForm(!showForm)}
+              className="bg-red-600 text-white px-4 py-2 rounded text-sm font-bold hover:bg-red-700 transition"
+            >
+              {showForm ? "閉じる" : "スレッドを立てる"}
+            </button>
           ) : (
             <button
               onClick={handleLogin}
-              className="bg-[#06C755] text-white px-6 py-2 rounded-lg hover:bg-[#05b54c] transition text-sm font-medium flex items-center gap-2"
+              className="bg-[#06C755] text-white px-6 py-2 rounded-lg hover:bg-[#05b54c] transition text-sm font-medium"
             >
               LINEでログイン
             </button>
@@ -178,37 +163,36 @@ export default function BoardCategoryPage({ category, categoryLabel }: BoardCate
       </div>
 
       {showForm && user && (
-        <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-sm border p-6 mb-8">
-          <h2 className="text-lg font-bold mb-4">新規スレッド作成</h2>
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">タイトル <span className="text-red-500">*</span></label>
-              <input
-                type="text"
-                value={formTitle}
-                onChange={(e) => setFormTitle(e.target.value)}
-                required
-                className="w-full border rounded-lg px-3 py-2 text-sm"
-                placeholder="スレッドのタイトル"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">内容 <span className="text-red-500">*</span></label>
-              <textarea
-                value={formContent}
-                onChange={(e) => setFormContent(e.target.value)}
-                required
-                rows={4}
-                className="w-full border rounded-lg px-3 py-2 text-sm"
-                placeholder="スレッドの内容を書いてください"
-              />
-            </div>
+        <form
+          onSubmit={handleSubmit}
+          className="bg-gray-50 border border-gray-300 rounded-lg p-4 mb-6"
+        >
+          <div className="text-sm font-bold text-gray-700 mb-3">新規スレッド作成</div>
+          <div className="space-y-3">
+            <input
+              type="text"
+              value={formTitle}
+              onChange={(e) => setFormTitle(e.target.value)}
+              required
+              className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-blue-400"
+              placeholder="スレッドタイトル"
+              maxLength={100}
+            />
+            <textarea
+              value={formContent}
+              onChange={(e) => setFormContent(e.target.value)}
+              required
+              rows={4}
+              className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-blue-400"
+              placeholder=">>1 の内容"
+              maxLength={2000}
+            />
             <button
               type="submit"
               disabled={submitting}
-              className="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition font-medium disabled:opacity-50"
+              className="bg-gray-600 text-white px-6 py-2 rounded text-sm font-medium hover:bg-gray-700 transition disabled:opacity-50"
             >
-              {submitting ? "作成中..." : "スレッドを作成"}
+              {submitting ? "作成中..." : "スレッドを立てる"}
             </button>
           </div>
         </form>
@@ -217,29 +201,36 @@ export default function BoardCategoryPage({ category, categoryLabel }: BoardCate
       {loading ? (
         <p className="text-center text-gray-500 py-8">読み込み中...</p>
       ) : threads.length === 0 ? (
-        <p className="text-center text-gray-500 py-8">まだスレッドがありません</p>
+        <div className="text-center text-gray-500 py-8">
+          <p>まだスレッドがありません</p>
+          <p className="text-sm mt-1">最初のスレッドを立ててみましょう</p>
+        </div>
       ) : (
-        <div className="space-y-3">
-          {threads.map((thread) => (
+        <div className="bg-white border border-gray-300 rounded-lg overflow-hidden">
+          <div className="bg-gray-100 border-b border-gray-300 px-4 py-2 text-xs text-gray-500 flex">
+            <span className="w-16 shrink-0">レス</span>
+            <span className="flex-1">スレッド名</span>
+            <span className="w-28 text-right shrink-0">最終投稿</span>
+          </div>
+          {threads.map((thread, index) => (
             <Link
               key={thread.id}
               href={`/board/${thread.id}`}
-              className="block bg-white rounded-xl shadow-sm border p-4 hover:shadow-md transition"
+              className={`flex items-center px-4 py-2.5 hover:bg-blue-50 transition text-sm ${
+                index < threads.length - 1 ? "border-b border-gray-200" : ""
+              }`}
             >
-              <div className="flex items-center justify-between">
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-bold text-gray-900 truncate">{thread.title}</h3>
-                  <div className="flex items-center gap-2 mt-1">
-                    
-                    <span className="text-xs text-gray-500">
-                      {"名無しさん"} ・ {formatDate(thread.createdAt)}
-                    </span>
-                    {thread.replies !== undefined && thread.replies > 0 && (
-                      <span className="text-xs text-blue-500">返信 {thread.replies}</span>
-                    )}
-                  </div>
-                </div>
-              </div>
+              <span className="w-16 shrink-0 text-center text-xs font-mono text-gray-500">
+                {(thread.replies || 0) + 1}
+              </span>
+              <span className="flex-1 min-w-0">
+                <span className="font-bold text-blue-800 truncate block">
+                  {thread.title}
+                </span>
+              </span>
+              <span className="w-28 text-right shrink-0 text-xs text-gray-400">
+                {formatDate(thread.createdAt)}
+              </span>
             </Link>
           ))}
         </div>
