@@ -492,7 +492,6 @@ export default function PartnerBoardPage() {
               <div key={post.id} className="bg-white rounded-xl shadow-sm border p-6">
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-500 text-lg">?</div>
                     <div>
                       <h3 className="font-bold text-gray-900">{post.nickname || post.line_display_name || "名無しさん"}</h3>
                       <p className="text-xs text-gray-500">{formatDate(post.created_at)}</p>
