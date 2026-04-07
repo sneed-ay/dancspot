@@ -58,7 +58,7 @@ export default function ThreadDetailPage() {
 
   const fetchThread = useCallback(async () => {
     try {
-      const res = await fetch(`/api/board/threads/${threadId}`);
+      const res = await fetch(`/api/board/threads/${threadId}?t=${Date.now()}`, { cache: "no-store" });
       if (res.status === 404) {
         setNotFound(true);
         return;
