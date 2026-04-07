@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServiceSupabase } from "@/lib/supabase";
 
+export const dynamic = "force-dynamic";
+
 function toFrontend(row: Record<string, unknown>, replyCount?: number) {
   return {
     id: row.id,
