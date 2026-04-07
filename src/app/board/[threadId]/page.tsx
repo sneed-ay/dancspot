@@ -71,7 +71,16 @@ export default function ThreadDetailPage() {
       if (threadData.thread) {
         const merged = {
           ...threadData.thread,
-          replyList: repliesData.replies || [],
+          replyList: (repliesData.replies || []).map((r) => ({
+              id: r.id,
+              threadId: r.thread_id || r.threadId,
+              author: r.line_display_name || r.lineDisplayName || r.author || "",
+              content: r.content || "",
+              createdAt: r.created_at || r.createdAt,
+              lineUserId: r.line_user_id || r.lineUserId || "",
+              lineDisplayName: r.line_display_name || r.lineDisplayName || "",
+              linePictureUrl: r.line_picture_url || r.linePictureUrl || null,
+            })),
           replies: (repliesData.replies || []).length,
         };
         setThread(merged);
