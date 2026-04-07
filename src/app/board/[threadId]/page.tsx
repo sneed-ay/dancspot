@@ -58,19 +58,28 @@ export default function ThreadDetailPage() {
 
   const fetchThread = useCallback(async () => {
     try {
-      const res = await fetch(`/api/board/threads/${threadId}?t=${Date.now()}`, { cache: "no-store" });
-      if (res.status === 404) {
+      const [threadRes, repliesRes] = await Promise.all([
+        fetch(`/api/board/threads/${threadId}?t=${Date.now()}`, { cache: "no-store" }),
+        fetch(`/api/board/threads/${threadId}/replies?t=${Date.now()}`, { cache: "no-store" }),
+      ]);
+      if (threadRes.status === 404) {
         setNotFound(true);
         return;
       }
-      const data = await res.json();
-      if (data.thread) setThread(data.thread);
-    } catch (error) {
-      console.error("Failed to fetch thread:", error);
-    } finally {
-      setLoading(false);
+      const threadData = await threadRes.json();
+      const repliesData = await repliesRes.json();
+      if (threadData.thread) {
+        const merged = {
+          ...threadData.thread,
+          replyList: repliesData.replies || [],
+          replies: (repliesData.replies || []).length,
+        };
+        setThread(merged);
+      }
+    } catch (err) {
+      console.error("Failed to fetch thread:", err);
     }
-  }, [threadId]);
+  }, [threadId]);;
 
   useEffect(() => {
     const init = async () => {
