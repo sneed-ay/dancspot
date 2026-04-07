@@ -1,9 +1,8 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { initLiff, isLoggedIn, login, getProfile } from "@/lib/liff";
 
 interface Reply {
   id: string;
@@ -42,6 +41,8 @@ const CATEGORY_LABELS: Record<string, string> = {
   general: "雑談",
 };
 
+const MAX_REPLIES = 1000;
+
 export default function ThreadDetailPage() {
   const params = useParams();
   const threadId = params.threadId as string;
@@ -53,6 +54,7 @@ export default function ThreadDetailPage() {
   const [user, setUser] = useState<UserProfile | null>(null);
   const [replyContent, setReplyContent] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const bottomRef = useRef<HTMLDivElement>(null);
 
   const fetchThread = useCallback(async () => {
     try {
@@ -73,16 +75,16 @@ export default function ThreadDetailPage() {
   useEffect(() => {
     const init = async () => {
       try {
-        await initLiff();
+        const liff = (await import("@line/liff")).default;
+        await liff.init({ liffId: "2009689686-RlIuQaLI" });
         setLiffReady(true);
-        if (isLoggedIn()) {
-          const profile = await getProfile();
+        if (liff.isLoggedIn()) {
+          const profile = await liff.getProfile();
           setUser({
             userId: profile.userId,
             displayName: profile.displayName,
             pictureUrl: profile.pictureUrl,
           });
-          // Log login to Supabase
           fetch("/api/auth/log", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -96,19 +98,29 @@ export default function ThreadDetailPage() {
         }
       } catch (error) {
         console.error("LIFF init error:", error);
+        setLiffReady(true);
       }
     };
     init();
     fetchThread();
-  }, [fetchThread]);
+  }, [fetchThread, threadId]);
 
-  const handleLogin = () => {
-    login();
+  const handleLogin = async () => {
+    try {
+      const liff = (await import("@line/liff")).default;
+      liff.login();
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const handleReply = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user || !replyContent.trim()) return;
+    if (thread && (thread.replyList?.length || 0) >= MAX_REPLIES) {
+      alert("このスレッドは1000件に達したため、これ以上書き込めません。");
+      return;
+    }
     setSubmitting(true);
     try {
       const res = await fetch(`/api/board/threads/${threadId}/replies`, {
@@ -124,7 +136,11 @@ export default function ThreadDetailPage() {
       });
       if (res.ok) {
         setReplyContent("");
-        fetchThread();
+        await fetchThread();
+        setTimeout(() => bottomRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
+      } else {
+        const data = await res.json();
+        if (data.error) alert(data.error);
       }
     } catch (error) {
       console.error("Failed to post reply:", error);
@@ -135,7 +151,15 @@ export default function ThreadDetailPage() {
 
   const formatDate = (dateStr: string) => {
     const d = new Date(dateStr);
-    return d.toLocaleDateString("ja-JP", { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
+    const yyyy = d.getFullYear();
+    const MM = String(d.getMonth() + 1).padStart(2, "0");
+    const dd = String(d.getDate()).padStart(2, "0");
+    const dayNames = ["日", "月", "火", "水", "木", "金", "土"];
+    const day = dayNames[d.getDay()];
+    const HH = String(d.getHours()).padStart(2, "0");
+    const mm = String(d.getMinutes()).padStart(2, "0");
+    const ss = String(d.getSeconds()).padStart(2, "0");
+    return `${yyyy}/${MM}/${dd}(${day}) ${HH}:${mm}:${ss}`;
   };
 
   if (loading) {
@@ -151,87 +175,116 @@ export default function ThreadDetailPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <p className="text-gray-500 text-lg">スレッドが見つかりません</p>
-          <Link href="/board" className="text-blue-500 hover:underline mt-4 inline-block">← 掛示板に戻る</Link>
+          <Link href="/board/general" className="text-blue-500 hover:underline mt-4 inline-block">
+            ← スレッド一覧に戻る
+          </Link>
         </div>
       </div>
     );
   }
 
-  return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <Link href={`/board`} className="text-blue-500 hover:underline text-sm mb-4 inline-block">
-        ← 掛示板に戻る
-      </Link>
+  const totalPosts = 1 + (thread.replyList?.length || 0);
+  const isFull = (thread.replyList?.length || 0) >= MAX_REPLIES;
+  const backHref = thread.category ? `/board/${thread.category}` : "/board/general";
 
-      <div className="bg-white rounded-xl shadow-sm border p-6 mb-6">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="bg-blue-50 text-blue-700 px-2 py-0.5 rounded text-xs">
-            {CATEGORY_LABELS[thread.category] || thread.category}
-          </span>
-        </div>
-        <h1 className="text-xl font-bold text-gray-900 mb-3">{thread.title}</h1>
-        <div className="flex items-center gap-2 mb-4">
-          
-          <span className="text-sm text-gray-500">
-            {"名無しさん"} ・ {formatDate(thread.createdAt)}
-          </span>
-        </div>
-        <p className="text-gray-700 whitespace-pre-wrap">{thread.content}</p>
+  return (
+    <div className="max-w-4xl mx-auto px-4 py-6">
+      <div className="mb-4">
+        <Link href={backHref} className="text-blue-600 hover:underline text-sm">
+          ← スレッド一覧に戻る
+        </Link>
       </div>
 
-      <h2 className="text-lg font-bold text-gray-900 mb-4">返信 ({thread.replyList?.length || 0})</h2>
+      <div className="bg-red-700 text-white px-4 py-2 rounded-t-lg font-bold text-lg">
+        {thread.title}
+      </div>
 
-      {thread.replyList && thread.replyList.length > 0 && (
-        <div className="space-y-3 mb-6">
-          {thread.replyList.map((reply) => (
-            <div key={reply.id} className="bg-white rounded-xl shadow-sm border p-4">
-              <div className="flex items-center gap-2 mb-2">
-                
-                <span className="text-sm text-gray-500">
-                  {"名無しさん"} ・ {formatDate(reply.createdAt)}
-                </span>
-              </div>
-              <p className="text-gray-700 text-sm whitespace-pre-wrap">{reply.content}</p>
-            </div>
-          ))}
-        </div>
-      )}
+      <div className="bg-gray-200 px-4 py-1 text-xs text-gray-600 flex justify-between items-center border-x border-gray-300">
+        <span>{totalPosts} / {MAX_REPLIES}</span>
+        <span className="text-gray-400">
+          {CATEGORY_LABELS[thread.category] || thread.category}
+        </span>
+      </div>
 
-      {liffReady && user ? (
-        <form onSubmit={handleReply} className="bg-white rounded-xl shadow-sm border p-6">
-          <div className="flex items-center gap-2 mb-4">
-            {user.pictureUrl && (
-              <img src={user.pictureUrl} alt="" className="w-8 h-8 rounded-full" />
-            )}
-            <span className="text-sm text-gray-700">{user.displayName}</span>
+      <div className="bg-white border border-gray-300 border-t-0 rounded-b-lg">
+        <div className="px-4 py-3 border-b border-gray-200" id="post-1">
+          <div className="text-sm mb-1">
+            <span className="font-bold text-green-700">1</span>
+            <span className="text-gray-500 ml-2">：</span>
+            <span className="font-bold text-green-700">名無しさん</span>
+            <span className="text-gray-500 ml-2">：</span>
+            <span className="text-gray-500 text-xs">{formatDate(thread.createdAt)}</span>
           </div>
-          <textarea
-            value={replyContent}
-            onChange={(e) => setReplyContent(e.target.value)}
-            required
-            rows={3}
-            className="w-full border rounded-lg px-3 py-2 text-sm mb-3"
-            placeholder="返信を書く..."
-          />
-          <button
-            type="submit"
-            disabled={submitting}
-            className="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition text-sm font-medium disabled:opacity-50"
-          >
-            {submitting ? "送信中..." : "返信する"}
-          </button>
-        </form>
-      ) : liffReady ? (
-        <div className="bg-white rounded-xl shadow-sm border p-6 text-center">
-          <p className="text-gray-500 mb-3">返信するにはLINEログインが必要です</p>
-          <button
-            onClick={handleLogin}
-            className="bg-[#06C755] text-white px-6 py-2 rounded-lg hover:bg-[#05b54c] transition text-sm font-medium"
-          >
-            LINEでログイン
-          </button>
+          <div className="text-sm text-gray-800 whitespace-pre-wrap pl-2">{thread.content}</div>
         </div>
-      ) : null}
+
+        {thread.replyList && thread.replyList.map((reply, index) => {
+          const num = index + 2;
+          return (
+            <div
+              key={reply.id}
+              className={`px-4 py-3 ${num < totalPosts ? "border-b border-gray-200" : ""}`}
+              id={`post-${num}`}
+            >
+              <div className="text-sm mb-1">
+                <span className="font-bold text-green-700">{num}</span>
+                <span className="text-gray-500 ml-2">：</span>
+                <span className="font-bold text-green-700">名無しさん</span>
+                <span className="text-gray-500 ml-2">：</span>
+                <span className="text-gray-500 text-xs">{formatDate(reply.createdAt)}</span>
+              </div>
+              <div className="text-sm text-gray-800 whitespace-pre-wrap pl-2">{reply.content}</div>
+            </div>
+          );
+        })}
+
+        <div ref={bottomRef} />
+      </div>
+
+      <div className="mt-6">
+        {isFull ? (
+          <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
+            <p className="text-red-600 font-bold text-sm">
+              このスレッドは{MAX_REPLIES}件に達しました。新規スレッドを立ててください。
+            </p>
+          </div>
+        ) : liffReady && user ? (
+          <form onSubmit={handleReply} className="bg-gray-50 border border-gray-300 rounded-lg p-4">
+            <div className="text-sm font-bold text-gray-700 mb-2">書き込み</div>
+            <textarea
+              value={replyContent}
+              onChange={(e) => setReplyContent(e.target.value)}
+              required
+              rows={4}
+              className="w-full border border-gray-300 rounded px-3 py-2 text-sm mb-3 focus:outline-none focus:border-blue-400"
+              placeholder="ここに書き込んでください..."
+              maxLength={2000}
+            />
+            <div className="flex items-center justify-between">
+              <span className="text-xs text-gray-400">
+                {totalPosts} / {MAX_REPLIES}
+              </span>
+              <button
+                type="submit"
+                disabled={submitting}
+                className="bg-gray-600 text-white px-6 py-2 rounded text-sm font-medium hover:bg-gray-700 transition disabled:opacity-50"
+              >
+                {submitting ? "書き込み中..." : "書き込む"}
+              </button>
+            </div>
+          </form>
+        ) : liffReady ? (
+          <div className="bg-gray-50 border border-gray-300 rounded-lg p-4 text-center">
+            <p className="text-gray-500 text-sm mb-3">書き込むにはLINEログインが必要です</p>
+            <button
+              onClick={handleLogin}
+              className="bg-[#06C755] text-white px-6 py-2 rounded-lg hover:bg-[#05b54c] transition text-sm font-medium"
+            >
+              LINEでログイン
+            </button>
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 }
