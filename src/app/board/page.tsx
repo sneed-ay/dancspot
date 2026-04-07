@@ -14,6 +14,7 @@ const categories = [
     description: "競技用ドレス・衣装のレンタル・売買情報",
     icon: "👗",
     href: "/board/dress",
+    soon: true,
   },
   {
     id: "job",
@@ -21,6 +22,7 @@ const categories = [
     description: "ダンス教室・スタジオのアルバイト情報",
     icon: "💼",
     href: "/board/job",
+    soon: true,
   },
   {
     id: "general",
@@ -50,23 +52,43 @@ export default function BoardPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {categories.map((cat) => (
-          <Link
-            key={cat.id}
-            href={cat.href}
-            className="block bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md hover:border-violet-300 transition-all duration-200"
-          >
-            <div className="flex items-start gap-4">
-              <span className="text-3xl">{cat.icon}</span>
-              <div>
-                <h2 className="text-lg font-semibold text-gray-900 mb-1">
-                  {cat.label}
-                </h2>
-                <p className="text-sm text-gray-500">{cat.description}</p>
+        {categories.map((cat) =>
+          cat.soon ? (
+            <div
+              key={cat.id}
+              className="block bg-white rounded-xl shadow-sm border border-gray-200 p-6 opacity-60 cursor-default"
+            >
+              <div className="flex items-start gap-4">
+                <span className="text-3xl">{cat.icon}</span>
+                <div>
+                  <h2 className="text-lg font-semibold text-gray-900 mb-1 flex items-center gap-2">
+                    {cat.label}
+                    <span className="text-[10px] bg-amber-400/90 text-violet-950 font-bold px-2 py-0.5 rounded-full">
+                      準備中
+                    </span>
+                  </h2>
+                  <p className="text-sm text-gray-500">{cat.description}</p>
+                </div>
               </div>
             </div>
-          </Link>
-        ))}
+          ) : (
+            <Link
+              key={cat.id}
+              href={cat.href}
+              className="block bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md hover:border-violet-300 transition-all duration-200"
+            >
+              <div className="flex items-start gap-4">
+                <span className="text-3xl">{cat.icon}</span>
+                <div>
+                  <h2 className="text-lg font-semibold text-gray-900 mb-1">
+                    {cat.label}
+                  </h2>
+                  <p className="text-sm text-gray-500">{cat.description}</p>
+                </div>
+              </div>
+            </Link>
+          )
+        )}
       </div>
     </main>
   );
