@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
     // Get the post to find the poster's LINE user ID
     const { data: post, error: postError } = await supabase
       .from('partner_posts')
-      .select('id, user_id, users!inner(line_user_id, display_name)')
+      .select('id, line_user_id')
       .eq('id', threadId)
       .single();
 
@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Post not found' }, { status: 404 });
     }
 
-    const posterLineUserId = (post.users as unknown as { line_user_id: string }).line_user_id;
+    const posterLineUserId = post.line_user_id;
 
     // Prevent self-application
     if (posterLineUserId === applicantLineUserId) {
