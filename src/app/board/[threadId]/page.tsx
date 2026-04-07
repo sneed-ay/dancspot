@@ -135,9 +135,24 @@ export default function ThreadDetailPage() {
         }),
       });
       if (res.ok) {
+        const newReply = {
+          id: crypto.randomUUID(),
+          threadId: threadId as string,
+          author: user.displayName,
+          content: replyContent.trim(),
+          createdAt: new Date().toISOString(),
+          lineUserId: user.userId,
+          lineDisplayName: user.displayName,
+          linePictureUrl: user.pictureUrl || null,
+        };
+        setThread((prev) => prev ? {
+          ...prev,
+          replyList: [...(prev.replyList || []), newReply],
+          replies: (prev.replies || 0) + 1,
+        } : prev);
         setReplyContent("");
-        await fetchThread();
         setTimeout(() => bottomRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
+        fetchThread();
       } else {
         const data = await res.json();
         if (data.error) alert(data.error);
