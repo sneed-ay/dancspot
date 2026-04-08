@@ -4731,7 +4731,12 @@ export const studios: Studio[] = [
     access: "",
     hours: "",
     fees: { trialLesson: "", groupLesson: "", privatelesson: "" },
-    staff: [{ name: "", role: "代表・講師", photo: "" }]
+    staff: [
+      { name: "渡辺 崇", role: "代表・インストラクター", photo: "https://masuoka-dance.com/assets/img/staff/staff2c.jpg" },
+      { name: "十文字 勝", role: "常勤インストラクター", photo: "https://masuoka-dance.com/assets/img/staff/staff6.jpg" },
+      { name: "西条 昌子", role: "常勤インストラクター", photo: "https://masuoka-dance.com/assets/img/staff/staff7.jpg" },
+      { name: "吉岡 博樹", role: "非常勤インストラクター", photo: "https://masuoka-dance.com/assets/img/staff/staff3.jpg" }
+    ]
   },
   {
     id: "kanagawa-002",
@@ -4748,7 +4753,12 @@ export const studios: Studio[] = [
     access: "",
     hours: "",
     fees: { trialLesson: "", groupLesson: "", privatelesson: "" },
-    staff: [{ name: "", role: "代表・講師", photo: "" }]
+    staff: [
+      { name: "鈴木 啓", role: "専任インストラクター", photo: "https://airdancelounge.com/wp-content/uploads/2022/10/adl_staff_1-1.jpg" },
+      { name: "古川 玲奈", role: "専任インストラクター", photo: "https://airdancelounge.com/wp-content/uploads/2022/10/adl_staff-2-2.jpg" },
+      { name: "降旗 友希", role: "インストラクター", photo: "https://airdancelounge.com/wp-content/uploads/2022/10/adl_staff_3-30x30.jpg" },
+      { name: "大塩 香澄", role: "契約インストラクター", photo: "https://airdancelounge.com/wp-content/uploads/2024/11/kasumi_oshio-1-768x768.jpg" }
+    ]
   },
   {
     id: "kanagawa-003",
@@ -4765,7 +4775,12 @@ export const studios: Studio[] = [
     access: "",
     hours: "",
     fees: { trialLesson: "", groupLesson: "", privatelesson: "" },
-    staff: [{ name: "", role: "代表・講師", photo: "" }]
+    staff: [
+      { name: "野田 誠", role: "スタジオオーナー", photo: "https://ikuta-dance.com/wp-content/themes/CC-theme/images/t/1.jpg" },
+      { name: "広岡 嘉生", role: "インストラクター", photo: "https://ikuta-dance.com/wp-content/themes/CC-theme/images/t/2.jpg" },
+      { name: "広岡 有沙", role: "スクールコーディネーター", photo: "https://ikuta-dance.com/wp-content/themes/CC-theme/images/t/3.jpg" },
+      { name: "千本 京子", role: "プロダンスインストラクター", photo: "https://ikuta-dance.com/wp-content/themes/CC-theme/images/t/5.jpg" }
+    ]
   },
   {
     id: "kanagawa-004",
@@ -5003,7 +5018,12 @@ export const studios: Studio[] = [
     access: "",
     hours: "",
     fees: { trialLesson: "", groupLesson: "", privatelesson: "" },
-    staff: [{ name: "", role: "代表・講師", photo: "" }]
+    staff: [
+      { name: "清水 啓司", role: "代表", photo: "https://handtdancestudio.jp/_img/ja/article/696/image/650_800_1_f3f3f3/" },
+      { name: "疋田 貴子", role: "講師", photo: "https://handtdancestudio.jp/_img/ja/article/699/image/650_800_1_f3f3f3/" },
+      { name: "熊谷 淳一", role: "講師", photo: "https://handtdancestudio.jp/_img/ja/article/705/image/650_800_1_f3f3f3/" },
+      { name: "熊谷 陽子", role: "講師", photo: "https://handtdancestudio.jp/_img/ja/article/708/image/650_800_1_f3f3f3/" }
+    ]
   },
   {
     id: "chiba-002",
@@ -5020,7 +5040,12 @@ export const studios: Studio[] = [
     access: "",
     hours: "",
     fees: { trialLesson: "", groupLesson: "", privatelesson: "" },
-    staff: [{ name: "", role: "代表・講師", photo: "" }]
+    staff: [
+      { name: "海老原 正志", role: "講師", photo: "https://ebiharads.her.jp/img/staff/teacher1_photo.jpg" },
+      { name: "海老原 晴美", role: "講師", photo: "https://ebiharads.her.jp/img/staff/teacher2_photo.jpg" },
+      { name: "渋谷 春美", role: "講師", photo: "https://ebiharads.her.jp/img/staff/teacher3_photo.jpg" },
+      { name: "石井 博", role: "講師", photo: "https://ebiharads.her.jp/img/staff/teacher4_photo.jpg" }
+    ]
   },
   {
     id: "chiba-003",
@@ -5054,7 +5079,12 @@ export const studios: Studio[] = [
     access: "",
     hours: "",
     fees: { trialLesson: "", groupLesson: "", privatelesson: "" },
-    staff: [{ name: "", role: "代表・講師", photo: "" }]
+    staff: [
+      { name: "伊藤 正宏", role: "講師", photo: "https://itodanceschool.com/wp-content/uploads/2021/01/ito-mahiro.jpg" },
+      { name: "庄子 悟司", role: "講師", photo: "https://itodanceschool.com/wp-content/uploads/2021/01/shouji.jpg" },
+      { name: "伊藤 泰子", role: "講師", photo: "https://itodanceschool.com/wp-content/uploads/2021/01/IMG_6512.jpg" },
+      { name: "中村 真理子", role: "講師", photo: "https://itodanceschool.com/wp-content/uploads/2021/08/IMG_9342.jpg" }
+    ]
   },
   {
     id: "chiba-005",
@@ -5071,7 +5101,10 @@ export const studios: Studio[] = [
     access: "",
     hours: "",
     fees: { trialLesson: "", groupLesson: "", privatelesson: "" },
-    staff: [{ name: "", role: "代表・講師", photo: "" }]
+    staff: [
+      { name: "和田 慎一", role: "講師", photo: "https://www.sa-dance.com/wp-content/uploads/2022/07/PRO_336-683x1024.jpg" },
+      { name: "和田 篤子", role: "講師", photo: "https://www.sa-dance.com/wp-content/uploads/2022/07/PRO_326-2-683x1024.jpg" }
+    ]
   },
   {
     id: "chiba-006",
@@ -5292,7 +5325,12 @@ export const studios: Studio[] = [
     access: "",
     hours: "",
     fees: { trialLesson: "", groupLesson: "", privatelesson: "" },
-    staff: [{ name: "", role: "代表・講師", photo: "" }]
+    staff: [
+      { name: "安田 充希", role: "プロダンスインストラクター", photo: "https://takigawa-ds.com/wp/wp-content/uploads/2025/12/s-yasuda_mitsuki288x238.jpg" },
+      { name: "比嘉 那美", role: "プロダンスインストラクター", photo: "https://takigawa-ds.com/wp/wp-content/uploads/2024/03/nami-h01-238x288-1.jpg" },
+      { name: "神成 飛花", role: "プロダンスインストラクター", photo: "https://takigawa-ds.com/wp/wp-content/uploads/2026/01/kannari_asuka288x238-1.jpg" },
+      { name: "滝川 洋信", role: "プロダンスインストラクター", photo: "https://takigawa-ds.com/wp/wp-content/themes/takigawadance/img/staff/img01.jpg" }
+    ]
   },
   {
     id: "saitama-002",
@@ -5309,7 +5347,10 @@ export const studios: Studio[] = [
     access: "",
     hours: "",
     fees: { trialLesson: "", groupLesson: "", privatelesson: "" },
-    staff: [{ name: "", role: "代表・講師", photo: "" }]
+    staff: [
+      { name: "岸田 肇", role: "プロダンスインストラクター", photo: "https://kishida-dance.com/wp-content/uploads/2024/04/00001.webp" },
+      { name: "岡田 祐子", role: "プロダンスインストラクター", photo: "https://kishida-dance.com/wp-content/uploads/2024/04/00001.webp" }
+    ]
   },
   {
     id: "saitama-003",
@@ -5343,7 +5384,11 @@ export const studios: Studio[] = [
     access: "",
     hours: "",
     fees: { trialLesson: "", groupLesson: "", privatelesson: "" },
-    staff: [{ name: "", role: "代表・講師", photo: "" }]
+    staff: [
+      { name: "樟浦 宏幸", role: "講師", photo: "https://hiuradance.com/wp-content/uploads/2025/04/557672296903606963.jpg" },
+      { name: "樟浦 久子", role: "講師", photo: "https://hiuradance.com/wp-content/uploads/2025/04/sensei_hisako_face-scaled.jpg" },
+      { name: "樟浦 うらら", role: "講師", photo: "https://hiuradance.com/wp-content/uploads/2025/05/561867977860317492.jpg" }
+    ]
   },
   {
     id: "saitama-005",
@@ -5360,7 +5405,12 @@ export const studios: Studio[] = [
     access: "",
     hours: "",
     fees: { trialLesson: "", groupLesson: "", privatelesson: "" },
-    staff: [{ name: "", role: "代表・講師", photo: "" }]
+    staff: [
+      { name: "中島 史智", role: "講師", photo: "https://sakaneds.com/wp-content/themes/sg074/img/staff/mv_staff_01.jpg" },
+      { name: "紅葉 義人", role: "講師", photo: "https://sakaneds.com/wp-content/uploads/2019/08/ph_staff_01.jpg" },
+      { name: "高橋 祐貴", role: "講師", photo: "https://sakaneds.com/wp-content/uploads/2019/08/ph_staff_02.jpg" },
+      { name: "佐々木 まい", role: "講師", photo: "https://sakaneds.com/wp-content/uploads/2019/08/ph_staff_06.jpg" }
+    ]
   },
   {
     id: "saitama-006",
@@ -5428,7 +5478,9 @@ export const studios: Studio[] = [
     access: "",
     hours: "",
     fees: { trialLesson: "", groupLesson: "", privatelesson: "" },
-    staff: [{ name: "", role: "代表・講師", photo: "" }]
+    staff: [
+      { name: "熊谷 憲幸", role: "ダンス講師", photo: "https://www.dance-atelier.com/images/576/12671637/151115_3031.JPG" }
+    ]
   },
   {
     id: "saitama-010",
@@ -5445,7 +5497,10 @@ export const studios: Studio[] = [
     access: "",
     hours: "",
     fees: { trialLesson: "", groupLesson: "", privatelesson: "" },
-    staff: [{ name: "", role: "代表・講師", photo: "" }]
+    staff: [
+      { name: "高橋 圭一", role: "ダンス講師", photo: "https://www.takahashikeiichidanceacademy.com/files/topics/35_ext_01_0.jpg" },
+      { name: "高橋 彦子", role: "ダンス講師", photo: "https://www.takahashikeiichidanceacademy.com/files/user/img/eyecatch1.jpg" }
+    ]
   },
   {
     id: "saitama-011",
@@ -5462,7 +5517,9 @@ export const studios: Studio[] = [
     access: "",
     hours: "",
     fees: { trialLesson: "", groupLesson: "", privatelesson: "" },
-    staff: [{ name: "", role: "代表・講師", photo: "" }]
+    staff: [
+      { name: "新田 アキ", role: "ダンス講師", photo: "http://akidance.com/wp-content/uploads/2022/08/aki.png" }
+    ]
   },
   {
     id: "saitama-012",
@@ -5496,7 +5553,12 @@ export const studios: Studio[] = [
     access: "",
     hours: "",
     fees: { trialLesson: "", groupLesson: "", privatelesson: "" },
-    staff: [{ name: "", role: "代表・講師", photo: "" }]
+    staff: [
+      { name: "屋宜 正直", role: "講師", photo: "https://yagi-ds.com/wp-content/uploads/staff_img01.jpg" },
+      { name: "屋宜 玲子", role: "講師", photo: "https://yagi-ds.com/wp-content/uploads/staff_img02.jpg" },
+      { name: "横尾 篤嗣", role: "講師", photo: "https://yagi-ds.com/wp-content/uploads/staff_img03.jpg" },
+      { name: "横尾 美由紀", role: "講師", photo: "https://yagi-ds.com/wp-content/uploads/staff_img04.jpg" }
+    ]
   },
   {
     id: "ibaraki-002",
@@ -5547,7 +5609,10 @@ export const studios: Studio[] = [
     access: "",
     hours: "",
     fees: { trialLesson: "", groupLesson: "", privatelesson: "" },
-    staff: [{ name: "", role: "代表・講師", photo: "" }]
+    staff: [
+      { name: "三浦 敏之", role: "代表", photo: "http://www.miuradance.co.jp/_src/26004/photo3.jpg" },
+      { name: "三浦恵美子", role: "代表", photo: "http://www.miuradance.co.jp/_src/26006/photo2.jpg" }
+    ]
   },
   {
     id: "ibaraki-005",
@@ -5615,7 +5680,12 @@ export const studios: Studio[] = [
     access: "",
     hours: "",
     fees: { trialLesson: "", groupLesson: "", privatelesson: "" },
-    staff: [{ name: "", role: "代表・講師", photo: "" }]
+    staff: [
+      { name: "矢部行英", role: "代表", photo: "https://img-cdn.jg.jugem.jp/797/2180123/20111118_2286667_t.jpg" },
+      { name: "矢部浩子", role: "講師", photo: "https://img-cdn.jg.jugem.jp/797/2180123/20111118_2286696_t.jpg" },
+      { name: "井出亘平", role: "講師", photo: "https://img-cdn.jg.jugem.jp/797/2180123/20120104_2327711_t.jpg" },
+      { name: "水出光", role: "講師", photo: "https://img-cdn.jg.jugem.jp/797/2180123/20111118_2286886_t.jpg" }
+    ]
   },
   {
     id: "tochigi-002",
@@ -5632,7 +5702,11 @@ export const studios: Studio[] = [
     access: "",
     hours: "",
     fees: { trialLesson: "", groupLesson: "", privatelesson: "" },
-    staff: [{ name: "", role: "代表・講師", photo: "" }]
+    staff: [
+      { name: "星友幸", role: "代表", photo: "https://static.wixstatic.com/media/a7b2b1_6240b44b3b50428b9d4c777547be878d~mv2.jpg/v1/fill/w_252,h_336,al_c,q_80,enc_avif,quality_auto/IMG_0121_JPG.jpg" },
+      { name: "星佑喜子", role: "講師", photo: "https://static.wixstatic.com/media/a7b2b1_2b15f5c0bea04480899e5b89d3fd3bdc~mv2.jpg/v1/fill/w_252,h_336,al_c,q_80,enc_avif,quality_auto/998C80EB-8657-42F7-A88B-0ECFE4F3B72B.jpg" },
+      { name: "Nozomi", role: "バレリーナヨガ", photo: "https://static.wixstatic.com/media/a7b2b1_b2f84dc9348e4f928b9fd4a6a7899858~mv2.jpeg" }
+    ]
   },
   {
     id: "tochigi-003",
@@ -5649,7 +5723,9 @@ export const studios: Studio[] = [
     access: "",
     hours: "",
     fees: { trialLesson: "", groupLesson: "", privatelesson: "" },
-    staff: [{ name: "", role: "代表・講師", photo: "" }]
+    staff: [
+      { name: "小倉正博", role: "プロダンスインストラクター", photo: "https://oguradance.chiharuya.com/img/01.jpg" }
+    ]
   },
   {
     id: "tochigi-004",
@@ -5666,7 +5742,10 @@ export const studios: Studio[] = [
     access: "",
     hours: "",
     fees: { trialLesson: "", groupLesson: "", privatelesson: "" },
-    staff: [{ name: "", role: "代表・講師", photo: "" }]
+    staff: [
+      { name: "町田将啓", role: "代表・プロダンス教師1級", photo: "https://msdancefactory.com/img/img_9433.jpg" },
+      { name: "町田友実", role: "プロダンス教師3級", photo: "https://msdancefactory.com/img/img_9431.jpg" }
+    ]
   },
   {
     id: "tochigi-005",
@@ -5683,7 +5762,10 @@ export const studios: Studio[] = [
     access: "",
     hours: "",
     fees: { trialLesson: "", groupLesson: "", privatelesson: "" },
-    staff: [{ name: "", role: "代表・講師", photo: "" }]
+    staff: [
+      { name: "鶴野敏", role: "講師", photo: "https://cranedance.sakura.ne.jp/wp/wp-content/uploads/2021/03/photo1.jpg" },
+      { name: "大野宜子", role: "講師", photo: "https://cranedance.sakura.ne.jp/wp/wp-content/uploads/2021/03/photo2.jpg" }
+    ]
   },
   {
     id: "tochigi-006",
@@ -5700,7 +5782,11 @@ export const studios: Studio[] = [
     access: "",
     hours: "",
     fees: { trialLesson: "", groupLesson: "", privatelesson: "" },
-    staff: [{ name: "", role: "代表・講師", photo: "" }]
+    staff: [
+      { name: "町田恵深", role: "代表", photo: "https://hitomidance.com/wp/wp-content/uploads/2021/12/17.jpg" },
+      { name: "町田明彦", role: "講師", photo: "https://hitomidance.com/wp/wp-content/uploads/2021/12/18.jpg" },
+      { name: "町田ひとみ", role: "講師", photo: "https://hitomidance.com/wp/wp-content/uploads/2021/12/19.jpg" }
+    ]
   },
   {
     id: "tochigi-007",
@@ -5989,7 +6075,12 @@ export const studios: Studio[] = [
     access: "",
     hours: "",
     fees: { trialLesson: "", groupLesson: "", privatelesson: "" },
-    staff: [{ name: "", role: "代表・講師", photo: "" }]
+    staff: [
+      { name: "松浦 雅生", role: "Regular Instructor", photo: "https://tamamura-dance.com/wp-content/uploads/2024/02/松浦雅生.jpg" },
+      { name: "萩本 いづみ", role: "Regular Instructor", photo: "https://tamamura-dance.com/wp-content/uploads/2025/08/萩本いづみ-2-e1756020056793.jpg" },
+      { name: "瀧澤 智恵", role: "Expert Instructor", photo: "https://tamamura-dance.com/wp-content/uploads/2024/02/瀧澤智恵-1024x683.jpg" },
+      { name: "佐々木 杏昂", role: "Expert Instructor", photo: "https://tamamura-dance.com/wp-content/uploads/2024/02/佐々木杏昂.jpg" }
+    ]
   },
   {
     id: "gunma-004",
