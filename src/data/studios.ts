@@ -6541,7 +6541,9 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "要確認（公式サイト参照）",
     description: "石川県ボールルームダンス連盟認定登録教室。個人レッスン・ペアレッスン、20代～30代限定の団体レッスン、キッズ向けグループレッスンを提供。初心者から競技選手まで対応。",
-    staff: []
+    staff: [
+      { name: "宮崎 英臣・英恵", role: "経営指導", photo: "https://dancestudio-miyazaki.com/wp-content/uploads/2018/04/EishinHanae-e1522755003807.png" }
+    ]
   },
   {
     id: "ishikawa-002",
@@ -6571,7 +6573,12 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "月〜金 13:00–22:00、土曜日 13:00–20:00、日曜日 13:00–18:00",
     description: "金沢香林坊の裏通り柿木畠に位置する。ジュニアから高齢者まで多様に楽しめる社交ダンス教室。25歳以下の若者対象に競技会出場・インストラクター養成講座を提供。",
-    staff: []
+    staff: [
+      { name: "中嶋 智孝・夏代", role: "代表", photo: "http://dsroyal.com/wp-content/uploads/2021/05/%E4%B8%AD%E5%B6%8B%E5%85%88%E7%94%9F.jpg" },
+      { name: "中嶋 秀樹・美喜", role: "講師", photo: "http://dsroyal.com/wp-content/uploads/2021/03/cropped-%E7%A7%80%E6%A8%B9%E3%83%BB%E7%BE%8E%E5%96%9C.jpg" },
+      { name: "沖野 智征・中村 綾子", role: "講師", photo: "http://dsroyal.com/wp-content/uploads/2021/04/20181202142329-1%E7%B6%BE%E5%AD%90.jpg" },
+      { name: "宮本 博之・紫", role: "講師", photo: "http://dsroyal.com/wp-content/uploads/2021/04/20200209150001-1%E5%AE%AE%E6%9C%AC%E5%A4%AB%E5%A6%BB.jpg" }
+    ]
   },
   {
     id: "ishikawa-004",
@@ -6601,7 +6608,10 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "要確認",
     description: "石川県金沢市の社交ダンス教室。",
-    staff: []
+    staff: [
+      { name: "松田 浩一", role: "講師", photo: "https://d-schoolkanazawa.com/_src/192/_dsc0252.jpg" },
+      { name: "小川 清美", role: "講師", photo: "https://d-schoolkanazawa.com/_src/351/_dsc9759.jpg" }
+    ]
   },
   {
     id: "ishikawa-006",
@@ -6676,7 +6686,12 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "要確認。レンタルスタジオは24時間営業",
     description: "ダンス・ヨガ・レンタルスタジオ。キッズから大人まで、それぞれの目的やレベルに合わせたクラスを提供。",
-    staff: []
+    staff: [
+      { name: "しのザウルス", role: "講師", photo: "https://mfp-kanazawa.ne.jp/asset/img/instructor/shino.jpg" },
+      { name: "KAZUMA", role: "講師", photo: "https://mfp-kanazawa.ne.jp/asset/img/instructor/kazma.jpg" },
+      { name: "Monsta Marble", role: "講師", photo: "https://mfp-kanazawa.ne.jp/asset/img/instructor/monsta_s.jpg" },
+      { name: "MEGU", role: "講師", photo: "https://mfp-kanazawa.ne.jp/asset/img/instructor/megu.jpg" }
+    ]
   },
   {
     id: "ishikawa-011",
