@@ -11485,7 +11485,7 @@ export const studios: Studio[] = [
     hours: "",
     description: "総合エンターテインメント・ライフスタイル教室。3才以上対象。ダンス、表現、歌唱、ウォーキングなどのレッスンを提供。エンターテインメント産業に興味がある者向け。",
     staff: []
-  },,
+  },
 ];
 
 export function getStudiosByPrefecture(prefecture: string): Studio[] {
