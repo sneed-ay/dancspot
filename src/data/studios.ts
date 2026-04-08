@@ -6198,7 +6198,12 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "",
     description: "新潟県ボールルームダンス連盟認定教室。ジュニアから高齢者まで、初心者向けに優しく丁寧に指導。アットホームな雰囲気で楽しく学べる。",
-    staff: []
+    staff: [
+      { name: "中野 有", role: "講師", photo: "http://tsubota-danceschool.net/images/nakano.png" },
+      { name: "笹本 エミ", role: "講師", photo: "http://tsubota-danceschool.net/images/sasamoto.png" },
+      { name: "小林 郁子", role: "講師", photo: "http://tsubota-danceschool.net/images/kobayasi.jpg" },
+      { name: "中村 秋作", role: "講師", photo: "http://tsubota-danceschool.net/images/nakamura.png" }
+    ]
   },
   {
     id: "niigata-014",
@@ -6213,7 +6218,12 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "平日 13:00-22:00、土曜 13:00-19:00、日曜・祝日 休み（要予約で営業）",
     description: "新潟県ボールルームダンス連盟認定教室。初心者から上級者まで、社交ダンスを学べる教室。",
-    staff: []
+    staff: [
+      { name: "太刀川 慎也", role: "講師", photo: "https://www2.nct9.ne.jp/ds-tachikawa/images/shinya1.jpg" },
+      { name: "尾嵜 美幸", role: "講師", photo: "https://www2.nct9.ne.jp/ds-tachikawa/images/miyu1.jpg" },
+      { name: "太刀川 孝", role: "非常勤講師", photo: "https://www2.nct9.ne.jp/ds-tachikawa/images/taka1.jpg" },
+      { name: "太刀川 浩一", role: "代表", photo: "https://www2.nct9.ne.jp/ds-tachikawa/images/koichi1.jpg" }
+    ]
   },
   {
     id: "niigata-015",
@@ -6258,7 +6268,10 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "",
     description: "新潟県上越市の英国式社交ダンス教室。約50坪の広いフロアで、初心者から競技ダンス技術向上を目指す方まで対応。",
-    staff: []
+    staff: [
+      { name: "藤井 卓", role: "講師", photo: "https://fujiidanceacademy.com/wp-content/uploads/2020/10/staff_01.jpg" },
+      { name: "藤井 紀子", role: "講師", photo: "https://fujiidanceacademy.com/wp-content/uploads/2020/10/staff_02.jpg" }
+    ]
   },
   {
     id: "toyama-001",
