@@ -7225,7 +7225,10 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "Not specified on website",
     description: "Ballroom dance school along Aoba Symbol Road offering beginner-friendly lessons with online booking and rental shoes available. Specializes in Waltz, Tango, Rumba, and Cha-cha-cha",
-    staff: []
+    staff: [
+      { name: "永井 謙作", role: "講師", photo: "http://ky-nagaidance.com/images/staff_685_1_b.jpg" },
+      { name: "伊藤 依子", role: "講師", photo: "http://ky-nagaidance.com/images/staff_689_1_b.jpg" }
+    ]
   },
   {
     id: "shizuoka-003",
@@ -7240,7 +7243,10 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "Not specified on website",
     description: "Ballroom dance school specializing in Waltz, Tango, Rumba, and Cha-cha-cha. Welcomes beginners with free trial lessons and professional instruction in ballroom dance techniques",
-    staff: []
+    staff: [
+      { name: "中込 悟", role: "講師", photo: "https://nakagomi-danceschool.com/wp-content/uploads/staff-2-1.jpg" },
+      { name: "中込 美登利", role: "講師", photo: "https://nakagomi-danceschool.com/wp-content/uploads/staff-1-1.jpg" }
+    ]
   },
   {
     id: "shizuoka-004",
@@ -7255,7 +7261,12 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "11:00-22:00 (Mon-Sat)",
     description: "Dance studio offering ballroom dance, jazz dance, jazz ballet, hip-hop, and yoga classes. Known for flexible instruction and rental studio space",
-    staff: []
+    staff: [
+      { name: "片平 智文", role: "講師", photo: "http://www.katahira-dance.com/_src/39442668/katahira_t.jpg" },
+      { name: "片平 智恵子", role: "講師", photo: "http://www.katahira-dance.com/_src/39442670/chieko.jpg" },
+      { name: "NARUMI", role: "講師", photo: "http://www.katahira-dance.com/_src/39442672/narumi.jpg" },
+      { name: "KAZUNARI", role: "講師", photo: "http://www.katahira-dance.com/_src/39442777/kazunari.jpg" }
+    ]
   },
   {
     id: "shizuoka-005",
@@ -7345,7 +7356,10 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "Not specified on website",
     description: "Ballroom dance studio offering private and group lessons for all ages and skill levels. Features a former Japanese national representative instructor with excellent competition results",
-    staff: []
+    staff: [
+      { name: "大坂 宜史", role: "講師", photo: "https://www.toys-dance-place.com/wp-content/uploads/2016/03/oosaka-176x300.png" },
+      { name: "佐々木 由季子", role: "講師", photo: "https://www.toys-dance-place.com/wp-content/uploads/2016/03/sasaki-176x300.png" }
+    ]
   },
   {
     id: "shizuoka-012",
@@ -7375,7 +7389,18 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "Varies by location",
     description: "Largest dance school in Shizuoka Prefecture offering lessons from infants to adults across multiple genres including various dance styles. High-quality instruction from top-class instructors",
-    staff: []
+    staff: [
+      { name: "ASAMI", role: "講師", photo: "https://www.studio-mj.com/mgr/wp-content/uploads/2024/10/ASAMI-445x537.jpeg" },
+      { name: "YURINA", role: "講師", photo: "https://www.studio-mj.com/mgr/wp-content/uploads/2024/08/1%E9%83%A804071520-2%E9%83%A80721YURINA-445x537.jpeg" },
+      { name: "U-KO", role: "講師", photo: "https://www.studio-mj.com/mgr/wp-content/uploads/2024/06/U-CO-445x537.jpg" },
+      { name: "山口", role: "講師", photo: "https://www.studio-mj.com/mgr/wp-content/uploads/2024/06/%E5%B1%B1%E5%8F%A3_01-445x537.jpg" },
+      { name: "景虎", role: "講師", photo: "https://www.studio-mj.com/mgr/wp-content/uploads/2024/06/%E6%99%AF%E8%99%8E_01-445x537.jpeg" },
+      { name: "YURIA", role: "講師", photo: "https://www.studio-mj.com/mgr/wp-content/uploads/2024/06/YURIA_03-445x537.jpeg" },
+      { name: "YUKINA", role: "講師", photo: "https://www.studio-mj.com/mgr/wp-content/uploads/2024/06/YUKINA_03-445x536.jpeg" },
+      { name: "YUKA", role: "講師", photo: "https://www.studio-mj.com/mgr/wp-content/uploads/2024/06/YUKA_03-445x537.jpg" },
+      { name: "YOSHIMI", role: "講師", photo: "https://www.studio-mj.com/mgr/wp-content/uploads/2024/06/YOSHIMI_02-445x537.jpeg" },
+      { name: "Shizuki", role: "講師", photo: "https://www.studio-mj.com/mgr/wp-content/uploads/2024/06/Shizuki_01-445x537.jpeg" }
+    ]
   },
   {
     id: "shizuoka-014",
@@ -7435,7 +7460,20 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "情報なし",
     description: "初級者から上級者、プロ競技選手まで対応。ダンス歴57年の講師から元中部日本チャンピオンまで幅広い講師陣。",
-    staff: []
+    staff: [
+      { name: "松岡 一昭", role: "講師", photo: "https://www.nagoyadance.com/shared/img/index/teacher_img1.jpg" },
+      { name: "松岡 和子", role: "講師", photo: "https://www.nagoyadance.com/shared/img/index/teacher_img2.jpg" },
+      { name: "松岡 憲昭", role: "講師", photo: "https://www.nagoyadance.com/shared/img/index/teacher_img3.jpg" },
+      { name: "松岡 有紀", role: "講師", photo: "https://www.nagoyadance.com/shared/img/index/teacher_img4.jpg" },
+      { name: "柴田 真希", role: "講師", photo: "https://www.nagoyadance.com/shared/img/index/teacher_img5.jpg" },
+      { name: "柴田 綾子", role: "講師", photo: "https://www.nagoyadance.com/shared/img/index/teacher_img6.jpg" },
+      { name: "中野 義史", role: "講師", photo: "https://www.nagoyadance.com/shared/img/index/teacher_img7.jpg" },
+      { name: "岩本 憲幸", role: "講師", photo: "https://www.nagoyadance.com/shared/img/index/teacher_img8.jpg" },
+      { name: "前田 佳宏", role: "講師", photo: "https://www.nagoyadance.com/shared/img/index/teacher_img11.jpg" },
+      { name: "前田 眞理子", role: "講師", photo: "https://www.nagoyadance.com/shared/img/index/teacher_img12.jpg" },
+      { name: "野田 幹也", role: "講師", photo: "https://www.nagoyadance.com/shared/img/index/teacher_img9.jpg" },
+      { name: "広瀬 真名", role: "講師", photo: "https://www.nagoyadance.com/shared/img/index/teacher_img10.jpg" }
+    ]
   },
   {
     id: "aichi-004",
@@ -7525,7 +7563,11 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "情報なし",
     description: "初心者から競技選手、お子様からご年配の方まで楽しんで頂けるのが社交ダンス。",
-    staff: []
+    staff: [
+      { name: "青山 成之", role: "講師", photo: "http://www.dance-aoyama.com/1579070429268.jpg" },
+      { name: "倉岡 美生", role: "講師", photo: "http://www.dance-aoyama.com/1398178916377.jpg" },
+      { name: "青山 智之", role: "講師", photo: "http://www.dance-aoyama.com/IMG_1495.JPG" }
+    ]
   },
   {
     id: "aichi-016",
@@ -7555,7 +7597,11 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "情報なし",
     description: "1992年のオープン以来、グループレッスンから個人レッスンまで提供。体験レッスン・見学を受け付け。",
-    staff: []
+    staff: [
+      { name: "松井 伸吉", role: "講師", photo: "http://www.matsuidance.com/img/member_1.jpg" },
+      { name: "松井 美津子", role: "講師", photo: "http://www.matsuidance.com/img/member_2.jpg" },
+      { name: "纐纈 美枝子", role: "講師", photo: "http://www.matsuidance.com/img/member_3.jpg" }
+    ]
   },
   {
     id: "aichi-021",
@@ -7585,7 +7631,9 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "情報なし",
     description: "子どもから大人までが学べる。社交ダンス音楽の基礎からレクチャー。",
-    staff: []
+    staff: [
+      { name: "竹内 里佳", role: "講師", photo: "https://rika-dance-class.net/wp-content/uploads/2024/12/staff_01-1.jpg" }
+    ]
   },
   {
     id: "aichi-023",
@@ -7600,7 +7648,11 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "情報なし",
     description: "開校から25年以上の実績。未経験の初心者からプロ志望、小さなお子様から80代以上のシニアまで対応。",
-    staff: []
+    staff: [
+      { name: "山本 純一郎", role: "講師", photo: "https://yamamoto-kaoru-dance.com/jun1.jpg" },
+      { name: "山本 章絡", role: "講師", photo: "https://yamamoto-kaoru-dance.com/akira.jpg" },
+      { name: "池田 有妃", role: "講師", photo: "https://yamamoto-kaoru-dance.com/yuki.png" }
+    ]
   },
   {
     id: "aichi-024",
@@ -7615,7 +7667,11 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "情報なし",
     description: "文部科学省認可・公益財団法人日本ボールルームダンス連盟（JBDF）公認。初心者から熟練者まで様々なレベルに対応。",
-    staff: []
+    staff: [
+      { name: "田川 敦詞", role: "講師", photo: "https://www.tagawa-ds.com/wp-content/uploads/staff_img002.jpg" },
+      { name: "田川 深稀", role: "講師", photo: "https://www.tagawa-ds.com/wp-content/uploads/staff_img003.jpg" },
+      { name: "田川 貴一", role: "講師", photo: "https://www.tagawa-ds.com/wp-content/uploads/staff_img004.jpg" }
+    ]
   },
   {
     id: "aichi-025",
@@ -7630,7 +7686,12 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "情報なし",
     description: "子供からご年配の方まで、幅広い年代が生涯にわたって楽しめる社交ダンス教室。",
-    staff: []
+    staff: [
+      { name: "澤田 健一", role: "講師", photo: "https://sawadadancestudio.com/image/kenichi_staff.jpg" },
+      { name: "寺尾 理江", role: "講師", photo: "https://sawadadancestudio.com/image/rie_staff.jpg" },
+      { name: "河合 祐介", role: "講師", photo: "https://sawadadancestudio.com/image/yuusuke_staff.jpg" },
+      { name: "河合 歩未", role: "講師", photo: "https://sawadadancestudio.com/image/ayumi_staff.jpg" }
+    ]
   },
   {
     id: "mie-001",
