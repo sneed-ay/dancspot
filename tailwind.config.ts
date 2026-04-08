@@ -13,10 +13,22 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        sans: ["var(--font-noto-sans-jp)", "Hiragino Sans", "Meiryo", "sans-serif"],
+        sans: [
+          "var(--font-inter)",
+          "var(--font-noto-sans-jp)",
+          "Hiragino Sans",
+          "Hiragino Kaku Gothic ProN",
+          "Meiryo",
+          "sans-serif",
+        ],
+      },
+      letterSpacing: {
+        tighter: "-0.02em",
+        tight: "-0.01em",
       },
     },
   },
   plugins: [],
 };
+
 export default config;
