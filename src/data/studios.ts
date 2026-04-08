@@ -6421,17 +6421,24 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "",
     description: "ダンス・ヨガ・フィットネスの複合ジム。ヒップホップやK-POPなど複数ジャンル。",
-    staff: []
+    staff: [
+      { name: "YUKO", role: "講師", photo: "https://da2d2y78v2iva.cloudfront.net/8415/170546038166201.jpg" },
+      { name: "KYO", role: "講師", photo: "https://da2d2y78v2iva.cloudfront.net/8415/170546038166203.jpg" },
+      { name: "AKIKO", role: "講師", photo: "https://da2d2y78v2iva.cloudfront.net/8415/170546038166202.jpg" }
+    ]
   },
   {
-    id: "toyama-014",
+    id: "toystaff: [
+      { name: "REIKA", role: "代表", photo: "https://cdn.amebaowndme.com/madrid-prd/madrid-web/images/sites/2322179/2cafc7480a6c3d0a2f15519ee8653a22_7d3831eb595aa4a1ba3a3af25e5f5eab.jpg?width=800" }
+    ]
     name: "REIKA DANCE SCHOOL",
     prefecture: "toyama",
     prefectureName: "富山県",
     city: "射水市",
     address: "富山県射水市",
-    phone: "",
-    website: "https://reika-danceschool.amebaownd.com/",
+    phonestaff: [
+      { name: "NAYU", role: "代表", photo: "https://cdn.goope.jp/210133/240402170758-660bbcde822af_l.jpg" }
+    ] website: "https://reika-danceschool.amebaownd.com/",
     danceStyles: ["社交ダンス"],
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "",
@@ -6471,7 +6478,15 @@ export const studios: Studio[] = [
   {
     id: "toyama-017",
     name: "新湊カモンスポーツクラブ",
-    prefecture: "toyama",
+  staff: [
+      { name: "MIKAKO", role: "講師", photo: "https://dance-studio-deep.com/instructor/instructor-mikako-a.jpg" },
+      { name: "SORA", role: "講師", photo: "https://dance-studio-deep.com/instructor/instructor-sora-a.jpg" },
+      { name: "KOUSHI", role: "講師", photo: "https://dance-studio-deep.com/instructor/instructor-koushi-a.jpg" },
+      { name: "HAM", role: "講師", photo: "https://dance-studio-deep.com/instructor/instructor-ham-a.jpg" },
+      { name: "REIKA", role: "講師", photo: "https://dance-studio-deep.com/instructor/instructor-reika-a.jpg" },
+      { name: "NON", role: "講師", photo: "https://dance-studio-deep.com/instructor/instructor-non-a.jpg" },
+      { name: "IKI", role: "講師", photo: "https://dance-studio-deep.com/instructor/instructor-iki-a.jpg" }
+    ]ure: "toyama",
     prefectureName: "富山県",
     city: "射水市",
     address: "富山県射水市（新湊地域）",
