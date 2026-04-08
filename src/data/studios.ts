@@ -6781,7 +6781,10 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "11:00-21:00",
     description: "西武福井店から徒歩3分、北の庄通りにある社交ダンススクール。2015年設立。JBDF東部総局プロダンサーが経営。初心者から競技ダンサー向けまで対応。",
-    staff: []
+    staff: [
+      { name: "吉澤 直哉", role: "経営", photo: "https://static.toriaez.jp/uploads/images/q0630/8177-8177-20151222004953-1.jpg" },
+      { name: "吉澤 奈津恵", role: "経営", photo: "https://static.toriaez.jp/uploads/images/q0630/8177-8177-20151222004842-1.jpg" }
+    ]
   },
   {
     id: "fukui-002",
@@ -6932,7 +6935,11 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "要問合せ",
     description: "社交ダンス教室。パーティーダンス(ジルバ・ブルース)と競技ダンス(ワルツ・ルンバ)を提供。JBDF認定教室。",
-    staff: []
+    staff: [
+      { name: "今導 雅彦", role: "講師", photo: "http://kondodance.com/wp-content/uploads/2015/03/staff1.jpg" },
+      { name: "公城 さゆり", role: "講師", photo: "http://kondodance.com/wp-content/uploads/2015/03/staff2.jpg" },
+      { name: "会津 美紀", role: "バレエ教師", photo: "http://kondodance.com/wp-content/uploads/2015/03/staff3.jpg" }
+    ]
   },
   {
     id: "nagano-006",
@@ -6962,7 +6969,10 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "要問合せ",
     description: "社交ダンススタジオ。2012年5月1日開業。",
-    staff: []
+    staff: [
+      { name: "寺沢 英明", role: "講師", photo: "https://puravida-nagano.com/wp-content/uploads/2022/12/staff_1.jpg" },
+      { name: "寺沢 雅子", role: "講師", photo: "https://puravida-nagano.com/wp-content/uploads/2022/12/staff1.jpg" }
+    ]
   },
   {
     id: "nagano-010",
@@ -7007,7 +7017,10 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "要問合せ",
     description: "現役競技選手ペアが指導する社交ダンス教室。初心者から競技レベルまで幅広い活動。グループレッスンと初級クラスを提供。",
-    staff: []
+    staff: [
+      { name: "上田 信夫", role: "講師", photo: "https://ueda-dance-school.com/wp-content/uploads/2017/07/nobuo-ueda__no_0047.jpg" },
+      { name: "上田 千佳", role: "講師", photo: "https://ueda-dance-school.com/wp-content/uploads/2017/07/chika-ueda__no_0011.jpg" }
+    ]
   },
   {
     id: "nagano-014",
@@ -7052,7 +7065,11 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "10:00-22:00",
     description: "社交ダンス、ラテンエクササイズ、ヒップホップを提供。幼児から大人・シニアまでの幅広い年齢層対象。年に数回100名を超えるダンスパーティーを開催。",
-    staff: []
+    staff: [
+      { name: "向山 信幸", role: "講師", photo: "https://mukaiyama-daa.net/wp-content/uploads/2021/04/-1-e1619511426324.jpg" },
+      { name: "向山 香代子", role: "講師", photo: "https://mukaiyama-daa.net/wp-content/uploads/2021/04/-1-e1619511220571.jpg" },
+      { name: "木下 美香", role: "講師", photo: "https://mukaiyama-daa.net/wp-content/uploads/2021/04/-1-e1619511617154.jpg" }
+    ]
   },
   {
     id: "nagano-017",
