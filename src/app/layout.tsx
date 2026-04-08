@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Noto_Sans_JP } from "next/font/google";
+import { Noto_Sans_JP, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -7,31 +7,25 @@ import LiffProvider from "@/components/LiffProvider";
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-noto-sans-jp",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-inter",
   display: "swap",
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "ダンスポット ～社交ダンス総合情報サイト～",
-    template: "%s | ダンスポット ～社交ダンス総合情報サイト～",
+    default: "DancSpot — 社交ダンス総合情報",
+    template: "%s | DancSpot",
   },
   description:
-    "日本全国の社交ダンス教室・スタジオを都道府県から探せます。ワルツ、タンゴ、ルンバなど様々な種目に対応した教室情報を掲載。",
-  keywords: [
-    "社交ダンス",
-    "ダンス教室",
-    "ダンススタジオ",
-    "ワルツ",
-    "タンゴ",
-    "ルンバ",
-  ],
-  openGraph: {
-    siteName: "ダンスポット",
-    locale: "ja_JP",
-    type: "website",
-  },
+    "社交ダンスの総合情報サイト。教室検索、イベント情報、お相手募集など、社交ダンスに関するすべての情報が見つかるプラットフォームです。",
 };
 
 export default function RootLayout({
@@ -40,15 +34,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
-      <body
-        className={`${notoSansJP.variable} font-sans antialiased bg-gray-50 flex flex-col min-h-screen`}
-      >
-        <Header />
+    <html lang="ja" className={`${notoSansJP.variable} ${inter.variable}`}>
+      <body className="font-sans min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)]">
         <LiffProvider>
+          <Header />
           <main className="flex-1">{children}</main>
+          <Footer />
         </LiffProvider>
-        <Footer />
       </body>
     </html>
   );
