@@ -14,7 +14,7 @@ const REGION_GROUPS = [
   { label: "中部", regions: ["中部"] },
   { label: "近畿", regions: ["近畿"] },
   { label: "中国・四国", regions: ["中国", "四国"] },
-  { label: "九州・沖縄", regions: ["九州", "沖縄"] },
+  { label: "九州・沖縄", regions: ["九州・沖縄"] },
 ];
 
 export default function PrefectureGrid({ regions }: PrefectureGridProps) {
