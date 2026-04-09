@@ -202,7 +202,7 @@ export const studios: Studio[] = [
     website: "https://asdancestudio.com/",
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
-    description: "恵比寿駅西口より徒歩4分。元全日本ラテンチャンピオン監修の社交ダンスクール。初心者から競技選手まで対応。",,
+    description: "恵比寿駅西口より徒歩4分。元全日本ラテンチャンピオン監修の社交ダンスクール。初心者から競技選手まで対応。",
     staff: [
       { name: "土屋 純一", role: "インストラクター", photo: "https://asdancestudio.com/mwp/wp-content/uploads/2025/02/土屋純一.webp" },
       { name: "井川 まゆみ", role: "インストラクター", photo: "https://asdancestudio.com/mwp/wp-content/uploads/2025/02/井川まゆみ.webp" },
@@ -262,7 +262,7 @@ export const studios: Studio[] = [
     website: "https://sakaneds.com/",
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
-    description: "池袋駅39番出口から徒歩30秒。1979年創立の伝統ある社交ダンス教室。元全日本ファイナリストが指導。",,
+    description: "池袋駅39番出口から徒歩30秒。1979年創立の伝統ある社交ダンス教室。元全日本ファイナリストが指導。",
     staff: [
       { name: "中島 史智", role: "代表・インストラクター", photo: "https://sakaneds.com/wp-content/uploads/2019/08/ph_staff_01.jpg" },
       { name: "佐々木 まい", role: "インストラクター", photo: "https://sakaneds.com/wp-content/uploads/2019/08/ph_staff_02.jpg" },
@@ -284,7 +284,7 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "月〜金 12:00〜22:00、土・祝 13:00〜18:00（予約制）",
-    description: "池袋エリアの社交ダンス教室。予約制でマンツーマン指導にも対応。",,
+    description: "池袋エリアの社交ダンス教室。予約制でマンツーマン指導にも対応。",
     staff: [
       { name: "増山 真太郎", role: "代表インストラクター", photo: "https://static.wixstatic.com/media/3dfcab_31398242188340f1bd0f17df1aff37df~mv2.png/v1/fill/w_465,h_597,al_c,q_85,enc_avif,quality_auto/shintaro_PNG.png" },
       { name: "増山 洋子", role: "インストラクター", photo: "https://static.wixstatic.com/media/3dfcab_3c49e59c08bf4471a617d491b77b5036~mv2.png/v1/fill/w_464,h_624,al_c,q_85,enc_avif,quality_auto/yoko_PNG.png" }
@@ -483,7 +483,7 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "13:00〜22:00、日曜・祝日定休",
-    description: "JR目黒駅東口より徒歩3分。テレビ出演カリスマコーチ「山本英美」主宰。初心者からトッププロまで対応。",,
+    description: "JR目黒駅東口より徒歩3分。テレビ出演カリスマコーチ「山本英美」主宰。初心者からトッププロまで対応。",
     staff: [
       { name: "山本 英美", role: "主宰・元統一全日本ラテンチャンピオン", photo: "https://static.wixstatic.com/media/820016_61b017ca70194af2b5dc8a558636bea3~mv2.jpg/v1/fill/w_416,h_443,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/820016_61b017ca70194af2b5dc8a558636bea3~mv2.jpg" },
       { name: "吉田 篤志", role: "JBDFプロラテンB級", photo: "https://static.wixstatic.com/media/820016_899de6c8fdeb47cc9a0f7656e7f7ec76~mv2.jpg/v1/fill/w_145,h_194,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/20250723_0193.jpg" },
@@ -520,7 +520,7 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "オンライン", "体験"],
     hours: "平日 12:00〜21:00、土・祝 12:00〜18:00、日曜定休",
-    description: "東急池上線・洗足池駅から徒歩1分。現役A級選手が指導するグループ・マンツーマン対応の社交ダンス教室。",,
+    description: "東急池上線・洗足池駅から徒歩1分。現役A級選手が指導するグループ・マンツーマン対応の社交ダンス教室。",
     staff: [
       { name: "小山 比呂志", role: "代表・EJBDFラテンA級", photo: "https://oyamadance.com/new/wp-content/uploads/2021/09/hiroshimio-1-1024x1024.jpg" },
       { name: "榊 美央", role: "EJBDFラテンA級" }
@@ -540,19 +540,10 @@ export const studios: Studio[] = [
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "月〜金 13:00〜21:00、土 13:00〜16:30、日曜定休",
     description: "茗荷谷駅から徒歩4分。都内屈指の広さを誇る桜材フロア。現役トッププロダンサーによる丁寧な指導。",
-  },
-  {
-    id: "tokyo-029",
-    name: "ノガミダンススポーツクラブ",
-    prefecture: "tokyo",
-    prefectureName: "東京都",
-    city: "文京区",
-    address: "東京都文京区西片1-3-18 野上ビル201",
-    phone: "03-5689-6681",
-    website: "https://seesaawiki.jp/w/nogamidsc/",
-    danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
-    lessonTypes: ["グループ", "個人", "体験"],
-    description: "春日駅・後楽園駅近くの文京区西片にある社交ダンス教室。競技ダンスからパーティーダンスまで幅広く対応。",
+    staff: [
+      { name: "阿部 里香子", photo: "http://www.sameguchi-dance.jp/_p/acre/23331/images/pc/f61efc69.jpg" },
+      { name: "鮫口 伸一郎", photo: "http://www.sameguchi-dance.jp/_p/acre/23331/images/pc/c0081bc4.jpg" }
+    ]
   },
   // 台東区
   {
@@ -567,7 +558,7 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "ペア", "体験"],
     hours: "月・火・木・金・土 13:00〜22:00、水・日定休（祝日は13:00〜18:00）",
-    description: "蔵前駅から徒歩数分。洗練された明るいスタジオ。若者向け「青葉の会」グループレッスンも月1〜2回開催。",,
+    description: "蔵前駅から徒歩数分。洗練された明るいスタジオ。若者向け「青葉の会」グループレッスンも月1〜2回開催。",
     staff: [
       { name: "長谷川 太一", role: "経営・指導", photo: "https://hasegawadance.com/assets/img/staff/hasegawa-taichi.jpg" },
       { name: "釜田 愛", role: "経営・指導", photo: "https://hasegawadance.com/assets/img/staff/kamada-ai.jpg" }
@@ -584,7 +575,7 @@ export const studios: Studio[] = [
     website: "http://yokotadance.com/",
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
-    description: "浅草橋駅から徒歩1分。スタンダード・ラテン全種目対応。大人から子供キッズクラスまで幅広く開講。",,
+    description: "浅草橋駅から徒歩1分。スタンダード・ラテン全種目対応。大人から子供キッズクラスまで幅広く開講。",
     staff: [
       { name: "横田 健司", role: "代表", photo: "http://yokotadance.com/image/staff-yokota.jpg" },
       { name: "小路谷 美樹", photo: "http://yokotadance.com/image/staff_miki.jpg" },
@@ -633,7 +624,7 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "平日 12:30〜21:00、土 13:00〜19:00、日・祝定休",
-    description: "北千住駅西口から徒歩5分。50坪の広々フロア。JDBFスタンダード・ラテン共にA級プロ所属。初心者大歓迎。",,
+    description: "北千住駅西口から徒歩5分。50坪の広々フロア。JDBFスタンダード・ラテン共にA級プロ所属。初心者大歓迎。",
     staff: [
       { name: "加藤 周介", role: "代表", photo: "https://ks-da.com/_src/6493/dsc_0297_.png" },
       { name: "加藤 留巳", photo: "https://ks-da.com/_src/6497/dsc_0205_background_removal.png" },
@@ -657,7 +648,7 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "月〜土 12:00〜22:00",
-    description: "北千住駅西口から徒歩6分。社交ダンスのほかバレエ・K-POP・ベリーダンスも開講する総合ダンスアカデミー。",,
+    description: "北千住駅西口から徒歩6分。社交ダンスのほかバレエ・K-POP・ベリーダンスも開講する総合ダンスアカデミー。",
     staff: [
       { name: "佐藤 光彦", role: "社交ダンス講師・常勤", photo: "https://static.wixstatic.com/media/8fe758_be8acd162e7448d1afaf4474d280af98~mv2.jpg/v1/fill/w_400,h_400,al_c,q_85,enc_avif,quality_auto/20210926.jpg" },
       { name: "井上 奈美", role: "社交ダンス講師・非常勤", photo: "https://static.wixstatic.com/media/8fe758_a9a86097777c4123ab54f0544f0fbf99~mv2.jpg/v1/fill/w_300,h_500,al_c,q_85,enc_avif,quality_auto/8fe758_a9a86097777c4123ab54f0544f0fbf99~mv2.jpg" },
@@ -691,7 +682,7 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "平日 12:00〜21:00、土・祝 12:00〜18:00、日曜定休",
-    description: "大泉学園駅北口から徒歩2分。本場英国スタイルの社交ダンス。ラテン・スタンダード基本練習会が充実。",,
+    description: "大泉学園駅北口から徒歩2分。本場英国スタイルの社交ダンス。ラテン・スタンダード基本練習会が充実。",
     staff: [
       { name: "白須 充", role: "元JBDFプロラテンA級・東部総局A級審査員", photo: "http://www.shirasu-dance.com/image/mitsu.jpg" },
       { name: "藤田 有美", role: "元JBDFプロラテンA級", photo: "http://www.shirasu-dance.com/image/yumi.jpg" },
@@ -741,6 +732,10 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     description: "中野新橋駅から徒歩10秒。39年の歴史を持つ社交ダンス教室。プライベート・グループ・メダルテストコースに対応。",
+    staff: [
+      { name: "合馬 靖雄", photo: "https://www.gohma-dance.com/wp-content/uploads/staff_img001.jpg" },
+      { name: "白石 奈々", photo: "https://www.gohma-dance.com/wp-content/uploads/staff_img002.jpg" }
+    ]
   },
   // 八王子市
   {
@@ -769,6 +764,10 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     description: "2023年2月オープン。板橋駅近くのアットホームな社交ダンス教室で、初心者からベテランまで気軽に通える。",
+    staff: [
+      { name: "松下 梨沙", photo: "https://studio-li.jp/wp-content/themes/studioli/images/mastusita_img-min.jpg" },
+      { name: "宮原 明希光", photo: "https://studio-li.jp/wp-content/themes/studioli/images/koushi_miyashita@1.25x@1.25x.jpg" }
+    ]
   },
   {
     id: "tokyo-043",
@@ -810,7 +809,7 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "平日 10:00〜22:00、土 10:00〜20:00、日曜定休",
-    description: "地下鉄南北線赤羽岩淵駅から徒歩0分。2022年オープンの社交ダンススタジオで、スタンダード・ラテン両種目に対応。",,
+    description: "地下鉄南北線赤羽岩淵駅から徒歩0分。2022年オープンの社交ダンススタジオで、スタンダード・ラテン両種目に対応。",
     staff: [
       { name: "森 昌太", role: "JCFボールルームA級・ラテンA級", photo: "https://static.wixstatic.com/media/90f881_b78632da1d704f6685bdc9957bb29df8~mv2.jpg/v1/fill/w_400,h_600,al_c,q_85,enc_avif,quality_auto/90f881_b78632da1d704f6685bdc9957bb29df8~mv2.jpg" },
       { name: "沖本 梨江", role: "JCFボールルームA級・ラテンA級", photo: "https://static.wixstatic.com/media/90f881_4373da3cd3384fb6ab8cdb465be4b09c~mv2.jpg/v1/fill/w_400,h_600,al_c,q_85,enc_avif,quality_auto/90f881_4373da3cd3384fb6ab8cdb465be4b09c~mv2.jpg" }
@@ -829,7 +828,7 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ", "ブルース", "ジルバ"],
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "月・金 10:00〜22:00、火〜木 10:00〜21:00、土 10:00〜18:00、日曜定休",
-    description: "金町駅近くの社交ダンス教室。スタンダード・ラテン全種目に対応し、体験レッスンやフリーダンスタイムも充実。",,
+    description: "金町駅近くの社交ダンス教室。スタンダード・ラテン全種目に対応し、体験レッスンやフリーダンスタイムも充実。",
     staff: [
       { name: "加藤 義人", photo: "https://danceplacefelice.com/_img/ja/article/782/image/540_540_1_ffffff/" },
       { name: "小林 維斗", photo: "https://danceplacefelice.com/_img/ja/article/787/image/540_540_1_ffffff/" },
@@ -907,7 +906,7 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "平日 12:00〜21:00、日曜定休",
-    description: "府中本町駅から徒歩5分。ラテン・ボールルーム・パーティーダンスに対応する地域密着型の社交ダンス教室。",,
+    description: "府中本町駅から徒歩5分。ラテン・ボールルーム・パーティーダンスに対応する地域密着型の社交ダンス教室。",
     staff: [
       { name: "小林 巨石", photo: "https://www.k-dance-school.jp/staff/assets_c/2020/01/fc2346f64931ab72e5a06a1b78b64bb714e2f8ed-thumb-220xauto-1314.jpg" },
       { name: "卜部 圭以子", photo: "https://www.k-dance-school.jp/staff/assets_c/2020/01/k-dance-school_0091-thumb-220xauto-1310.jpg" },
@@ -931,7 +930,7 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "月〜金 11:00〜20:00、土・祝 13:00〜18:00、日曜定休",
-    description: "JBDF優良認定登録教室。府中駅前の社交ダンス教室で、初心者からインストラクター志望まで対応。シニア向けプログラムも充実。",,
+    description: "JBDF優良認定登録教室。府中駅前の社交ダンス教室で、初心者からインストラクター志望まで対応。シニア向けプログラムも充実。",
     staff: [
       { name: "伊藤 和明", photo: "https://dance-room-ito.tokyo/wp-content/uploads/2019/10/prof_ito_1.jpg" },
       { name: "佐々木 恵", photo: "https://dance-room-ito.tokyo/wp-content/uploads/2019/10/prof_sasaki_1.jpg" },
@@ -951,7 +950,7 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ", "ブルース", "ジルバ"],
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "12:00〜22:00（日曜定休）",
-    description: "三鷹駅南口から徒歩5分。初級から上級まで幅広いクラスを提供する社交ダンススクール。シニア・女性限定クラスも開催。",,
+    description: "三鷹駅南口から徒歩5分。初級から上級まで幅広いクラスを提供する社交ダンススクール。シニア・女性限定クラスも開催。",
     staff: [
       { name: "吉田 節子", photo: "http://www.yoshida-dc.jp/dataimge/1457405031.jpg" },
       { name: "吉田 亮一", photo: "http://www.yoshida-dc.jp/dataimge/1760770512.jpg" },
@@ -999,7 +998,7 @@ export const studios: Studio[] = [
     website: "http://www.tanasi-ds.com/",
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
-    description: "西東京市田無に拠点を置く社交ダンス教室。初心者から経験者まで、マンツーマン・グループ両対応でレッスン提供。",,
+    description: "西東京市田無に拠点を置く社交ダンス教室。初心者から経験者まで、マンツーマン・グループ両対応でレッスン提供。",
     staff: [
       { name: "西村", role: "講師", photo: "http://www.tanasi-ds.com/lecturer/images/nishimura.jpg" },
       { name: "高橋", role: "講師", photo: "http://www.tanasi-ds.com/lecturer/images/takahashi.jpg" }
@@ -1061,6 +1060,11 @@ export const studios: Studio[] = [
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "月〜金 13:00〜22:00、土 13:00〜21:00、祝日 13:00〜20:00、日曜定休",
     description: "都営新宿線・船堀駅徒歩3分。約55坪の柱なしフロア、カバ桜無垢材の床。プロ講師による初心者向けレッスンあり。",
+    staff: [
+      { name: "今西 竜永", photo: "https://dancespacefunabori.com/wp-content/uploads/2022/01/IMG_4091-592x1024.jpg" },
+      { name: "山口 慎吾", photo: "https://dancespacefunabori.com/wp-content/uploads/2023/01/df759fcf66a338a8a9051346f91c2780-230x300.jpeg" },
+      { name: "松田 さつき", photo: "https://dancespacefunabori.com/wp-content/uploads/2022/11/MayMay-200x300.jpg" }
+    ]
   },
   // 国分寺市（2件目）
   {
@@ -1195,7 +1199,7 @@ export const studios: Studio[] = [
     website: "https://sdk.themedia.jp/",
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
-    description: "広くて明るいスタジオ。社交ダンス・アメリカンスムースに対応した本格教室。",,
+    description: "広くて明るいスタジオ。社交ダンス・アメリカンスムースに対応した本格教室。",
     staff: [
       { name: "橋本 沙代子", role: "JBDF審査員・元JBDFスタンダード/ラテンA級", photo: "https://cdn.amebaowndme.com/madrid-prd/madrid-web/images/sites/516302/c6acf3cd9b46439082278758fa3e46ca_7eb9dbf69ecd16c15d8c8e202ed21ed5.jpg" },
       { name: "比美野 めいび", role: "JBDFプロ競技選手・振付師", photo: "https://cdn.amebaowndme.com/madrid-prd/madrid-web/images/sites/516302/a36882ed69fa3655548041187955d031_1534ad20000745f4082c50a838d6e5b5.jpg" }
@@ -1211,7 +1215,7 @@ export const studios: Studio[] = [
     website: "https://fessi-dance.com/",
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
-    description: "幡ヶ谷駅から徒歩5分。元全日本チャンピオンが指導する本格社交ダンススクール。出張レッスンも対応。",,
+    description: "幡ヶ谷駅から徒歩5分。元全日本チャンピオンが指導する本格社交ダンススクール。出張レッスンも対応。",
     staff: [
       { name: "鈴木 秀朗", role: "元JPDSAラテンチャンピオン", photo: "https://fessi-dance.com/trainer/img/hide.jpg" },
       { name: "石田 すみ子", role: "元全日本ラテンチャンピオン", photo: "https://fessi-dance.com/trainer/img/sumi.jpg" }
@@ -1227,7 +1231,7 @@ export const studios: Studio[] = [
     website: "http://hiyamadance.com/",
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
-    description: "下高井戸駅徒歩2分。10名のインストラクターが在籍し初心者向けクラスが充実。",,
+    description: "下高井戸駅徒歩2分。10名のインストラクターが在籍し初心者向けクラスが充実。",
     staff: [
       { name: "檜山 浩治", role: "元プロスタンダードSA級", photo: "http://hiyamadance.com/wp/wp-content/uploads/2019/12/Staff-image-Hiyama.jpg" },
       { name: "檜山 公美子", role: "元プロスタンダードSA級", photo: "http://hiyamadance.com/wp/wp-content/uploads/2019/12/Staff-image-Kumiko.jpg" },
@@ -1252,7 +1256,7 @@ export const studios: Studio[] = [
     website: "https://www.dance.co.jp/",
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
-    description: "豪徺寺駅徒歩2分。ジュニアからシニアまで幅広く対応するグループ・個人レッスン。",,
+    description: "豪徺寺駅徒歩2分。ジュニアからシニアまで幅広く対応するグループ・個人レッスン。",
     staff: [
       { name: "森田 銀河", role: "代表・元JBDFプロラテンチャンピオン", photo: "https://www.dance.co.jp/wp-content/themes/Theme02/img/instructor/pic01.jpg" },
       { name: "小和田 愛子", role: "元JBDFプロラテンチャンピオン", photo: "https://www.dance.co.jp/wp-content/themes/Theme02/img/instructor/pic02.jpg" },
@@ -1302,7 +1306,7 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "月〜金 12:00〜22:00、土・祝 12:00〜18:00（日曜休業）",
-    description: "五反田の社交ダンススクール。丁寧な個人指導え評判。",,
+    description: "五反田の社交ダンススクール。丁寧な個人指導え評判。",
     staff: [
       { name: "西岡 次郎", role: "オーナー・元スタンダード＆ラテンA級", photo: "http://nishiokads.com/wp-content/uploads/2019/02/%E8%A5%BF%E5%B2%A1.gif" },
       { name: "伊藤 肇子", role: "元スタンダード＆ラテンA級", photo: "http://nishiokads.com/wp-content/uploads/2019/03/staff%E8%82%87%E5%AD%90.gif" },
@@ -1327,7 +1331,7 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "平日 12:00〜22:00、土 12:00〜20:00、祝 12:00〜18:00（日曜休業）",
-    description: "JR駒込駅から徒歩2分。元全日本チャンピオン橘正幸・弘子が監修する社交ダンススタジオ。",,
+    description: "JR駒込駅から徒歩2分。元全日本チャンピオン橘正幸・弘子が監修する社交ダンススタジオ。",
     staff: [
       { name: "上村 和之", role: "オーナー・ボールルームダンスA級", photo: "https://tachibanadance.com/_p/acre/21683/images/pc/26affa93.JPG" },
       { name: "上村 みちこ", role: "インストラクター", photo: "https://tachibanadance.com/_p/acre/21683/images/pc/120a35d8.JPG" },
@@ -1387,6 +1391,10 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     description: "JR東中野駅東口1分。統一全日本10ダンスチャンピオンの中泉繁先生が経営する本格教室。",
+    staff: [
+      { name: "中泉 繁", photo: "http://ds-nakaizumi.daa.jp/wp-content/uploads/2013/07/photo_nakaizumi.jpg" },
+      { name: "松岡 芽利", photo: "http://ds-nakaizumi.daa.jp/wp-content/uploads/2013/07/photo_matsuoka.jpg" }
+    ]
   },
   {
     id: "tokyo-080",
@@ -1411,7 +1419,7 @@ export const studios: Studio[] = [
     website: "https://shimazaki-ds.com/",
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
-    description: "蒲田駅より徒歩3分。JBDF A級審査員の嶋崎千吉・恵理子が経営・指導。英国留学経験のある本格派。",,
+    description: "蒲田駅より徒歩3分。JBDF A級審査員の嶋崎千吉・恵理子が経営・指導。英国留学経験のある本格派。",
     staff: [
       { name: "嶋崎 千吉", role: "経営・指導", photo: "https://shimazaki-ds.com/images/00_s.jpg" },
       { name: "嶋崎 恵理子", role: "経営・指導", photo: "https://shimazaki-ds.com/images/01_s.jpg" },
@@ -1588,6 +1596,16 @@ export const studios: Studio[] = [
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "月〜金 13:00〜21:00、土 13:00〜18:00（日・年末年始定休）",
     description: "50年以上の歴史を持つ四谷の社交ダンス教室。初心者から大会出場者まで幅広く対応。",
+    staff: [
+      { name: "石原 吉皓", photo: "http://ishiharadance.jp/wp-content/uploads/sites/7/2015/10/201392417418.jpg" },
+      { name: "橋本 珠里", photo: "http://ishiharadance.jp/wp-content/uploads/sites/7/2015/10/2013924174127.jpg" },
+      { name: "橋本 俊明", photo: "http://ishiharadance.jp/wp-content/uploads/sites/7/2015/10/2013924174213.jpg" },
+      { name: "若狭 徹", photo: "http://ishiharadance.jp/wp-content/uploads/sites/7/2015/10/2013924174234.jpg" },
+      { name: "坊迫 有紀", photo: "http://ishiharadance.jp/wp-content/uploads/sites/7/2015/10/2014422161355.jpg" },
+      { name: "倉橋 さら", photo: "http://ishiharadance.jp/wp-content/uploads/sites/7/2015/10/2014422161430.jpg" },
+      { name: "髙坂 亜希", photo: "http://ishiharadance.jp/wp-content/uploads/sites/7/2015/10/2014425154716.jpg" },
+      { name: "長澤 圭剛", photo: "http://ishiharadance.jp/wp-content/uploads/sites/7/2015/10/201484165550.jpg" }
+    ]
   },
   {
     id: "tokyo-093",
