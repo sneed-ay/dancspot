@@ -596,6 +596,11 @@ export const studios: Studio[] = [
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "13:00〜22:00、日曜定休",
     description: "都営新宿線・西大島駅から徒歩4分。社交ダンス・K-POPダンス・ウェディングダンス・競技ダンスに対応。",
+    staff: [
+      { name: "香川 徹", role: "代表", photo: "https://studiosora.info/wp-content/themes/theme-default/img/studio/03.jpg" },
+      { name: "白鳥 冴季", photo: "https://studiosora.info/wp-content/uploads/2019/12/20191125201342175_.jpg" },
+      { name: "愛実", photo: "https://studiosora.info/wp-content/themes/theme-default/img/studio/manami.jpg" }
+    ]
   },
   {
     id: "tokyo-033",
@@ -669,6 +674,13 @@ export const studios: Studio[] = [
     lessonTypes: ["個人", "体験"],
     hours: "12:00〜22:00（祝祭日は18:00まで）、日曜定休",
     description: "練馬駅徒歩30秒の好立地。JDC活躍競技ダンサーによるマンツーマン・オーダーメイドレッスン専門教室。",
+    staff: [
+      { name: "武田 琢秀", photo: "http://www.takedadance.com/wp/wp-content/uploads/38c1e96a954ccfc2d808fcc8c4384964.png" },
+      { name: "武田 まゆみ", photo: "http://www.takedadance.com/wp/wp-content/uploads/f0e0cb84bda99055f297cfdea2eec52c.png" },
+      { name: "西尾 浩一", photo: "http://www.takedadance.com/wp/wp-content/uploads/51dc9565c7d6d4db2557b3f682c8ddf5-1-300x300.jpg" },
+      { name: "斉藤 達哉", photo: "http://www.takedadance.com/wp/wp-content/uploads/7f44259fe70b1def71074ffd40c344a8-1-300x300.jpg" },
+      { name: "真鍋 菊", photo: "http://www.takedadance.com/wp/wp-content/uploads/9bd5e3b5d5811c4202dc65ce7a49456a-300x300.jpeg" }
+    ]
   },
   {
     id: "tokyo-037",
@@ -704,6 +716,9 @@ export const studios: Studio[] = [
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "平日 12:00〜22:00、土・祝 12:00〜20:00",
     description: "荻窪駅西口から徒歩2分。認知症予防にも注目される社交ダンスを楽しく学べる荻窪の人気教室。",
+    staff: [
+      { name: "玉置 朝啓・きよ子", role: "オーナー", photo: "https://image.jimcdn.com/app/cms/image/transf/dimension=238x1024:format=jpg/path/s77a23a65da156053/image/i6d3c257e750a7058/version/1697877047/image.jpg" }
+    ]
   },
   {
     id: "tokyo-039",
@@ -796,6 +811,9 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人"],
     description: "板橋区・北区エリアで展開する社交ダンススクール。グループレッスンは平日夜間・土曜午後に開催。",
+    staff: [
+      { name: "中田 寿", role: "代表", photo: "https://www.nakatadance.com/3_0054.jpg" }
+    ]
   },
   {
     id: "tokyo-045",
@@ -1030,6 +1048,13 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     description: "多摩市関戸のSIビル7階にある社交ダンス教室。マンツーマン個人レッスンから入門〜中級クラスレッスン、フリーダンス、出張レッスンまで提供。",
+    staff: [
+      { name: "伊藤 武", role: "オーナー", photo: "http://www.mydance.co.jp/mydwp/wp-content/uploads/2024/02/itou-takeshi.jpg" },
+      { name: "伊藤 まり子", role: "オーナー", photo: "http://www.mydance.co.jp/mydwp/wp-content/uploads/2024/02/itou-mariko.jpg" },
+      { name: "五十嵐 衛", photo: "http://www.mydance.co.jp/mydwp/wp-content/uploads/2024/02/igarashi-mamoru.jpg" },
+      { name: "五十嵐 妃美子", photo: "http://www.mydance.co.jp/mydwp/wp-content/uploads/2024/02/igarashi-himiko.jpg" },
+      { name: "三室 雄司", photo: "http://www.mydance.co.jp/mydwp/wp-content/uploads/2025/12/IMG_4983.jpeg" }
+    ]
   },
   // 立川市
   {
@@ -1277,6 +1302,15 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     description: "武蔵小山駅徒歩3分。1990年開設の英国式正統社交ダンス教室。初心者からプロまで対応。",
+    staff: [
+      { name: "篠田 忠", photo: "https://shinodadc.net/images/staff_01.jpg" },
+      { name: "福田 裕一", photo: "https://shinodadc.net/images/staff_02.jpg" },
+      { name: "大澤 隆一", photo: "https://shinodadc.net/images/staff_03.jpg" },
+      { name: "大埜 健", photo: "https://shinodadc.net/images/staff_05.jpg" },
+      { name: "久保 英史", photo: "https://shinodadc.net/images/staff_08.jpg" },
+      { name: "松島 由季", photo: "https://shinodadc.net/images/staff_09.jpg" },
+      { name: "姜 程程", photo: "https://shinodadc.net/images/staff_10.jpg" }
+    ]
   },
   {
     id: "tokyo-073",
@@ -1353,6 +1387,9 @@ export const studios: Studio[] = [
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "月〜金 12:00〜22:00、土 12:00〜20:00（日曜休業）",
     description: "西永福駅北口徒歩2分。アットホームな雰囲気の社交ダンススクール。",
+    staff: [
+      { name: "樋口 暢哉・柴田 早綾香", photo: "http://www.miyajima-dance.com/img/higuchishibata.jpg" }
+    ]
   },
   {
     id: "tokyo-077",
