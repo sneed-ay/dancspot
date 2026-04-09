@@ -520,7 +520,11 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "オンライン", "体験"],
     hours: "平日 12:00〜21:00、土・祝 12:00〜18:00、日曜定休",
-    description: "東急池上線・洗足池駅から徒歩1分。現役A級選手が指導するグループ・マンツーマン対応の社交ダンス教室。",
+    description: "東急池上線・洗足池駅から徒歩1分。現役A級選手が指導するグループ・マンツーマン対応の社交ダンス教室。",,
+    staff: [
+      { name: "小山 比呂志", role: "代表・EJBDFラテンA級", photo: "https://oyamadance.com/new/wp-content/uploads/2021/09/hiroshimio-1-1024x1024.jpg" },
+      { name: "榊 美央", role: "EJBDFラテンA級" }
+    ]
   },
   // 文京区
   {
@@ -662,7 +666,13 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "平日 12:00〜21:00、土・祝 12:00〜18:00、日曜定休",
-    description: "大泉学園駅北口から徒歩2分。本場英国スタイルの社交ダンス。ラテン・スタンダード基本練習会が充実。",
+    description: "大泉学園駅北口から徒歩2分。本場英国スタイルの社交ダンス。ラテン・スタンダード基本練習会が充実。",,
+    staff: [
+      { name: "白須 充", role: "元JBDFプロラテンA級・東部総局A級審査員", photo: "http://www.shirasu-dance.com/image/mitsu.jpg" },
+      { name: "藤田 有美", role: "元JBDFプロラテンA級", photo: "http://www.shirasu-dance.com/image/yumi.jpg" },
+      { name: "平賀 淳也", role: "JBDFプロラテンB級", photo: "http://www.shirasu-dance.com/image/jun.jpg" },
+      { name: "平賀 かおり", role: "JBDFプロラテンB級", photo: "http://www.shirasu-dance.com/image/kao.jpg" }
+    ]
   },
   // 杉並区
   {
@@ -775,7 +785,11 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "平日 10:00〜22:00、土 10:00〜20:00、日曜定休",
-    description: "地下鉄南北線赤羽岩淵駅から徒歩0分。2022年オープンの社交ダンススタジオで、スタンダード・ラテン両種目に対応。",
+    description: "地下鉄南北線赤羽岩淵駅から徒歩0分。2022年オープンの社交ダンススタジオで、スタンダード・ラテン両種目に対応。",,
+    staff: [
+      { name: "森 昌太", role: "JCFボールルームA級・ラテンA級", photo: "https://static.wixstatic.com/media/90f881_b78632da1d704f6685bdc9957bb29df8~mv2.jpg/v1/fill/w_400,h_600,al_c,q_85,enc_avif,quality_auto/90f881_b78632da1d704f6685bdc9957bb29df8~mv2.jpg" },
+      { name: "沖本 梨江", role: "JCFボールルームA級・ラテンA級", photo: "https://static.wixstatic.com/media/90f881_4373da3cd3384fb6ab8cdb465be4b09c~mv2.jpg/v1/fill/w_400,h_600,al_c,q_85,enc_avif,quality_auto/90f881_4373da3cd3384fb6ab8cdb465be4b09c~mv2.jpg" }
+    ]
   },
   // 葛飾区
   {
