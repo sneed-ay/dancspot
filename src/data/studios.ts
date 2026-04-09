@@ -483,7 +483,15 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "13:00〜22:00、日曜・祝日定休",
-    description: "JR目黒駅東口より徒歩3分。テレビ出演カリスマコーチ「山本英美」主宰。初心者からトッププロまで対応。",
+    description: "JR目黒駅東口より徒歩3分。テレビ出演カリスマコーチ「山本英美」主宰。初心者からトッププロまで対応。",,
+    staff: [
+      { name: "山本 英美", role: "主宰・元統一全日本ラテンチャンピオン", photo: "https://static.wixstatic.com/media/820016_61b017ca70194af2b5dc8a558636bea3~mv2.jpg/v1/fill/w_416,h_443,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/820016_61b017ca70194af2b5dc8a558636bea3~mv2.jpg" },
+      { name: "吉田 篤志", role: "JBDFプロラテンB級", photo: "https://static.wixstatic.com/media/820016_899de6c8fdeb47cc9a0f7656e7f7ec76~mv2.jpg/v1/fill/w_145,h_194,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/20250723_0193.jpg" },
+      { name: "鈴木 奨太", role: "JBDFプロラテンA級", photo: "https://static.wixstatic.com/media/820016_8861d59409e94ded9002c91063e937ed~mv2.jpg/v1/crop/x_0,y_135,w_3888,h_5562/fill/w_144,h_206,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/20250723_0006.jpg" },
+      { name: "西山 さくら", role: "JBDFプロラテンA級", photo: "https://static.wixstatic.com/media/820016_b6f2aee7f0e44087aa8141c4bd150e72~mv2.jpg/v1/crop/x_0,y_135,w_3888,h_5562/fill/w_144,h_206,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/20250723_0076.jpg" },
+      { name: "大橋 舞子", role: "JBDFプロラテンA級", photo: "https://static.wixstatic.com/media/820016_a3fab8e514d84246ad6ec468b2817548~mv2.jpg/v1/crop/x_0,y_135,w_3888,h_5562/fill/w_144,h_206,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/20250723_0130.jpg" },
+      { name: "中村 安里", role: "JBDFプロラテンB級", photo: "https://static.wixstatic.com/media/820016_c380a4af2beb47f5834fcd19e71cf995~mv2.jpg/v1/crop/x_0,y_135,w_3882,h_5553/fill/w_144,h_206,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/20250723_0314.jpg" }
+    ]
   },
   // 大田区
   {
