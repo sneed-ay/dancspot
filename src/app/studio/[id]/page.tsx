@@ -86,11 +86,18 @@ export default function StudioPage({ params }: Props) {
                             className="w-20 h-20 rounded-full object-cover mx-auto mb-2 border-2 border-violet-100"
                           />
                         ) : (
-                          <div className="w-20 h-20 rounded-full bg-violet-50 flex items-center justify-center mx-auto mb-2 border-2 border-violet-100">
-                            <svg className="w-8 h-8 text-violet-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                            </svg>
-                          </div>
+                          (() => {
+                            const palette = ["bg-violet-400","bg-pink-400","bg-amber-400","bg-emerald-400","bg-sky-400","bg-rose-400","bg-indigo-400","bg-teal-400"];
+                            const initial = (member.name || "?").replace(/\s/g, "").charAt(0);
+                            let hash = 0;
+                            for (let i = 0; i < (member.name || "").length; i++) hash = (hash * 31 + (member.name || "").charCodeAt(i)) >>> 0;
+                            const color = palette[hash % palette.length];
+                            return (
+                              <div className={`w-20 h-20 rounded-full ${color} flex items-center justify-center mx-auto mb-2 border-2 border-violet-100 text-white text-2xl font-bold`}>
+                                {initial}
+                              </div>
+                            );
+                          })()
                         )}
                         <p className="text-sm font-medium text-gray-900">{member.name}</p>
                         {member.role && (
