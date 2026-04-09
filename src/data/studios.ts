@@ -1444,6 +1444,9 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     description: "東急池上線久が原駅から徒歩4分。少人数制で丁寧な指導。45歳からの社交ダンス教室も開講。",
+    staff: [
+      { name: "長嶋 真由美", role: "代表", photo: "https://image.jimcdn.com/app/cms/image/transf/dimension=270x1024:format=jpg/path/sf487f28db980044b/image/id8879da4969f22a8/version/1679788900/image.jpg" }
+    ]
   },
   {
     id: "tokyo-081",
