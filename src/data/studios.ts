@@ -6833,21 +6833,7 @@ export const studios: Studio[] = [
     description: "2004年2月20日に開設された富山県内の社交ダンス連盟。競技ダンスの振興と加盟教室の運営。",
     staff: []
   },
-  {
-    id: "toyama-008",
-    name: "G.O.Wダンススクール",
-    prefecture: "toyama",
-    prefectureName: "富山県",
-    city: "複数校舎",
-    address: "富山県内複数箇所（金泉寺・下飯野・市民プール・射水・高岡）",
-    phone: "",
-    website: "https://grouses.jp/gow/school/",
-    danceStyles: ["社交ダンス"],
-    lessonTypes: ["個人レッスン", "グループレッスン"],
-    hours: "週1回1時間",
-    description: "富山グラウジーズのホームゲームを盛り上げるG.O.Wのメンバーが講師。小学1年～社会人対象。複数のダンスジャンル（社交ダンス含む）を提供。",
-    staff: []
-  },
+
   {
     id: "toyama-009",
     name: "MPC高岡南（ミュージック&カルチャースクール）",
@@ -7768,21 +7754,7 @@ export const studios: Studio[] = [
       { name: "佐々木 由季子", role: "講師", photo: "https://www.toys-dance-place.com/wp-content/uploads/2016/03/sasaki-176x300.png" }
     ]
   },
-  {
-    id: "shizuoka-012",
-    name: "La-Ciela Dance Studio",
-    prefecture: "shizuoka",
-    prefectureName: "静岡県",
-    city: "Numazu City",
-    address: "1-1 Egara-cho, Numazu City, Shizuoka 410-0049",
-    phone: "Available via Reserva booking system",
-    website: "https://laciela.jp/",
-    danceStyles: ["社交ダンス"],
-    lessonTypes: ["個人レッスン", "グループレッスン"],
-    hours: "10:00 AM - 10:00 PM (with irregular closure days)",
-    description: "Dance studio where beginners feel comfortable learning. Offers multiple classes and free trial lessons. Note: Primarily focuses on children's and K-POP classes but may offer ballroom",
-    staff: []
-  },
+
   {
     id: "shizuoka-013",
     name: "Studio MJ",
