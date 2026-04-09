@@ -829,7 +829,14 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ", "ブルース", "ジルバ"],
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "月・金 10:00〜22:00、火〜木 10:00〜21:00、土 10:00〜18:00、日曜定休",
-    description: "金町駅近くの社交ダンス教室。スタンダード・ラテン全種目に対応し、体験レッスンやフリーダンスタイムも充実。",
+    description: "金町駅近くの社交ダンス教室。スタンダード・ラテン全種目に対応し、体験レッスンやフリーダンスタイムも充実。",,
+    staff: [
+      { name: "加藤 義人", photo: "https://danceplacefelice.com/_img/ja/article/782/image/540_540_1_ffffff/" },
+      { name: "小林 維斗", photo: "https://danceplacefelice.com/_img/ja/article/787/image/540_540_1_ffffff/" },
+      { name: "石井 由香", photo: "https://danceplacefelice.com/_img/ja/article/797/image/540_540_1_ffffff/" },
+      { name: "吉田 稲美", photo: "https://danceplacefelice.com/_img/ja/article/802/image/540_540_1_ffffff/" },
+      { name: "田実 久美子", photo: "https://danceplacefelice.com/_img/ja/article/807/image/540_540_1_ffffff/" }
+    ]
   },
   {
     id: "tokyo-047",
@@ -1380,7 +1387,13 @@ export const studios: Studio[] = [
     website: "https://shimazaki-ds.com/",
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
-    description: "蒲田駅より徒歩3分。JBDF A級審査員の嶋崎千吉・恵理子が経営・指導。英国留学経験のある本格派。",
+    description: "蒲田駅より徒歩3分。JBDF A級審査員の嶋崎千吉・恵理子が経営・指導。英国留学経験のある本格派。",,
+    staff: [
+      { name: "嶋崎 千吉", role: "経営・指導", photo: "https://shimazaki-ds.com/images/00_s.jpg" },
+      { name: "嶋崎 恵理子", role: "経営・指導", photo: "https://shimazaki-ds.com/images/01_s.jpg" },
+      { name: "吉田 妥聞", photo: "https://shimazaki-ds.com/images/03_s.jpg" },
+      { name: "宮山 由美子", photo: "https://shimazaki-ds.com/images/04_s.jpg" }
+    ]
   },
   {
     id: "tokyo-082",
