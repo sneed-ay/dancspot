@@ -907,7 +907,17 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "平日 12:00〜21:00、日曜定休",
-    description: "府中本町駅から徒歩5分。ラテン・ボールルーム・パーティーダンスに対応する地域密着型の社交ダンス教室。",
+    description: "府中本町駅から徒歩5分。ラテン・ボールルーム・パーティーダンスに対応する地域密着型の社交ダンス教室。",,
+    staff: [
+      { name: "小林 巨石", photo: "https://www.k-dance-school.jp/staff/assets_c/2020/01/fc2346f64931ab72e5a06a1b78b64bb714e2f8ed-thumb-220xauto-1314.jpg" },
+      { name: "卜部 圭以子", photo: "https://www.k-dance-school.jp/staff/assets_c/2020/01/k-dance-school_0091-thumb-220xauto-1310.jpg" },
+      { name: "梶山 賀代", photo: "https://www.k-dance-school.jp/staff/assets_c/2020/01/k-dance-school_0031-thumb-220xauto-1311.jpg" },
+      { name: "永田 薫", photo: "https://www.k-dance-school.jp/staff/assets_c/2020/01/cdbd5804ce5bdf5c1b40f60fa806db9090203d77-thumb-220xauto-1315.jpg" },
+      { name: "飯野 さやか", photo: "https://www.k-dance-school.jp/staff/assets_c/2020/01/k-dance-school_0052-thumb-220xauto-1313.jpg" },
+      { name: "上阪 綾香", photo: "https://www.k-dance-school.jp/staff/assets_c/2020/01/uesaka_284x427-thumb-220xauto-1290.jpg" },
+      { name: "高柳 克久", photo: "https://www.k-dance-school.jp/staff/assets_c/2024/06/IMG_20240508_214041-thumb-220xauto-1588.jpg" },
+      { name: "升本 真実" }
+    ]
   },
   {
     id: "tokyo-052",
@@ -921,7 +931,12 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "月〜金 11:00〜20:00、土・祝 13:00〜18:00、日曜定休",
-    description: "JBDF優良認定登録教室。府中駅前の社交ダンス教室で、初心者からインストラクター志望まで対応。シニア向けプログラムも充実。",
+    description: "JBDF優良認定登録教室。府中駅前の社交ダンス教室で、初心者からインストラクター志望まで対応。シニア向けプログラムも充実。",,
+    staff: [
+      { name: "伊藤 和明", photo: "https://dance-room-ito.tokyo/wp-content/uploads/2019/10/prof_ito_1.jpg" },
+      { name: "佐々木 恵", photo: "https://dance-room-ito.tokyo/wp-content/uploads/2019/10/prof_sasaki_1.jpg" },
+      { name: "宮﨑 真奈美", photo: "https://dance-room-ito.tokyo/wp-content/uploads/2019/10/prof_miyazaki.jpg" }
+    ]
   },
   // 三鷹市
   {
@@ -936,7 +951,12 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ", "ブルース", "ジルバ"],
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "12:00〜22:00（日曜定休）",
-    description: "三鷹駅南口から徒歩5分。初級から上級まで幅広いクラスを提供する社交ダンススクール。シニア・女性限定クラスも開催。",
+    description: "三鷹駅南口から徒歩5分。初級から上級まで幅広いクラスを提供する社交ダンススクール。シニア・女性限定クラスも開催。",,
+    staff: [
+      { name: "吉田 節子", photo: "http://www.yoshida-dc.jp/dataimge/1457405031.jpg" },
+      { name: "吉田 亮一", photo: "http://www.yoshida-dc.jp/dataimge/1760770512.jpg" },
+      { name: "峯岸 佳代", photo: "http://www.yoshida-dc.jp/dataimge/1760589825.jpg" }
+    ]
   },
   // 小金井市
   {
@@ -979,7 +999,11 @@ export const studios: Studio[] = [
     website: "http://www.tanasi-ds.com/",
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
-    description: "西東京市田無に拠点を置く社交ダンス教室。初心者から経験者まで、マンツーマン・グループ両対応でレッスン提供。",
+    description: "西東京市田無に拠点を置く社交ダンス教室。初心者から経験者まで、マンツーマン・グループ両対応でレッスン提供。",,
+    staff: [
+      { name: "西村", role: "講師", photo: "http://www.tanasi-ds.com/lecturer/images/nishimura.jpg" },
+      { name: "高橋", role: "講師", photo: "http://www.tanasi-ds.com/lecturer/images/takahashi.jpg" }
+    ]
   },
   // 狛江市
   {
