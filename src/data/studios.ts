@@ -7108,22 +7108,21 @@ export const studios: Studio[] = [
     ]
   },
   {
-    id: "toystaff: [
-      { name: "REIKA", role: "代表", photo: "https://cdn.amebaowndme.com/madrid-prd/madrid-web/images/sites/2322179/2cafc7480a6c3d0a2f15519ee8653a22_7d3831eb595aa4a1ba3a3af25e5f5eab.jpg?width=800" }
-    ]
+    id: "toyama-014",
     name: "REIKA DANCE SCHOOL",
     prefecture: "toyama",
     prefectureName: "富山県",
     city: "射水市",
     address: "富山県射水市",
-    phonestaff: [
-      { name: "NAYU", role: "代表", photo: "https://cdn.goope.jp/210133/240402170758-660bbcde822af_l.jpg" }
-    ] website: "https://reika-danceschool.amebaownd.com/",
+    phone: "",
+    website: "https://reika-danceschool.amebaownd.com/",
     danceStyles: ["社交ダンス"],
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "",
     description: "射水市のダンススクール。",
-    staff: []
+    staff: [
+      { name: "REIKA", role: "代表", photo: "https://cdn.amebaowndme.com/madrid-prd/madrid-web/images/sites/2322179/2cafc7480a6c3d0a2f15519ee8653a22_7d3831eb595aa4a1ba3a3af25e5f5eab.jpg?width=800" }
+    ]
   },
   {
     id: "toyama-015",
@@ -7138,7 +7137,9 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "",
     description: "富山市のダンススクール。",
-    staff: []
+    staff: [
+      { name: "NAYU", role: "代表", photo: "https://cdn.goope.jp/210133/240402170758-660bbcde822af_l.jpg" }
+    ]
   },
   {
     id: "toyama-016",
@@ -7158,15 +7159,7 @@ export const studios: Studio[] = [
   {
     id: "toyama-017",
     name: "新湊カモンスポーツクラブ",
-  staff: [
-      { name: "MIKAKO", role: "講師", photo: "https://dance-studio-deep.com/instructor/instructor-mikako-a.jpg" },
-      { name: "SORA", role: "講師", photo: "https://dance-studio-deep.com/instructor/instructor-sora-a.jpg" },
-      { name: "KOUSHI", role: "講師", photo: "https://dance-studio-deep.com/instructor/instructor-koushi-a.jpg" },
-      { name: "HAM", role: "講師", photo: "https://dance-studio-deep.com/instructor/instructor-ham-a.jpg" },
-      { name: "REIKA", role: "講師", photo: "https://dance-studio-deep.com/instructor/instructor-reika-a.jpg" },
-      { name: "NON", role: "講師", photo: "https://dance-studio-deep.com/instructor/instructor-non-a.jpg" },
-      { name: "IKI", role: "講師", photo: "https://dance-studio-deep.com/instructor/instructor-iki-a.jpg" }
-    ]ure: "toyama",
+    prefecture: "toyama",
     prefectureName: "富山県",
     city: "射水市",
     address: "富山県射水市（新湊地域）",
@@ -7191,7 +7184,15 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "",
     description: "射水市のダンススタジオ。",
-    staff: []
+    staff: [
+      { name: "MIKAKO", role: "講師", photo: "https://dance-studio-deep.com/instructor/instructor-mikako-a.jpg" },
+      { name: "SORA", role: "講師", photo: "https://dance-studio-deep.com/instructor/instructor-sora-a.jpg" },
+      { name: "KOUSHI", role: "講師", photo: "https://dance-studio-deep.com/instructor/instructor-koushi-a.jpg" },
+      { name: "HAM", role: "講師", photo: "https://dance-studio-deep.com/instructor/instructor-ham-a.jpg" },
+      { name: "REIKA", role: "講師", photo: "https://dance-studio-deep.com/instructor/instructor-reika-a.jpg" },
+      { name: "NON", role: "講師", photo: "https://dance-studio-deep.com/instructor/instructor-non-a.jpg" },
+      { name: "IKI", role: "講師", photo: "https://dance-studio-deep.com/instructor/instructor-iki-a.jpg" }
+    ]
   },
   {
     id: "toyama-019",
