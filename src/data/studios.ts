@@ -1251,7 +1251,18 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "月〜金 12:00〜22:00、土・祝 12:00〜18:00（日曜休業）",
-    description: "五反田の社交ダンススクール。丁寧な個人指導え評判。",
+    description: "五反田の社交ダンススクール。丁寧な個人指導え評判。",,
+    staff: [
+      { name: "西岡 次郎", role: "オーナー・元スタンダード＆ラテンA級", photo: "http://nishiokads.com/wp-content/uploads/2019/02/%E8%A5%BF%E5%B2%A1.gif" },
+      { name: "伊藤 肇子", role: "元スタンダード＆ラテンA級", photo: "http://nishiokads.com/wp-content/uploads/2019/03/staff%E8%82%87%E5%AD%90.gif" },
+      { name: "岩城 聖", role: "元JBDFスタンダードA級", photo: "http://nishiokads.com/wp-content/uploads/2019/03/staff%E5%B2%A9%E5%9F%8E.gif" },
+      { name: "坂本 英範", role: "JBDFスタンダードB級", photo: "http://nishiokads.com/wp-content/uploads/2019/03/staff%E5%9D%82%E6%9C%AC.gif" },
+      { name: "井﨑 健太", role: "JBDFスタンダードA級", photo: "http://nishiokads.com/wp-content/uploads/2019/03/staff%E4%BA%95%EF%A8%912.gif" },
+      { name: "森下 法延", role: "JBDFスタンダードB級", photo: "http://nishiokads.com/wp-content/uploads/2019/03/staff%E6%A3%AE%E4%B8%8B.gif" },
+      { name: "長井 英生", role: "JBDFスタンダードB級", photo: "http://nishiokads.com/wp-content/uploads/2019/03/staff%E9%95%B7%E4%BA%952.gif" },
+      { name: "井﨑 沙織", role: "JBDFスタンダードA級・元全日本アマチャンピオン", photo: "http://nishiokads.com/wp-content/uploads/2019/03/staff%E3%81%95%E3%81%8A%E3%82%8A.gif" },
+      { name: "寒河江 貴大", role: "JBDFスタンダードA級", photo: "http://nishiokads.com/wp-content/uploads/2019/03/staff%E5%AF%92%E6%B2%B3%E6%B1%9F.gif" }
+    ]
   },
   {
     id: "tokyo-075",
@@ -1265,7 +1276,14 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "平日 12:00〜22:00、土 12:00〜20:00、祝 12:00〜18:00（日曜休業）",
-    description: "JR駒込駅から徒歩2分。元全日本チャンピオン橘正幸・弘子が監修する社交ダンススタジオ。",
+    description: "JR駒込駅から徒歩2分。元全日本チャンピオン橘正幸・弘子が監修する社交ダンススタジオ。",,
+    staff: [
+      { name: "上村 和之", role: "オーナー・ボールルームダンスA級", photo: "https://tachibanadance.com/_p/acre/21683/images/pc/26affa93.JPG" },
+      { name: "上村 みちこ", role: "インストラクター", photo: "https://tachibanadance.com/_p/acre/21683/images/pc/120a35d8.JPG" },
+      { name: "及川 考人", role: "インストラクター", photo: "https://tachibanadance.com/_p/acre/21683/images/pc/10fd2412.JPG" },
+      { name: "大内 裕香", role: "プロダンスラテン1級・JBDFラテン元A級", photo: "https://tachibanadance.com/_p/acre/21683/images/pc/dc0d86cb.jpg" },
+      { name: "滝澤 聖也", role: "ボールルームダンスA級", photo: "https://tachibanadance.com/_p/acre/21683/images/pc/675bf945.JPG" }
+    ]
   },
   {
     id: "tokyo-076",
