@@ -12297,3 +12297,4 @@ export function getStudiosByPrefecture(prefecture: string): Studio[] {
 export function getStudioById(id: string): Studio | undefined {
   return studios.find((s) => s.id === id);
 }
+ 
