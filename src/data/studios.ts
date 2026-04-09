@@ -567,7 +567,11 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "ペア", "体験"],
     hours: "月・火・木・金・土 13:00〜22:00、水・日定休（祝日は13:00〜18:00）",
-    description: "蔵前駅から徒歩数分。洗練された明るいスタジオ。若者向け「青葉の会」グループレッスンも月1〜2回開催。",
+    description: "蔵前駅から徒歩数分。洗練された明るいスタジオ。若者向け「青葉の会」グループレッスンも月1〜2回開催。",,
+    staff: [
+      { name: "長谷川 太一", role: "経営・指導", photo: "https://hasegawadance.com/assets/img/staff/hasegawa-taichi.jpg" },
+      { name: "釜田 愛", role: "経営・指導", photo: "https://hasegawadance.com/assets/img/staff/kamada-ai.jpg" }
+    ]
   },
   {
     id: "tokyo-031",
@@ -580,7 +584,12 @@ export const studios: Studio[] = [
     website: "http://yokotadance.com/",
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
-    description: "浅草橋駅から徒歩1分。スタンダード・ラテン全種目対応。大人から子供キッズクラスまで幅広く開講。",
+    description: "浅草橋駅から徒歩1分。スタンダード・ラテン全種目対応。大人から子供キッズクラスまで幅広く開講。",,
+    staff: [
+      { name: "横田 健司", role: "代表", photo: "http://yokotadance.com/image/staff-yokota.jpg" },
+      { name: "小路谷 美樹", photo: "http://yokotadance.com/image/staff_miki.jpg" },
+      { name: "平川 賢志", photo: "http://yokotadance.com/image/staff_hirakawa.jpg" }
+    ]
   },
   // 江東区
   {
@@ -624,7 +633,18 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "平日 12:30〜21:00、土 13:00〜19:00、日・祝定休",
-    description: "北千住駅西口から徒歩5分。50坪の広々フロア。JDBFスタンダード・ラテン共にA級プロ所属。初心者大歓迎。",
+    description: "北千住駅西口から徒歩5分。50坪の広々フロア。JDBFスタンダード・ラテン共にA級プロ所属。初心者大歓迎。",,
+    staff: [
+      { name: "加藤 周介", role: "代表", photo: "https://ks-da.com/_src/6493/dsc_0297_.png" },
+      { name: "加藤 留巳", photo: "https://ks-da.com/_src/6497/dsc_0205_background_removal.png" },
+      { name: "相田 和也", role: "技術部長", photo: "https://ks-da.com/_src/6489/dsc_0289_.png" },
+      { name: "三木 すみれ", photo: "https://ks-da.com/_src/6500/dsc_0231_background_removal.png" },
+      { name: "川上 舞子", photo: "https://ks-da.com/_src/6508/dsc_0399.png" },
+      { name: "吉田 稲美", photo: "https://ks-da.com/_src/6512/dsc_0199_background_removal.png" },
+      { name: "半田 健太郎", photo: "https://ks-da.com/_src/6486/dsc_0389.png" },
+      { name: "古田 幸太郎", photo: "https://ks-da.com/_src/6643/img20250519125702246701.png" },
+      { name: "田中 杏珠", photo: "https://ks-da.com/_src/6641/img20241205195256969850.png" }
+    ]
   },
   {
     id: "tokyo-035",
