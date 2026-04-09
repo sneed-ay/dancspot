@@ -202,7 +202,16 @@ export const studios: Studio[] = [
     website: "https://asdancestudio.com/",
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
-    description: "恵比寿駅西口より徒歩4分。元全日本ラテンチャンピオン監修の社交ダンスクール。初心者から競技選手まで対応。",
+    description: "恵比寿駅西口より徒歩4分。元全日本ラテンチャンピオン監修の社交ダンスクール。初心者から競技選手まで対応。",,
+    staff: [
+      { name: "土屋 純一", role: "インストラクター", photo: "https://asdancestudio.com/mwp/wp-content/uploads/2025/02/土屋純一.webp" },
+      { name: "井川 まゆみ", role: "インストラクター", photo: "https://asdancestudio.com/mwp/wp-content/uploads/2025/02/井川まゆみ.webp" },
+      { name: "松下 梨沙", role: "インストラクター", photo: "https://asdancestudio.com/mwp/wp-content/uploads/2025/02/松下梨沙.webp" },
+      { name: "佐原 麻耶", role: "インストラクター", photo: "https://asdancestudio.com/mwp/wp-content/uploads/2025/02/佐原麻耶.webp" },
+      { name: "森安 略夫", role: "インストラクター", photo: "https://asdancestudio.com/mwp/wp-content/uploads/2025/02/森安略夫.webp" },
+      { name: "竹澤 陽子", role: "インストラクター", photo: "https://asdancestudio.com/mwp/wp-content/uploads/2025/02/竹澤陽子.webp" },
+      { name: "水田 麻里子", role: "インストラクター", photo: "https://asdancestudio.com/mwp/wp-content/uploads/2025/02/水田麻里子.webp" }
+    ]
   },
   {
     id: "tokyo-011",
@@ -253,7 +262,15 @@ export const studios: Studio[] = [
     website: "https://sakaneds.com/",
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
-    description: "池袋駅39番出口から徒歩30秒。1979年創立の伝統ある社交ダンス教室。元全日本ファイナリストが指導。",
+    description: "池袋駅39番出口から徒歩30秒。1979年創立の伝統ある社交ダンス教室。元全日本ファイナリストが指導。",,
+    staff: [
+      { name: "中島 史智", role: "代表・インストラクター", photo: "https://sakaneds.com/wp-content/uploads/2019/08/ph_staff_01.jpg" },
+      { name: "佐々木 まい", role: "インストラクター", photo: "https://sakaneds.com/wp-content/uploads/2019/08/ph_staff_02.jpg" },
+      { name: "釘貫 義久", role: "インストラクター", photo: "https://sakaneds.com/wp-content/uploads/2019/08/ph_staff_06.jpg" },
+      { name: "髙橋 祐貴", role: "インストラクター", photo: "https://sakaneds.com/wp-content/uploads/2024/03/IMG_7074-scaled-e1711012432959-1024x963.jpeg" },
+      { name: "的場 永峯", role: "インストラクター", photo: "https://sakaneds.com/wp-content/uploads/2019/08/ph_staff_08.jpg" },
+      { name: "立石 啓", role: "インストラクター", photo: "https://sakaneds.com/wp-content/uploads/2019/08/ph_staff_09.jpg" }
+    ]
   },
   {
     id: "tokyo-014",
@@ -267,7 +284,11 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "月〜金 12:00〜22:00、土・祝 13:00〜18:00（予約制）",
-    description: "池袋エリアの社交ダンス教室。予約制でマンツーマン指導にも対応。",
+    description: "池袋エリアの社交ダンス教室。予約制でマンツーマン指導にも対応。",,
+    staff: [
+      { name: "増山 真太郎", role: "代表インストラクター", photo: "https://static.wixstatic.com/media/3dfcab_31398242188340f1bd0f17df1aff37df~mv2.png/v1/fill/w_465,h_597,al_c,q_85,enc_avif,quality_auto/shintaro_PNG.png" },
+      { name: "増山 洋子", role: "インストラクター", photo: "https://static.wixstatic.com/media/3dfcab_3c49e59c08bf4471a617d491b77b5036~mv2.png/v1/fill/w_464,h_624,al_c,q_85,enc_avif,quality_auto/yoko_PNG.png" }
+    ]
   },
   {
     id: "tokyo-015",
