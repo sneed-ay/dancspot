@@ -637,7 +637,12 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     hours: "月〜土 12:00〜22:00",
-    description: "北千住駅西口から徒歩6分。社交ダンスのほかバレエ・K-POP・ベリーダンスも開講する総合ダンスアカデミー。",
+    description: "北千住駅西口から徒歩6分。社交ダンスのほかバレエ・K-POP・ベリーダンスも開講する総合ダンスアカデミー。",,
+    staff: [
+      { name: "佐藤 光彦", role: "社交ダンス講師・常勤", photo: "https://static.wixstatic.com/media/8fe758_be8acd162e7448d1afaf4474d280af98~mv2.jpg/v1/fill/w_400,h_400,al_c,q_85,enc_avif,quality_auto/20210926.jpg" },
+      { name: "井上 奈美", role: "社交ダンス講師・非常勤", photo: "https://static.wixstatic.com/media/8fe758_a9a86097777c4123ab54f0544f0fbf99~mv2.jpg/v1/fill/w_300,h_500,al_c,q_85,enc_avif,quality_auto/8fe758_a9a86097777c4123ab54f0544f0fbf99~mv2.jpg" },
+      { name: "三喜 真梨菜", role: "社交ダンス講師・非常勤", photo: "https://static.wixstatic.com/media/8fe758_bb440c5e38c340fb872c85a159e043a9~mv2.jpg/v1/fill/w_300,h_500,al_c,q_85,enc_avif,quality_auto/8fe758_bb440c5e38c340fb872c85a159e043a9~mv2.jpg" }
+    ]
   },
   // 練馬区
   {
@@ -1139,7 +1144,11 @@ export const studios: Studio[] = [
     website: "https://sdk.themedia.jp/",
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
-    description: "広くて明るいスタジオ。社交ダンス・アメリカンスムースに対応した本格教室。",
+    description: "広くて明るいスタジオ。社交ダンス・アメリカンスムースに対応した本格教室。",,
+    staff: [
+      { name: "橋本 沙代子", role: "JBDF審査員・元JBDFスタンダード/ラテンA級", photo: "https://cdn.amebaowndme.com/madrid-prd/madrid-web/images/sites/516302/c6acf3cd9b46439082278758fa3e46ca_7eb9dbf69ecd16c15d8c8e202ed21ed5.jpg" },
+      { name: "比美野 めいび", role: "JBDFプロ競技選手・振付師", photo: "https://cdn.amebaowndme.com/madrid-prd/madrid-web/images/sites/516302/a36882ed69fa3655548041187955d031_1534ad20000745f4082c50a838d6e5b5.jpg" }
+    ]
   },
   {
     id: "tokyo-069",
@@ -1151,7 +1160,11 @@ export const studios: Studio[] = [
     website: "https://fessi-dance.com/",
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
-    description: "幡ヶ谷駅から徒歩5分。元全日本チャンピオンが指導する本格社交ダンススクール。出張レッスンも対応。",
+    description: "幡ヶ谷駅から徒歩5分。元全日本チャンピオンが指導する本格社交ダンススクール。出張レッスンも対応。",,
+    staff: [
+      { name: "鈴木 秀朗", role: "元JPDSAラテンチャンピオン", photo: "https://fessi-dance.com/trainer/img/hide.jpg" },
+      { name: "石田 すみ子", role: "元全日本ラテンチャンピオン", photo: "https://fessi-dance.com/trainer/img/sumi.jpg" }
+    ]
   },
   {
     id: "tokyo-070",
@@ -1163,7 +1176,19 @@ export const studios: Studio[] = [
     website: "http://hiyamadance.com/",
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
-    description: "下高井戸駅徒歩2分。10名のインストラクターが在籍し初心者向けクラスが充実。",
+    description: "下高井戸駅徒歩2分。10名のインストラクターが在籍し初心者向けクラスが充実。",,
+    staff: [
+      { name: "檜山 浩治", role: "元プロスタンダードSA級", photo: "http://hiyamadance.com/wp/wp-content/uploads/2019/12/Staff-image-Hiyama.jpg" },
+      { name: "檜山 公美子", role: "元プロスタンダードSA級", photo: "http://hiyamadance.com/wp/wp-content/uploads/2019/12/Staff-image-Kumiko.jpg" },
+      { name: "小杉 具也", role: "プロスタンダードA級", photo: "http://hiyamadance.com/wp/wp-content/uploads/2019/12/Staff-image-Kosugi.jpg" },
+      { name: "白神 淳", role: "プロスタンダードA級", photo: "http://hiyamadance.com/wp/wp-content/uploads/2019/12/Staff-image-Shiragami.jpg" },
+      { name: "石口 瑞恵", role: "プロスタンダードA級", photo: "http://hiyamadance.com/wp/wp-content/uploads/2019/12/Staff-image-Mizue.jpg" },
+      { name: "亀山 聡美", role: "プロスタンダードA級", photo: "http://hiyamadance.com/wp/wp-content/uploads/2019/12/Staff-image-Satomi.jpg" },
+      { name: "本多 龍士", role: "プロスタンダードA級", photo: "http://hiyamadance.com/wp/wp-content/uploads/2019/12/Staff-image-Honda.jpg" },
+      { name: "田 倫好", role: "プロスタンダードB級", photo: "http://hiyamadance.com/wp/wp-content/uploads/2019/12/Staff-image-Jeon.jpg" },
+      { name: "北之坊 太郎", role: "プロスタンダードB級/プロラテンD級", photo: "http://hiyamadance.com/wp/wp-content/uploads/2019/12/Staff-image-Kitanobo.jpg" },
+      { name: "松井 滉貴", role: "プロスタンダードB級", photo: "http://hiyamadance.com/wp/wp-content/uploads/2019/12/Staff-image-Matsui.jpg" }
+    ]
   },
   {
     id: "tokyo-071",
@@ -1176,7 +1201,15 @@ export const studios: Studio[] = [
     website: "https://www.dance.co.jp/",
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
-    description: "豪徺寺駅徒歩2分。ジュニアからシニアまで幅広く対応するグループ・個人レッスン。",
+    description: "豪徺寺駅徒歩2分。ジュニアからシニアまで幅広く対応するグループ・個人レッスン。",,
+    staff: [
+      { name: "森田 銀河", role: "代表・元JBDFプロラテンチャンピオン", photo: "https://www.dance.co.jp/wp-content/themes/Theme02/img/instructor/pic01.jpg" },
+      { name: "小和田 愛子", role: "元JBDFプロラテンチャンピオン", photo: "https://www.dance.co.jp/wp-content/themes/Theme02/img/instructor/pic02.jpg" },
+      { name: "森田 飛鷹", role: "JBDFプロボールルームA級", photo: "https://www.dance.co.jp/wp-content/themes/Theme02/img/instructor/pic03.jpg" },
+      { name: "永井 希望", role: "JBDFプロラテンB級・ボールルームB級", photo: "https://www.dance.co.jp/wp-content/themes/Theme02/img/instructor/pic09.jpg" },
+      { name: "小島 獅桐", role: "JBDFプロラテンD級", photo: "https://www.dance.co.jp/wp-content/themes/Theme02/img/instructor/pic08.jpg" },
+      { name: "佐野 媛菜", role: "JBDFプロラテンB級・非常勤", photo: "https://www.dance.co.jp/wp-content/themes/Theme02/img/instructor/pic10.jpg" }
+    ]
   },
   {
     id: "tokyo-072",
