@@ -6849,21 +6849,7 @@ export const studios: Studio[] = [
     description: "「はじめてのストリートダンス」や「一人で楽しむ社交ダンス」など社交ダンスコース開講。月3回60分グループレッスン。",
     staff: []
   },
-  {
-    id: "toyama-012",
-    name: "AIONダンスアカデミー（射水校）",
-    prefecture: "toyama",
-    prefectureName: "富山県",
-    city: "射水市",
-    address: "富山県射水市",
-    phone: "",
-    website: "https://www.dance-aion.com/",
-    danceStyles: ["社交ダンス"],
-    lessonTypes: ["個人レッスン", "グループレッスン"],
-    hours: "",
-    description: "富山県射水市に展開。複数の県で展開するダンススクール。ダンスジャンル多数。",
-    staff: []
-  },
+
   {
     id: "toyama-014",
     name: "REIKA DANCE SCHOOL",
