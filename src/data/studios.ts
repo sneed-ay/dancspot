@@ -36,20 +36,7 @@ export const studios: Studio[] = [
       { name: "高木邦洋", role: "校長" },
       { name: "高木栄子", role: "校長" },
     ],
-  },
-  {
-    id: "tokyo-003",
-    name: "得地ソシアルダンススクール",
-    prefecture: "tokyo",
-    prefectureName: "東京都",
-    city: "中央区",
-    address: "東京都中央区銀座4-3-13 コイズミビル3F",
-    phone: "03-5250-1205",
-    website: "https://www.tokuchi-dance.jp/",
-    danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
-    lessonTypes: ["グループ", "個人", "体験"],
-    hours: "平日 12:00〜22:00、土曜 12:00〜18:00、日曜・祝祭日定休",
-    description: "銀座駅B4出口より徒歩30秒。銀座中心部にある社交ダンススクール。",
+    hours: "13:00〜21:00（日祝定休）"
   },
   {
     id: "tokyo-004",
@@ -211,7 +198,8 @@ export const studios: Studio[] = [
       { name: "森安 略夫", role: "インストラクター", photo: "https://asdancestudio.com/mwp/wp-content/uploads/2025/02/森安略夫.webp" },
       { name: "竹澤 陽子", role: "インストラクター", photo: "https://asdancestudio.com/mwp/wp-content/uploads/2025/02/竹澤陽子.webp" },
       { name: "水田 麻里子", role: "インストラクター", photo: "https://asdancestudio.com/mwp/wp-content/uploads/2025/02/水田麻里子.webp" }
-    ]
+    ],
+    hours: "月〜金 13:00〜22:00、土 13:00〜20:00"
   },
   {
     id: "tokyo-011",
@@ -232,6 +220,8 @@ export const studios: Studio[] = [
       { name: "神成 飛花", role: "インストラクター", photo: "https://takigawa-ds.com/wp/wp-content/uploads/2026/01/kannari_asuka288x238-1.jpg" },
       { name: "安田 充希", role: "インストラクター", photo: "https://takigawa-ds.com/wp/wp-content/uploads/2025/12/s-yasuda_mitsuki288x238.jpg" },
     ],
+    phone: "048-234-9569",
+    hours: "13:00〜22:00（定休日：月曜）"
   },
   {
     id: "tokyo-012",
@@ -250,6 +240,8 @@ export const studios: Studio[] = [
       { name: "吹野 明日香", role: "インストラクター", photo: "https://takigawa-ds.com/wp/wp-content/themes/takigawadance/img/staff/img05.jpg" },
       { name: "比嘉 那美", role: "インストラクター", photo: "https://takigawa-ds.com/wp/wp-content/uploads/2024/03/nami-h01-238x288-1.jpg" },
     ],
+    phone: "048-234-9569",
+    hours: "13:00〜22:00（定休日：月曜）"
   },
   {
     id: "tokyo-013",
@@ -270,7 +262,8 @@ export const studios: Studio[] = [
       { name: "髙橋 祐貴", role: "インストラクター", photo: "https://sakaneds.com/wp-content/uploads/2024/03/IMG_7074-scaled-e1711012432959-1024x963.jpeg" },
       { name: "的場 永峯", role: "インストラクター", photo: "https://sakaneds.com/wp-content/uploads/2019/08/ph_staff_08.jpg" },
       { name: "立石 啓", role: "インストラクター", photo: "https://sakaneds.com/wp-content/uploads/2019/08/ph_staff_09.jpg" }
-    ]
+    ],
+    hours: "平日 12:00〜22:00、土日・祝日 12:00〜20:00"
   },
   {
     id: "tokyo-014",
@@ -323,6 +316,8 @@ export const studios: Studio[] = [
       { name: "西田 美穂", role: "インストラクター", photo: "https://www.nishidadance.jp/_p/2948/images/pc/210f24cd.JPG" },
       { name: "箱田 翔次郎", role: "インストラクター", photo: "https://www.nishidadance.jp/_p/2948/images/pc/96f03d19.jpg" },
     ],
+    phone: "03-3806-5439",
+    hours: "平日 12:00〜21:00、土 10:30〜19:00、日曜定休"
   },
   {
     id: "tokyo-017",
@@ -349,19 +344,6 @@ export const studios: Studio[] = [
       { name: "杉原 瑠衣", role: "インストラクター", photo: "https://www.zest-ballroomdance-tokyo.com/wp-content/uploads/2023/08/IMG_0734.jpg" },
       { name: "濱田 琉衣", role: "インストラクター", photo: "https://www.zest-ballroomdance-tokyo.com/wp-content/uploads/2024/01/IMG_0760.jpg" },
     ],
-  },
-  {
-    id: "tokyo-018",
-    name: "IDC.Tokyo 社交ダンス・文化教養アカデミー",
-    prefecture: "tokyo",
-    prefectureName: "東京都",
-    city: "中央区",
-    address: "東京都中央区銀座1-13-11 ヒュリック銀座1丁目ビル4F",
-    phone: "080-5512-5353",
-    website: "https://idc-tokyo.com/",
-    danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
-    lessonTypes: ["グループ", "個人", "体験"],
-    description: "英国認定ICPA付属の社交ダンス・文化教養アカデミー。国際交流・英語も学べる若者向け銀座スタジオ。",
   },
   {
     id: "tokyo-019",
@@ -397,6 +379,8 @@ export const studios: Studio[] = [
       { name: "北畑 香織", role: "インストラクター", photo: "https://takigawa-ds.com/wp/wp-content/themes/takigawadance/img/staff/img03.jpg" },
       { name: "吹野 明日香", role: "インストラクター", photo: "https://takigawa-ds.com/wp/wp-content/themes/takigawadance/img/staff/img05.jpg" },
     ],
+    phone: "048-234-9569",
+    hours: "13:00〜22:00（定休日：月曜）"
   },
   // 世田谷区
   {
@@ -658,7 +642,8 @@ export const studios: Studio[] = [
       { name: "佐藤 光彦", role: "社交ダンス講師・常勤", photo: "https://static.wixstatic.com/media/8fe758_be8acd162e7448d1afaf4474d280af98~mv2.jpg/v1/fill/w_400,h_400,al_c,q_85,enc_avif,quality_auto/20210926.jpg" },
       { name: "井上 奈美", role: "社交ダンス講師・非常勤", photo: "https://static.wixstatic.com/media/8fe758_a9a86097777c4123ab54f0544f0fbf99~mv2.jpg/v1/fill/w_300,h_500,al_c,q_85,enc_avif,quality_auto/8fe758_a9a86097777c4123ab54f0544f0fbf99~mv2.jpg" },
       { name: "三喜 真梨菜", role: "社交ダンス講師・非常勤", photo: "https://static.wixstatic.com/media/8fe758_bb440c5e38c340fb872c85a159e043a9~mv2.jpg/v1/fill/w_300,h_500,al_c,q_85,enc_avif,quality_auto/8fe758_bb440c5e38c340fb872c85a159e043a9~mv2.jpg" }
-    ]
+    ],
+    phone: "03-6806-2434"
   },
   // 練馬区
   {
@@ -750,7 +735,8 @@ export const studios: Studio[] = [
     staff: [
       { name: "合馬 靖雄", photo: "https://www.gohma-dance.com/wp-content/uploads/staff_img001.jpg" },
       { name: "白石 奈々", photo: "https://www.gohma-dance.com/wp-content/uploads/staff_img002.jpg" }
-    ]
+    ],
+    hours: "月〜金 12:00〜21:00、土・祝 12:00〜18:30、日曜定休"
   },
   // 八王子市
   {
@@ -782,21 +768,8 @@ export const studios: Studio[] = [
     staff: [
       { name: "松下 梨沙", photo: "https://studio-li.jp/wp-content/themes/studioli/images/mastusita_img-min.jpg" },
       { name: "宮原 明希光", photo: "https://studio-li.jp/wp-content/themes/studioli/images/koushi_miyashita@1.25x@1.25x.jpg" }
-    ]
-  },
-  {
-    id: "tokyo-043",
-    name: "ありがダンススタジオ",
-    prefecture: "tokyo",
-    prefectureName: "東京都",
-    city: "板橋区",
-    address: "東京都板橋区成増1-28-15 林屋ビル3F",
-    phone: "03-3975-4667",
-    website: "http://www.ariga-dance.com/",
-    danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
-    lessonTypes: ["グループ", "個人"],
-    hours: "13:00〜22:00（日曜不定休）",
-    description: "成増駅近く、35坪の広くて明るいフロアが特長の社交ダンス教室。個人・グループレッスン両対応。",
+    ],
+    hours: "月〜金 12:00〜21:00"
   },
   // 北区
   {
@@ -898,19 +871,6 @@ export const studios: Studio[] = [
     description: "錦糸町駅から徒歩4分。1993年開校の歴史ある社交ダンス教室で、初心者から競技者まで幅広く指導。",
   },
   // 調布市
-  {
-    id: "tokyo-050",
-    name: "ダンスプラザ調布",
-    prefecture: "tokyo",
-    prefectureName: "東京都",
-    city: "調布市",
-    address: "東京都調布市布田4-2-1 調布スクエアービル5F",
-    phone: "042-482-0004",
-    website: "http://www.plazachofu.jp/",
-    danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
-    lessonTypes: ["グループ", "体験"],
-    description: "調布駅から徒歩1分、50坪の広いフロアを持つ社交ダンス練習場。学生からシニアまで幅広い世代が利用する。",
-  },
   // 府中市
   {
     id: "tokyo-051",
@@ -1123,6 +1083,7 @@ export const studios: Studio[] = [
       { name: "須藤 達矢", role: "代表・講師", photo: "http://sudodancestudioginza.com/wp-content/uploads/2025/01/IMG_0226-1-683x1024.jpeg" },
       { name: "庄司 まゆ", role: "講師", photo: "http://sudodancestudioginza.com/wp-content/uploads/2025/01/IMG_1417.jpeg" },
     ],
+    phone: "03-5250-1205"
   },
   {
     id: "tokyo-063",
@@ -1176,6 +1137,7 @@ export const studios: Studio[] = [
       { name: "市川 久", role: "プロフェッショナルダンス教師1級", photo: "https://dance-school-ichikawa.net/wp-content/themes/test/images/staff/hisashi1.jpg" },
       { name: "大島 寿子", role: "プロフェッショナルダンス教師1級", photo: "https://dance-school-ichikawa.net/wp-content/themes/test/images/staff/hisako2020.jpg" },
     ],
+    phone: "03-6427-5252"
   },
   {
     id: "tokyo-066",
@@ -1196,6 +1158,8 @@ export const studios: Studio[] = [
       { name: "西 恭平", role: "DSHJチャンピオン", photo: "https://liberadance.com/img/teachers/nishi-kyohei.jpg" },
       { name: "西川 真由", role: "WDSF-PD日本代表", photo: "https://liberadance.com/img/teachers/nishikawa-mayu.avif" },
     ],
+    phone: "03-3351-9298",
+    hours: "10:00〜22:00"
   },
   {
     id: "tokyo-067",
@@ -1213,6 +1177,7 @@ export const studios: Studio[] = [
       { name: "成竹 俊治", role: "代表・講師", photo: "https://www.sdsnaritake.com/uploads/1/4/5/3/14535348/s3142970_orig.jpg" },
       { name: "延本 紗祐里", role: "講師", photo: "https://www.sdsnaritake.com/uploads/1/4/5/3/14535348/s3142971_orig.jpg" },
     ],
+    phone: "03-6273-2653"
   },
   {
     id: "tokyo-068",
@@ -1228,7 +1193,8 @@ export const studios: Studio[] = [
     staff: [
       { name: "橋本 沙代子", role: "JBDF審査員・元JBDFスタンダード/ラテンA級", photo: "https://cdn.amebaowndme.com/madrid-prd/madrid-web/images/sites/516302/c6acf3cd9b46439082278758fa3e46ca_7eb9dbf69ecd16c15d8c8e202ed21ed5.jpg" },
       { name: "比美野 めいび", role: "JBDFプロ競技選手・振付師", photo: "https://cdn.amebaowndme.com/madrid-prd/madrid-web/images/sites/516302/a36882ed69fa3655548041187955d031_1534ad20000745f4082c50a838d6e5b5.jpg" }
-    ]
+    ],
+    phone: "03-3209-3521"
   },
   {
     id: "tokyo-069",
@@ -1244,7 +1210,9 @@ export const studios: Studio[] = [
     staff: [
       { name: "鈴木 秀朗", role: "元JPDSAラテンチャンピオン", photo: "https://fessi-dance.com/trainer/img/hide.jpg" },
       { name: "石田 すみ子", role: "元全日本ラテンチャンピオン", photo: "https://fessi-dance.com/trainer/img/sumi.jpg" }
-    ]
+    ],
+    phone: "03-6300-9576",
+    hours: "平日 10:00〜22:00、土日 10:00〜19:00、月曜定休"
   },
   {
     id: "tokyo-070",
@@ -1268,7 +1236,9 @@ export const studios: Studio[] = [
       { name: "田 倫好", role: "プロスタンダードB級", photo: "http://hiyamadance.com/wp/wp-content/uploads/2019/12/Staff-image-Jeon.jpg" },
       { name: "北之坊 太郎", role: "プロスタンダードB級/プロラテンD級", photo: "http://hiyamadance.com/wp/wp-content/uploads/2019/12/Staff-image-Kitanobo.jpg" },
       { name: "松井 滉貴", role: "プロスタンダードB級", photo: "http://hiyamadance.com/wp/wp-content/uploads/2019/12/Staff-image-Matsui.jpg" }
-    ]
+    ],
+    phone: "03-3324-6191",
+    hours: "月〜金 11:45〜20:00、土・祝 11:45〜18:00、日曜定休"
   },
   {
     id: "tokyo-071",
@@ -1310,7 +1280,9 @@ export const studios: Studio[] = [
       { name: "久保 英史", photo: "https://shinodadc.net/images/staff_08.jpg" },
       { name: "松島 由季", photo: "https://shinodadc.net/images/staff_09.jpg" },
       { name: "姜 程程", photo: "https://shinodadc.net/images/staff_10.jpg" }
-    ]
+    ],
+    phone: "03-3783-0081",
+    hours: "平日 12:30〜22:00、土 12:30〜19:00、祝 12:30〜18:00、日曜休"
   },
   {
     id: "tokyo-073",
@@ -1351,7 +1323,8 @@ export const studios: Studio[] = [
       { name: "長井 英生", role: "JBDFスタンダードB級", photo: "http://nishiokads.com/wp-content/uploads/2019/03/staff%E9%95%B7%E4%BA%952.gif" },
       { name: "井﨑 沙織", role: "JBDFスタンダードA級・元全日本アマチャンピオン", photo: "http://nishiokads.com/wp-content/uploads/2019/03/staff%E3%81%95%E3%81%8A%E3%82%8A.gif" },
       { name: "寒河江 貴大", role: "JBDFスタンダードA級", photo: "http://nishiokads.com/wp-content/uploads/2019/03/staff%E5%AF%92%E6%B2%B3%E6%B1%9F.gif" }
-    ]
+    ],
+    phone: "03-3449-3997"
   },
   {
     id: "tokyo-075",
@@ -1402,6 +1375,7 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     description: "荻窪駅徒歩1分。初心者大歓迎のアットホームなダンススタジオ。",
+    phone: "03-6794-7712"
   },
   {
     id: "tokyo-078",
@@ -1478,41 +1452,8 @@ export const studios: Studio[] = [
     danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
     lessonTypes: ["グループ", "個人", "体験"],
     description: "吉祥寺駅徒歩2分。有資格講師陣による指導。お子様から大人まで対応。",
-  },
-  {
-    id: "tokyo-083",
-    name: "ダンススクールハマノ",
-    prefecture: "tokyo",
-    prefectureName: "東京都",
-    city: "三鷹市",
-    address: "東京都三鷹市",
-    website: "https://dshamano.amebaownd.com/",
-    danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
-    lessonTypes: ["グループ", "個人", "体験"],
-    hours: "9:00〜21:00",
-    description: "JR三鷹駅北口徒歩30秒の好立地。初心者から上級者まで楽しめる社交ダンス教室。",
-    staff: [
-      { name: "濱野 浩二", role: "社交ダンス講師", photo: "https://cdn.amebaowndme.com/madrid-prd/madrid-web/images/sites/457750/1d105a3718d401b593a930fe91dd7311_8457954f15fff4a82b06614f50bcdfef.jpg?width=608" },
-      { name: "野嵜 子江", role: "社交ダンス講師", photo: "https://cdn.amebaowndme.com/madrid-prd/madrid-web/images/sites/457750/ce170e7a50464b74b5921dd2b01c4741_13a18129075af9bef4606f2dbccea92f.jpg?width=608" },
-      { name: "鈴木 豊彦", role: "社交ダンス講師", photo: "https://cdn.amebaowndme.com/madrid-prd/madrid-web/images/sites/457750/d765733d25e87636e1df61a6e15dd771_ad7be6d50630e4ebd91122b633056485.jpg?width=608" },
-    ],
-  },
-  {
-    id: "tokyo-084",
-    name: "木下ダンスワールド",
-    prefecture: "tokyo",
-    prefectureName: "東京都",
-    city: "武蔵野市",
-    address: "東京都武蔵野市",
-    website: "https://www.kinoshita-danceworld.com/",
-    danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
-    lessonTypes: ["グループ", "個人", "体験"],
-    hours: "平日 12:00〜21:00、土 13:00〜19:00（日・祝休業）",
-    description: "初心者からプロフェッショナルまで社交ダンスを学べるスクール。丁寧な個人指導が好評。",
-    staff: [
-      { name: "木下 聡明", role: "講師", photo: "https://www.kinoshita-danceworld.com/manasys/wp-content/uploads/staff-image01.jpg" },
-      { name: "山内 砂穂", role: "講師", photo: "https://www.kinoshita-danceworld.com/manasys/wp-content/uploads/staff-image02.jpg" },
-    ],
+    phone: "0422-46-1127",
+    hours: "月・水〜金 12:00〜22:00、火 10:00〜18:00、土・祝 12:00〜18:00、日曜定休"
   },
   {
     id: "tokyo-085",
@@ -1544,6 +1485,7 @@ export const studios: Studio[] = [
       { name: "古賀 孝義", role: "講師", photo: "https://dancestudiocoga.jp/wp-content/uploads/2024/10/b4d6486cb39480529501fed7eb5f1b62_812a79d31f733aea9f6dbc19c8635e59.jpg" },
       { name: "長谷川 裕紀", role: "講師", photo: "https://dancestudiocoga.jp/wp-content/uploads/2024/10/2fd74db0648e883d77cff26593eda36e_ef5214dbf9f5fb2ef2181c86498718ad.jpg" },
     ],
+    phone: "070-7483-9643"
   },
   {
     id: "tokyo-087",
@@ -1560,6 +1502,7 @@ export const studios: Studio[] = [
     staff: [
       { name: "河原 央", role: "講師", photo: "https://static.wixstatic.com/media/ee901e_1c0c8ecffb5f40d98e08839df7233262.jpg/v1/fill/w_264,h_348,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/ee901e_1c0c8ecffb5f40d98e08839df7233262.jpg" },
     ],
+    phone: "042-629-9470"
   },
   {
     id: "tokyo-088",
@@ -1580,6 +1523,7 @@ export const studios: Studio[] = [
       { name: "中村 康之", role: "JDCスタンダードA級", photo: "https://static.wixstatic.com/media/5ff64a_9cd22708d9dd4f15adc07c5610ac0b42~mv2.jpg/v1/crop/x_0,y_168,w_554,h_554/fill/w_183,h_183,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/DSC_0341_edited.jpg" },
       { name: "水口 保惠", role: "元JDCラテンA級", photo: "https://static.wixstatic.com/media/5ff64a_e1fa6c88a8d54ef98ec2e097fb4e8179~mv2.jpg/v1/crop/x_560,y_828,w_1969,h_1968/fill/w_183,h_183,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_3980.jpg" },
     ],
+    phone: "042-726-4950"
   },
   {
     id: "tokyo-089",
@@ -1598,31 +1542,6 @@ export const studios: Studio[] = [
       { name: "大塚 出", role: "JCFプロラテンチャンピオン", photo: "http://izurudance.com/wp-content/uploads/2012/09/20101106-983-681x1024.jpg" },
       { name: "安齋 沙織", role: "JCFプロラテンチャンピオン", photo: "http://izurudance.com/wp-content/uploads/2012/09/20101106-983-681x1024.jpg" },
     ],
-  },
-  {
-    id: "tokyo-090",
-    name: "飛鳥ダンススクール",
-    prefecture: "tokyo",
-    prefectureName: "東京都",
-    city: "調布市",
-    address: "東京都調布市つつじヶ丘",
-    website: "https://asukabc.com/",
-    danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
-    lessonTypes: ["グループ", "個人", "体験"],
-    description: "つつじヶ丘駅北口徒歩3分。子供から大人まで楽しめる社交ダンス教室。",
-  },
-  {
-    id: "tokyo-091",
-    name: "Ballroom Dancing Studio IMAMURA",
-    prefecture: "tokyo",
-    prefectureName: "東京都",
-    city: "日野市",
-    address: "東京都日野市多摩平1-2-6 野口ビル4F",
-    phone: "042-514-9801",
-    website: "http://studioimamura.com/",
-    danceStyles: ["ワルツ", "タンゴ", "フォックストロット", "クイックステップ", "ヴィエニーズワルツ", "ルンバ", "チャチャチャ", "サンバ", "パソドブレ", "ジャイブ"],
-    lessonTypes: ["グループ", "個人", "体験"],
-    description: "JR豊田駅北口から徒歩60秒。約72坪の開放感あふれるフロア。20年以上の経験を持つ講師が指導。",
   },
   {
     id: "tokyo-092",
@@ -10662,6 +10581,21 @@ export const studios: Studio[] = [
     lessonTypes: ["個人レッスン", "グループレッスン"],
     hours: "",
     description: "福岡の社交ダンス教室",
+    staff: []
+  },
+  {
+    id: "fukuoka-021",
+    name: "ノガミダンススポーツクラブ",
+    prefecture: "fukuoka",
+    prefectureName: "福岡県",
+    city: "福岡市南区",
+    address: "福岡市南区若久2-16-9",
+    phone: "092-408-5593",
+    website: "https://seesaawiki.jp/w/nogamidsc/",
+    danceStyles: ["社交ダンス"],
+    lessonTypes: ["個人レッスン", "グループレッスン"],
+    hours: "",
+    description: "福岡市南区の社交ダンス教室",
     staff: []
   },
   {
