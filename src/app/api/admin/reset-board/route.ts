@@ -1,24 +1,21 @@
 // Admin API: reset bulletin board data
-// Usage: POST /api/admin/reset-board with JSON body { lineUserId }
-// Requires the caller's LINE user ID to be on the admin whitelist.
+// Usage: POST /api/admin/reset-board
+// Requires a valid admin session cookie (set via POST /api/admin/login).
 // Deletes all messages, conversations, applications, and partner_posts.
 
 import { NextRequest, NextResponse } from 'next/server';
 import { getServiceSupabase } from '@/lib/supabase';
-import { isAdmin } from '@/lib/admin';
+import { verifySessionToken, ADMIN_COOKIE_NAME } from '@/lib/admin-auth';
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json().catch(() => ({}));
-    const lineUserId: string | undefined = body.lineUserId;
-
-    if (!isAdmin(lineUserId)) {
-      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+    const token = request.cookies.get(ADMIN_COOKIE_NAME)?.value;
+    const session = verifySessionToken(token);
+    if (!session) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     const supabase = getServiceSupabase();
-
-    // Delete in dependency order (child tables first)
     const results: Record<string, number | string> = {};
 
     const deletions = [
