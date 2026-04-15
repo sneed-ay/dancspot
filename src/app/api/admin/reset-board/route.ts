@@ -23,6 +23,8 @@ export async function POST(request: NextRequest) {
       ['conversations', 'thread_id'],
       ['applications', 'thread_id'],
       ['partner_posts', 'id'],
+      ['board_replies', 'thread_id'],
+      ['board_threads', 'id'],
     ] as const;
 
     for (const [table, notNullCol] of deletions) {
