@@ -1,55 +1,52 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, FormEvent } from 'react';
 import Link from 'next/link';
-import { initLiff, isLoggedIn, login, getProfile } from '@/lib/liff';
-import { isAdmin } from '@/lib/admin';
 
 interface BoardStats {
   posts: number;
-  applications: number;
   conversations: number;
 }
 
 export default function AdminPage() {
-  const [liffReady, setLiffReady] = useState(false);
-  const [userId, setUserId] = useState<string | null>(null);
-  const [displayName, setDisplayName] = useState<string>('');
+  const [checkingSession, setCheckingSession] = useState(true);
+  const [authed, setAuthed] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState('');
+  const [loggingIn, setLoggingIn] = useState(false);
+  const [sessionEmail, setSessionEmail] = useState<string>('');
   const [stats, setStats] = useState<BoardStats | null>(null);
   const [resetting, setResetting] = useState(false);
   const [resetResult, setResetResult] = useState<string>('');
-  const [error, setError] = useState<string>('');
+
+  const checkSession = async () => {
+    try {
+      const res = await fetch('/api/admin/session', { cache: 'no-store' });
+      if (res.ok) {
+        const data = await res.json();
+        setAuthed(!!data.authenticated);
+        setSessionEmail(data.email || '');
+      } else {
+        setAuthed(false);
+      }
+    } catch {
+      setAuthed(false);
+    } finally {
+      setCheckingSession(false);
+    }
+  };
 
   useEffect(() => {
-    const init = async () => {
-      try {
-        await initLiff();
-        setLiffReady(true);
-        if (isLoggedIn()) {
-          const profile = await getProfile();
-          setUserId(profile.userId);
-          setDisplayName(profile.displayName);
-        }
-      } catch (err) {
-        console.error('LIFF init error:', err);
-        setError('LINEの初期化に失敗しました');
-      }
-    };
-    init();
+    checkSession();
   }, []);
 
   const refreshStats = async () => {
     try {
-      const [postsRes, convsRes] = await Promise.all([
-        fetch('/api/posts').then((r) => r.json()),
-        userId
-          ? fetch('/api/board/conversations?lineUserId=' + userId).then((r) => r.json())
-          : Promise.resolve({ conversations: [] }),
-      ]);
+      const postsRes = await fetch('/api/posts').then((r) => r.json());
       setStats({
         posts: postsRes.posts?.length ?? 0,
-        applications: 0, // not directly fetchable here
-        conversations: convsRes.conversations?.length ?? 0,
+        conversations: 0,
       });
     } catch {
       // ignore
@@ -57,11 +54,46 @@ export default function AdminPage() {
   };
 
   useEffect(() => {
-    if (userId && isAdmin(userId)) refreshStats();
-  }, [userId]);
+    if (authed) refreshStats();
+  }, [authed]);
+
+  const handleLogin = async (e: FormEvent) => {
+    e.preventDefault();
+    setLoggingIn(true);
+    setLoginError('');
+    try {
+      const res = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setEmail('');
+        setPassword('');
+        await checkSession();
+      } else {
+        setLoginError(data.error || 'ログインに失敗しました');
+      }
+    } catch {
+      setLoginError('通信エラーが発生しました');
+    } finally {
+      setLoggingIn(false);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/admin/logout', { method: 'POST' });
+    } catch {
+      // ignore
+    }
+    setAuthed(false);
+    setSessionEmail('');
+    setStats(null);
+  };
 
   const handleReset = async () => {
-    if (!userId) return;
     const ok = window.confirm(
       '本当に掲示板の全データを削除しますか？\n\n削除対象:\n- messages全件\n- conversations全件\n- applications全件\n- partner_posts全件\n\nこの操作は取り消せません。'
     );
@@ -69,11 +101,7 @@ export default function AdminPage() {
     setResetting(true);
     setResetResult('');
     try {
-      const res = await fetch('/api/admin/reset-board', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ lineUserId: userId }),
-      });
+      const res = await fetch('/api/admin/reset-board', { method: 'POST' });
       const data = await res.json();
       if (res.ok) {
         setResetResult('✅ 削除成功: ' + JSON.stringify(data.deleted));
@@ -81,14 +109,14 @@ export default function AdminPage() {
       } else {
         setResetResult('❌ エラー: ' + (data.error || res.status));
       }
-    } catch (err) {
+    } catch {
       setResetResult('❌ 通信エラー');
     } finally {
       setResetting(false);
     }
   };
 
-  if (!liffReady) {
+  if (checkingSession) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <p className="text-gray-500">読み込み中...</p>
@@ -96,41 +124,56 @@ export default function AdminPage() {
     );
   }
 
-  if (error) {
+  if (!authed) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
-        <p className="text-red-500">{error}</p>
-      </div>
-    );
-  }
-
-  if (!userId) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">管理者ページ</h1>
-          <p className="text-gray-500 mb-6">まずLINEでログインしてください</p>
-          <button
-            onClick={() => login()}
-            className="bg-[#06C755] text-white px-6 py-3 rounded-lg hover:bg-[#05b54c] transition font-medium"
-          >
-            LINEでログイン
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  if (!isAdmin(userId)) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
-        <div className="text-center max-w-md">
-          <h1 className="text-2xl font-bold text-red-600 mb-2">アクセス拒否</h1>
-          <p className="text-gray-600 mb-2">このページは管理者専用です。</p>
-          <p className="text-xs text-gray-400 mb-6">ログイン中: {displayName}</p>
-          <Link href="/" className="text-blue-500 hover:underline text-sm">
-            トップに戻る
-          </Link>
+        <div className="w-full max-w-sm bg-white rounded-xl shadow-sm border p-6">
+          <h1 className="text-2xl font-bold text-gray-900 mb-1">管理者ログイン</h1>
+          <p className="text-sm text-gray-500 mb-6">メールアドレスとパスワードを入力してください。</p>
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                メールアドレス
+              </label>
+              <input
+                id="email"
+                type="email"
+                autoComplete="username"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                placeholder="admin@example.com"
+              />
+            </div>
+            <div>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+                パスワード
+              </label>
+              <input
+                id="password"
+                type="password"
+                autoComplete="current-password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              />
+            </div>
+            {loginError && <p className="text-sm text-red-600">{loginError}</p>}
+            <button
+              type="submit"
+              disabled={loggingIn}
+              className="w-full bg-amber-600 text-white py-2 rounded-lg hover:bg-amber-700 transition font-medium disabled:opacity-50"
+            >
+              {loggingIn ? 'ログイン中...' : 'ログイン'}
+            </button>
+          </form>
+          <div className="mt-6 text-center">
+            <Link href="/" className="text-xs text-gray-400 hover:text-gray-600">
+              トップに戻る
+            </Link>
+          </div>
         </div>
       </div>
     );
@@ -142,14 +185,18 @@ export default function AdminPage() {
         <div className="flex items-center justify-between mb-6">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">管理者ページ</h1>
-            <p className="text-sm text-gray-500 mt-1">ログイン中: {displayName} ({userId.substring(0, 10)}...)</p>
+            <p className="text-sm text-gray-500 mt-1">ログイン中: {sessionEmail}</p>
           </div>
-          <Link href="/" className="text-blue-500 hover:underline text-sm">
-            トップに戻る
-          </Link>
+          <div className="flex items-center gap-4">
+            <button onClick={handleLogout} className="text-sm text-gray-500 hover:text-gray-800">
+              ログアウト
+            </button>
+            <Link href="/" className="text-sm text-blue-500 hover:underline">
+              トップ
+            </Link>
+          </div>
         </div>
 
-        {/* Stats */}
         <div className="bg-white rounded-xl shadow-sm border p-6 mb-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-bold text-gray-900">現在の掲示板データ</h2>
@@ -158,22 +205,15 @@ export default function AdminPage() {
             </button>
           </div>
           {stats ? (
-            <div className="grid grid-cols-2 gap-4 text-sm">
-              <div>
-                <p className="text-gray-500">投稿数</p>
-                <p className="text-2xl font-bold text-gray-900">{stats.posts}</p>
-              </div>
-              <div>
-                <p className="text-gray-500">自分の会話数</p>
-                <p className="text-2xl font-bold text-gray-900">{stats.conversations}</p>
-              </div>
+            <div className="text-sm">
+              <p className="text-gray-500">投稿数</p>
+              <p className="text-2xl font-bold text-gray-900">{stats.posts}</p>
             </div>
           ) : (
             <p className="text-gray-500">読み込み中...</p>
           )}
         </div>
 
-        {/* Danger zone */}
         <div className="bg-white rounded-xl shadow-sm border-2 border-red-200 p-6">
           <h2 className="text-lg font-bold text-red-600 mb-2">⚠️ 危険な操作</h2>
           <p className="text-sm text-gray-600 mb-4">
