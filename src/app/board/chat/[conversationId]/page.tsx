@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { getProfile, isLoggedIn, login } from '@/lib/liff';
+import { getProfile, isLoggedIn, login, initLiff } from '@/lib/liff';
 
 interface Message {
   id: string;
@@ -32,13 +32,20 @@ export default function ChatPage() {
 
   useEffect(() => {
     const init = async () => {
-      if (!isLoggedIn()) {
-        login();
-        return;
-      }
-      const profile = await getProfile();
-      if (profile?.userId) {
-        setMyUserId(profile.userId);
+      try {
+        await initLiff();
+        if (!isLoggedIn()) {
+          login();
+          return;
+        }
+        const profile = await getProfile();
+        if (profile?.userId) {
+          setMyUserId(profile.userId);
+        }
+      } catch (err) {
+        console.error('LIFF init error:', err);
+        setError('LINEの初期化に失敗しました');
+        setLoading(false);
       }
     };
     init();
