@@ -16,6 +16,16 @@ interface PartnerPost {
   linePictureUrl: string | null;
 }
 
+interface Reply {
+  id: string;
+  author: string;
+  content: string;
+  lineUserId: string;
+  lineDisplayName: string;
+  linePictureUrl: string | null;
+  createdAt: string;
+}
+
 interface GeneralThread {
   id: string;
   title: string;
@@ -26,6 +36,7 @@ interface GeneralThread {
   lineDisplayName: string;
   linePictureUrl: string | null;
   replyCount: number;
+  replies: Reply[];
 }
 
 export default function AdminPage() {
@@ -40,6 +51,7 @@ export default function AdminPage() {
   const [generalThreads, setGeneralThreads] = useState<GeneralThread[]>([]);
   const [loadingPosts, setLoadingPosts] = useState(false);
   const [deletingId, setDeletingId] = useState<string>('');
+  const [expandedThreads, setExpandedThreads] = useState<Record<string, boolean>>({});
   const [resetting, setResetting] = useState(false);
   const [statusMsg, setStatusMsg] = useState<string>('');
 
@@ -295,30 +307,60 @@ export default function AdminPage() {
           ) : (
             <ul className="divide-y divide-gray-100">
               {generalThreads.map((t) => (
-                <li key={t.id} className="py-3 flex items-start gap-3">
-                  {renderAvatar(t.linePictureUrl, t.lineDisplayName || t.title)}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex flex-wrap items-center gap-2 text-sm mb-1">
-                      <span className="font-medium text-gray-900">{t.title || '(無題)'}</span>
-                      {t.lineDisplayName && (
-                        <span className="text-xs text-gray-500">(LINE: {t.lineDisplayName})</span>
-                      )}
-                      <span className="text-xs text-gray-400">{formatDate(t.createdAt)}</span>
+                <li key={t.id} className="py-3">
+                  <div className="flex items-start gap-3">
+                    {renderAvatar(t.linePictureUrl, t.lineDisplayName || t.title)}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap items-center gap-2 text-sm mb-1">
+                        <span className="font-medium text-gray-900">{t.title || '(無題)'}</span>
+                        {t.lineDisplayName && (
+                          <span className="text-xs text-gray-500">(LINE: {t.lineDisplayName})</span>
+                        )}
+                        <span className="text-xs text-gray-400">{formatDate(t.createdAt)}</span>
+                      </div>
+                      <div className="flex flex-wrap gap-1 mb-1">
+                        {t.category && <span className="text-xs px-1.5 py-0.5 bg-gray-100 text-gray-700 rounded">{t.category}</span>}
+                        <button
+                          onClick={() => setExpandedThreads((p) => ({ ...p, [t.id]: !p[t.id] }))}
+                          className="text-xs px-1.5 py-0.5 bg-amber-50 text-amber-700 rounded hover:bg-amber-100"
+                        >
+                          {expandedThreads[t.id] ? '↓' : '→'} 返信 {t.replyCount}
+                        </button>
+                      </div>
+                      <p className="text-sm text-gray-700 line-clamp-2 whitespace-pre-wrap">{t.content}</p>
+                      <p className="text-xs text-gray-400 mt-1 break-all">LINE User ID: {t.lineUserId || '(なし)'}</p>
                     </div>
-                    <div className="flex flex-wrap gap-1 mb-1">
-                      {t.category && <span className="text-xs px-1.5 py-0.5 bg-gray-100 text-gray-700 rounded">{t.category}</span>}
-                      <span className="text-xs px-1.5 py-0.5 bg-amber-50 text-amber-700 rounded">返信 {t.replyCount}</span>
-                    </div>
-                    <p className="text-sm text-gray-700 line-clamp-2 whitespace-pre-wrap">{t.content}</p>
-                    <p className="text-xs text-gray-400 mt-1 break-all">LINE User ID: {t.lineUserId || '(なし)'}</p>
+                    <button
+                      onClick={() => handleDeleteOne('thread', t.id, t.title || 'this thread')}
+                      disabled={deletingId === t.id}
+                      className="text-xs text-red-600 hover:text-red-800 font-medium disabled:opacity-50 flex-shrink-0"
+                    >
+                      {deletingId === t.id ? '削除中...' : '削除'}
+                    </button>
                   </div>
-                  <button
-                    onClick={() => handleDeleteOne('thread', t.id, t.title || 'this thread')}
-                    disabled={deletingId === t.id}
-                    className="text-xs text-red-600 hover:text-red-800 font-medium disabled:opacity-50 flex-shrink-0"
-                  >
-                    {deletingId === t.id ? '削除中...' : '削除'}
-                  </button>
+                  {expandedThreads[t.id] && t.replies.length > 0 && (
+                    <ul className="mt-3 ml-12 pl-4 border-l-2 border-amber-100 space-y-3">
+                      {t.replies.map((r) => (
+                        <li key={r.id} className="flex items-start gap-2">
+                          {renderAvatar(r.linePictureUrl, r.lineDisplayName || r.author)}
+                          <div className="flex-1 min-w-0">
+                            <div className="flex flex-wrap items-center gap-2 text-xs mb-0.5">
+                              <span className="font-medium text-gray-800">{r.author || '名無しさん'}</span>
+                              {r.lineDisplayName && r.lineDisplayName !== r.author && (
+                                <span className="text-xs text-gray-500">(LINE: {r.lineDisplayName})</span>
+                              )}
+                              <span className="text-xs text-gray-400">{formatDate(r.createdAt)}</span>
+                            </div>
+                            <p className="text-sm text-gray-700 whitespace-pre-wrap">{r.content}</p>
+                            <p className="text-xs text-gray-400 mt-0.5 break-all">LINE User ID: {r.lineUserId || '(なし)'}</p>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {expandedThreads[t.id] && t.replies.length === 0 && (
+                    <p className="mt-2 ml-12 text-xs text-gray-400">返信はありません</p>
+                  )}
                 </li>
               ))}
             </ul>
