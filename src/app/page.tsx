@@ -160,21 +160,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Ad slot - currently inviting advertisers */}
       <section className="py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="bg-stone-900 rounded-2xl p-8 sm:p-12 text-center">
+            <p className="text-xs text-stone-500 uppercase tracking-widest mb-3">
+              広告枠 / Advertisement
+            </p>
             <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-              ダンスパートナーを探していませんか？
+              広告を載せませんか？
             </h2>
             <p className="mt-3 text-stone-400 text-sm max-w-md mx-auto">
-              お相手募集掲示板で、あなたにピッタリのパートナーが見つかるかもしれません。
+              DancSpotは社交ダンス愛好家が集まる総合プラットフォームです。教室・イベント・商品・サービスの告知にぜひご活用ください。
             </p>
             <Link
-              href="/board/partner"
+              href="/contact"
               className="inline-flex items-center mt-6 px-6 py-2.5 bg-amber-600 hover:bg-amber-500 text-white text-sm font-medium rounded-lg transition-colors"
             >
-              募集一覧を見る
+              お問い合わせ
             </Link>
           </div>
         </div>
