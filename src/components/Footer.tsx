@@ -54,7 +54,7 @@ export default function Footer() {
               <li><span className="text-sm text-stone-500">プライバシーポリシー</span></li>
               <li><span className="text-sm text-stone-500">利用規約</span></li>
               <li>
-                <Link href="mailto:info@sneed.jp" className="text-sm hover:text-white transition-colors">
+                <Link href="/contact" className="text-sm hover:text-white transition-colors">
                   お問い合わせ
                 </Link>
               </li>
