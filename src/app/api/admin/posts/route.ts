@@ -37,7 +37,7 @@ export async function GET(request: NextRequest) {
   const { data: threadData, error: threadErr } = await supabase
     .from('board_threads')
     .select(
-      'id, nickname, content, dance_type, created_at, line_user_id, line_display_name, line_picture_url, board_replies(count)'
+      'id, nickname, content, dance_type, created_at, line_user_id, line_display_name, line_picture_url, board_replies(id, author, content, line_user_id, line_display_name, line_picture_url, created_at)'
     )
     .order('created_at', { ascending: false });
 
@@ -55,7 +55,15 @@ export async function GET(request: NextRequest) {
     line_user_id: string | null;
     line_display_name: string | null;
     line_picture_url: string | null;
-    board_replies?: Array<{ count: number }>;
+    board_replies?: Array<{
+      id: string;
+      author: string | null;
+      content: string | null;
+      line_user_id: string | null;
+      line_display_name: string | null;
+      line_picture_url: string | null;
+      created_at: string;
+    }>;
   };
 
   const generalThreads = (threadData as ThreadRow[] | null || []).map((t) => ({
@@ -67,7 +75,16 @@ export async function GET(request: NextRequest) {
     lineUserId: t.line_user_id || '',
     lineDisplayName: t.line_display_name || '',
     linePictureUrl: t.line_picture_url || null,
-    replyCount: t.board_replies && t.board_replies.length > 0 ? t.board_replies[0].count : 0,
+    replyCount: (t.board_replies || []).length,
+    replies: (t.board_replies || []).map((r) => ({
+      id: r.id,
+      author: r.author || '',
+      content: r.content || '',
+      lineUserId: r.line_user_id || '',
+      lineDisplayName: r.line_display_name || '',
+      linePictureUrl: r.line_picture_url || null,
+      createdAt: r.created_at,
+    })),
   }));
 
   const partnerPosts = (partnerData || []).map((p) => ({
