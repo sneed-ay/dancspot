@@ -36,14 +36,14 @@ const features = [
 ];
 
 const prefectures = [
-  { name: "東京都", count: studios.filter((s) => s.prefecture === "東京都").length },
-  { name: "神奈川県", count: studios.filter((s) => s.prefecture === "神奈川県").length },
-  { name: "大阪府", count: studios.filter((s) => s.prefecture === "大阪府").length },
-  { name: "埼玉県", count: studios.filter((s) => s.prefecture === "埼玉県").length },
-  { name: "千葉県", count: studios.filter((s) => s.prefecture === "千葉県").length },
-  { name: "愛知県", count: studios.filter((s) => s.prefecture === "愛知県").length },
-  { name: "福岡県", count: studios.filter((s) => s.prefecture === "福岡県").length },
-  { name: "北海道", count: studios.filter((s) => s.prefecture === "北海道").length },
+  { name: "東京都", count: studios.filter((s) => s.prefectureName === "東京都").length },
+  { name: "神奈川県", count: studios.filter((s) => s.prefectureName === "神奈川県").length },
+  { name: "大阪府", count: studios.filter((s) => s.prefectureName === "大阪府").length },
+  { name: "埼玉県", count: studios.filter((s) => s.prefectureName === "埼玉県").length },
+  { name: "千葉県", count: studios.filter((s) => s.prefectureName === "千葉県").length },
+  { name: "愛知県", count: studios.filter((s) => s.prefectureName === "愛知県").length },
+  { name: "福岡県", count: studios.filter((s) => s.prefectureName === "福岡県").length },
+  { name: "北海道", count: studios.filter((s) => s.prefectureName === "北海道").length },
 ];
 
 export default function Home() {
