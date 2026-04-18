@@ -36,14 +36,14 @@ const features = [
 ];
 
 const prefectures = [
-  { name: "東京都", count: studios.filter((s) => s.prefectureName === "東京都").length },
-  { name: "神奈川県", count: studios.filter((s) => s.prefectureName === "神奈川県").length },
-  { name: "大阪府", count: studios.filter((s) => s.prefectureName === "大阪府").length },
-  { name: "埼玉県", count: studios.filter((s) => s.prefectureName === "埼玉県").length },
-  { name: "千葉県", count: studios.filter((s) => s.prefectureName === "千葉県").length },
-  { name: "愛知県", count: studios.filter((s) => s.prefectureName === "愛知県").length },
-  { name: "福岡県", count: studios.filter((s) => s.prefectureName === "福岡県").length },
-  { name: "北海道", count: studios.filter((s) => s.prefectureName === "北海道").length },
+  { name: "東京都", slug: "tokyo", count: studios.filter((s) => s.prefectureName === "東京都").length },
+  { name: "神奈川県", slug: "kanagawa", count: studios.filter((s) => s.prefectureName === "神奈川県").length },
+  { name: "大阪府", slug: "osaka", count: studios.filter((s) => s.prefectureName === "大阪府").length },
+  { name: "埼玉県", slug: "saitama", count: studios.filter((s) => s.prefectureName === "埼玉県").length },
+  { name: "千葉県", slug: "chiba", count: studios.filter((s) => s.prefectureName === "千葉県").length },
+  { name: "愛知県", slug: "aichi", count: studios.filter((s) => s.prefectureName === "愛知県").length },
+  { name: "福岡県", slug: "fukuoka", count: studios.filter((s) => s.prefectureName === "福岡県").length },
+  { name: "北海道", slug: "hokkaido", count: studios.filter((s) => s.prefectureName === "北海道").length },
 ];
 
 export default function Home() {
@@ -134,7 +134,7 @@ export default function Home() {
             {prefectures.map((pref) => (
               <Link
                 key={pref.name}
-                href={`/prefecture/${encodeURIComponent(pref.name)}`}
+                href={`/prefecture/${pref.slug}`}
                 className="group flex items-center justify-between p-4 bg-white rounded-lg border border-stone-200/80 hover:border-amber-300 hover:shadow-sm transition-all"
               >
                 <span className="text-sm font-medium text-stone-700 group-hover:text-stone-900">
